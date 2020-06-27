@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import styled from 'styled-components';
 import { Title1 } from '../Types/Titles/Titles';
 import Container from '../Container/Container';
@@ -7,6 +7,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '../Button/Button';
 import { useForm } from 'react-hook-form';
 import NextLink from 'next/link';
+import { login } from '../../services';
+import Router from 'next/router';
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,7 +16,8 @@ const Wrapper = styled.div`
   justify-content: space-around;
 
   min-height: 100vh;
-
+  max-width: 500px;
+  margin: 0 auto;
   padding: 20px 0;
 
   box-sizing: border-box;
@@ -66,12 +69,30 @@ const Logo = styled.img`
   margin: 0 auto;
 `;
 
+const Error = styled.p`
+  color: ${theme.color.error};
+  text-align: center;
+  font-family: ${theme.fontFamily.primary};
+  font-size: 18px;
+  font-weight: ${theme.fontStyle.regular};
+`;
+
 const Login = (): ReactElement => {
+  const [errorServices, setErrorServices] = useState('');
   const { register, handleSubmit, errors } = useForm();
 
-  const onSubmit = ({ email, pass }) => {
+  const onSubmit = async ({ email, password }) => {
     // eslint-disable-next-line no-console
-    console.log(email, pass);
+    console.log('Logeando...');
+
+    try {
+      setErrorServices('');
+
+      await login(email, password);
+      Router.push('/');
+    } catch (err) {
+      setErrorServices(err.message);
+    }
   };
 
   return (
@@ -126,6 +147,7 @@ const Login = (): ReactElement => {
               </NextLink>
             </ButtonWrapper>
           </form>
+          <Error>{errorServices}</Error>
         </div>
 
         <Logo src="/images/logo.svg" alt="Vetapp" />
