@@ -15,8 +15,11 @@ module.exports = withPWA({
   pwa: {
     dest: 'public',
   },
-  serverRuntimeConfig: {},
+  serverRuntimeConfig: {
+    BASE_URL: getSecret('BASE_URL'),
+  },
   publicRuntimeConfig: {
+    BASE_URL: getSecret('BASE_URL'),
     API_KEY: getSecret('API_KEY'),
     AUTH_DOMAIN: getSecret('AUTH_DOMAIN'),
     DATABASE_URL: getSecret('DATABASE_URL'),
