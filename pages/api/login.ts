@@ -7,18 +7,19 @@ export default (req, res) => {
     firebase.initializeApp(firebaseConfig);
   }
 
-  const { email, password } = req.query;
+  const { email, password } = req.body;
 
   firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
     .then((user) => {
+      res.json(user);
       firebase
         .firestore()
         .collection('tutores')
         .where('uid', '==', user.user.uid)
         .get()
-        .then(async (querySnapshot) => {
+        .then((querySnapshot) => {
           const tutor = querySnapshot.docs.map((d) => {
             return {
               id: d.id,
@@ -32,16 +33,16 @@ export default (req, res) => {
           });
 
           if (!tutor.length) {
-            return res.status(400).json({ message: 'Usuario o contraseña incorrecta.' });
+            return res.status(400).json({ tutor: tutor, message: '1 Usuario o contraseña incorrecta.' });
           } else {
-            return res.json(tutor[0]);
+            return res.status(200).json({ tutor: tutor[0] });
           }
         })
         .catch((err) => {
-          return res.status(400).json({ error: err, message: 'Usuario o contraseña incorrecta.' });
+          return res.status(400).json({ error: err, message: '2 Usuario o contraseña incorrecta.' });
         });
     })
     .catch((err) => {
-      return res.status(400).json({ error: err, message: 'Usuario o contraseña incorrecta' });
+      return res.status(400).json({ error: err, message: '3 Usuario o contraseña incorrecta' });
     });
 };

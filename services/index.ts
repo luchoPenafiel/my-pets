@@ -1,3 +1,4 @@
+import checkAuthState from './checkAuthState';
 import login from './login';
 
-export { login };
+export { checkAuthState, login };

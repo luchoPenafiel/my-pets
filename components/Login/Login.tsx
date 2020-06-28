@@ -88,7 +88,7 @@ const Login = (): ReactElement => {
     try {
       setErrorServices('');
 
-      await login(email, password);
+      const response = await login(email, password);
       Router.push('/');
     } catch (err) {
       setErrorServices(err.message);

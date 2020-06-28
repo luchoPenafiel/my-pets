@@ -14,8 +14,9 @@ const Home = (): ReactElement => {
 };
 
 Home.getInitialProps = async ({ res }) => {
-  const baseURL = await getConfig().serverRuntimeConfig.BASE_URL;
-  const response: any = await fetch(`${baseURL}/api/checkAuthState`);
+  const baseURL = await getConfig().publicRuntimeConfig.BASE_URL;
+  const url = `${baseURL}/api/checkAuthState`;
+  const response: any = await fetch(url);
   const userAuth = await response.json();
 
   if (!userAuth.auth) {
