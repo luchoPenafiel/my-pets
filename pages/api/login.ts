@@ -33,16 +33,16 @@ export default (req, res) => {
           });
 
           if (!tutor.length) {
-            return res.status(400).json({ tutor: tutor, message: '1 Usuario o contraseña incorrecta.' });
+            return res.status(400).json({ tutor: tutor, message: 'Usuario o contraseña incorrecta.' });
           } else {
             return res.status(200).json({ tutor: tutor[0] });
           }
         })
         .catch((err) => {
-          return res.status(400).json({ error: err, message: '2 Usuario o contraseña incorrecta.' });
+          return res.status(400).json({ error: err, message: 'Usuario o contraseña incorrecta.' });
         });
     })
     .catch((err) => {
-      return res.status(400).json({ error: err, message: '3 Usuario o contraseña incorrecta' });
+      return res.status(400).json({ error: err, message: 'Usuario o contraseña incorrecta' });
     });
 };
