@@ -1,4 +1,8 @@
+import getConfig from 'next/config';
+
 const loginService = async (email: string, password: string): Promise<any> => {
+  const baseURL = await getConfig().publicRuntimeConfig.BASE_URL;
+
   return new Promise((resolve, reject) => {
     const myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
@@ -12,7 +16,7 @@ const loginService = async (email: string, password: string): Promise<any> => {
       }),
     };
 
-    fetch(`http://localhost:3000/api/login`, requestOptions)
+    fetch(`${baseURL}/api/login`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
         if (result.error) {
