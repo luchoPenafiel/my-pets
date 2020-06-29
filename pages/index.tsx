@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import cookies from 'next-cookies';
 import Head from 'next/head';
 import getConfig from 'next/config';
 
@@ -13,22 +14,37 @@ const Home = (): ReactElement => {
   );
 };
 
-Home.getInitialProps = async ({ res }) => {
+Home.getInitialProps = async (ctx) => {
   const baseURL = await getConfig().publicRuntimeConfig.BASE_URL;
-  const url = `${baseURL}/api/checkAuthState`;
-  const response: any = await fetch(url);
-  const userAuth = await response.json();
+  const { token } = cookies(ctx);
 
-  if (!userAuth.auth) {
-    if (res) {
-      res.writeHead(302, {
+  if (!token) {
+    if (ctx.res) {
+      ctx.res.writeHead(302, {
         Location: '/login',
       });
-      res.end();
+      ctx.res.end();
     }
   }
 
-  return { userAuth };
+  const headers: HeadersInit = {
+    'Content-Type': 'application/json',
+    Authorization: JSON.stringify({ token }),
+  };
+
+  const result = await fetch(`${baseURL}/api/validateToken`, { headers });
+  const isValidToken = await result.json();
+
+  if (isValidToken.error) {
+    if (ctx.res) {
+      ctx.res.writeHead(302, {
+        Location: '/login',
+      });
+      ctx.res.end();
+    }
+  }
+
+  return { isValidToken };
 };
 
 export default Home;

@@ -1,5 +1,6 @@
 import React, { ReactElement, useState } from 'react';
 import styled from 'styled-components';
+import cookie from 'js-cookie';
 import { Title1 } from '../Types/Titles/Titles';
 import Container from '../Container/Container';
 import theme from '../../constants/theme';
@@ -89,6 +90,9 @@ const Login = (): ReactElement => {
       setErrorServices('');
 
       const response = await login(email, password);
+      const token = response.stsTokenManager.accessToken;
+
+      cookie.set('token', token, { expires: 1 * 360 });
       Router.push('/');
     } catch (err) {
       setErrorServices(err.message);
