@@ -21,9 +21,10 @@ Home.getInitialProps = async (ctx) => {
 
   if (!token) {
     if (ctx.res) {
-      ctx.res.writeHead(302, {
-        Location: '/login',
-      });
+      ctx.res.redirect('/login');
+      // ctx.res.writeHead(302, {
+      //   Location: '/login',
+      // });
       ctx.res.end();
     }
   }
@@ -38,9 +39,10 @@ Home.getInitialProps = async (ctx) => {
 
   if (isValidToken.error) {
     if (ctx.res) {
-      ctx.res.writeHead(302, {
-        Location: '/login',
-      });
+      ctx.res.redirect('/login');
+      // ctx.res.writeHead(302, {
+      //   Location: '/login',
+      // });
       ctx.res.end();
     }
   }
