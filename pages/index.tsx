@@ -8,6 +8,7 @@ const Home = (): ReactElement => {
     <>
       <Head>
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <title>Vetapp</title>
       </Head>
       <p>Mis mascotas</p>
     </>
