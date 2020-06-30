@@ -1,6 +1,8 @@
 // Load env variables automatically (from next secrets or env)
 require('dotenv').config();
-
+// const NextWorkboxPlugin = require('next-workbox-webpack-plugin');
+// const WebpackPwaManifest = require('webpack-pwa-manifest');
+// const path = require('path');
 const withPWA = require('next-pwa');
 
 const getSecret = (key) => {
@@ -23,7 +25,7 @@ module.exports = withPWA({
         },
       },
       {
-        urlPattern: '/[^3]/login//',
+        urlPattern: /[^3]\/login\//,
         handler: 'NetworkFirst',
         options: {
           cacheName: 'html-cache',

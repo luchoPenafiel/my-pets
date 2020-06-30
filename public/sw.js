@@ -81,7 +81,7 @@ if (!self.define) {
     });
   };
 }
-define("./sw.js",['./workbox-2de04002'], function (workbox) { 'use strict';
+define("./sw.js",['./workbox-f35d6f88'], function (workbox) { 'use strict';
 
   /**
   * Welcome to your Workbox-powered service worker!
@@ -118,7 +118,7 @@ define("./sw.js",['./workbox-2de04002'], function (workbox) { 'use strict';
     "revision": "9d11ea7095b60a828f2db49ed1004ade"
   }, {
     "url": "/_next/static/runtime/webpack.js",
-    "revision": "bfaf6421b912730e4336c07683c429c6"
+    "revision": "dbf56ff79dae0cb305a022715dafc35c"
   }], {
     "ignoreURLParametersMatching": [/ts/]
   });
@@ -127,7 +127,7 @@ define("./sw.js",['./workbox-2de04002'], function (workbox) { 'use strict';
     "cacheName": "html-cache",
     plugins: []
   }), 'GET');
-  workbox.registerRoute("/login", new workbox.NetworkFirst({
+  workbox.registerRoute(/[^3]\/login\//, new workbox.NetworkFirst({
     "cacheName": "html-cache",
     plugins: []
   }), 'GET');

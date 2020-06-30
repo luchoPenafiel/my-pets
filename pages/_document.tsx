@@ -33,7 +33,7 @@ class MyDocument extends NextDocument {
   }
 
   render(): ReactElement {
-    const baseUrl = getConfig().serverRuntimeConfig.BASE_URL;
+    const baseUrl = getConfig().publicRuntimeConfig.BASE_URL;
 
     return (
       <Html>
