@@ -81,7 +81,7 @@ if (!self.define) {
     });
   };
 }
-define("./sw.js",['./workbox-b90066a8'], function (workbox) { 'use strict';
+define("./sw.js",['./workbox-2de04002'], function (workbox) { 'use strict';
 
   /**
   * Welcome to your Workbox-powered service worker!
@@ -118,11 +118,25 @@ define("./sw.js",['./workbox-b90066a8'], function (workbox) { 'use strict';
     "revision": "9d11ea7095b60a828f2db49ed1004ade"
   }, {
     "url": "/_next/static/runtime/webpack.js",
-    "revision": "387ea399003ddfac1757dfb41d6e350c"
+    "revision": "bfaf6421b912730e4336c07683c429c6"
   }], {
     "ignoreURLParametersMatching": [/ts/]
   });
   workbox.cleanupOutdatedCaches();
+  workbox.registerRoute("/", new workbox.NetworkFirst({
+    "cacheName": "html-cache",
+    plugins: []
+  }), 'GET');
+  workbox.registerRoute("/login", new workbox.NetworkFirst({
+    "cacheName": "html-cache",
+    plugins: []
+  }), 'GET');
+  workbox.registerRoute(/.*\.(?:png|jpg|jpeg|svg|gif)/, new workbox.CacheFirst({
+    "cacheName": "image-cache",
+    plugins: [new workbox.CacheableResponsePlugin({
+      statuses: [0, 200]
+    })]
+  }), 'GET');
 
 });
 //# sourceMappingURL=sw.js.map
