@@ -1,7 +1,7 @@
 // Load env variables automatically (from next secrets or env)
 require('dotenv').config();
 
-// const withPWA = require('next-pwa');
+const withPWA = require('next-pwa');
 
 const getSecret = (key) => {
   if (typeof process.env[key] === 'undefined') {
