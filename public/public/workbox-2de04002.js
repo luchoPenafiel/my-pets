@@ -1,4 +1,4 @@
-define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
+define("./workbox-2de04002.js",['exports'], function (exports) { 'use strict';
 
     try {
       self['workbox:core:5.1.3'] && _();
@@ -1230,411 +1230,6 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
       return route;
     }
 
-    try {
-      self['workbox:core:5.1.3'] && _();
-    } catch (e) {}
-
-    /*
-      Copyright 2018 Google LLC
-
-      Use of this source code is governed by an MIT-style
-      license that can be found in the LICENSE file or at
-      https://opensource.org/licenses/MIT.
-    */
-    const messages$1 = {
-      'invalid-value': ({
-        paramName,
-        validValueDescription,
-        value
-      }) => {
-        if (!paramName || !validValueDescription) {
-          throw new Error(`Unexpected input to 'invalid-value' error.`);
-        }
-
-        return `The '${paramName}' parameter was given a value with an ` + `unexpected value. ${validValueDescription} Received a value of ` + `${JSON.stringify(value)}.`;
-      },
-      'not-an-array': ({
-        moduleName,
-        className,
-        funcName,
-        paramName
-      }) => {
-        if (!moduleName || !className || !funcName || !paramName) {
-          throw new Error(`Unexpected input to 'not-an-array' error.`);
-        }
-
-        return `The parameter '${paramName}' passed into ` + `'${moduleName}.${className}.${funcName}()' must be an array.`;
-      },
-      'incorrect-type': ({
-        expectedType,
-        paramName,
-        moduleName,
-        className,
-        funcName
-      }) => {
-        if (!expectedType || !paramName || !moduleName || !funcName) {
-          throw new Error(`Unexpected input to 'incorrect-type' error.`);
-        }
-
-        return `The parameter '${paramName}' passed into ` + `'${moduleName}.${className ? className + '.' : ''}` + `${funcName}()' must be of type ${expectedType}.`;
-      },
-      'incorrect-class': ({
-        expectedClass,
-        paramName,
-        moduleName,
-        className,
-        funcName,
-        isReturnValueProblem
-      }) => {
-        if (!expectedClass || !moduleName || !funcName) {
-          throw new Error(`Unexpected input to 'incorrect-class' error.`);
-        }
-
-        if (isReturnValueProblem) {
-          return `The return value from ` + `'${moduleName}.${className ? className + '.' : ''}${funcName}()' ` + `must be an instance of class ${expectedClass.name}.`;
-        }
-
-        return `The parameter '${paramName}' passed into ` + `'${moduleName}.${className ? className + '.' : ''}${funcName}()' ` + `must be an instance of class ${expectedClass.name}.`;
-      },
-      'missing-a-method': ({
-        expectedMethod,
-        paramName,
-        moduleName,
-        className,
-        funcName
-      }) => {
-        if (!expectedMethod || !paramName || !moduleName || !className || !funcName) {
-          throw new Error(`Unexpected input to 'missing-a-method' error.`);
-        }
-
-        return `${moduleName}.${className}.${funcName}() expected the ` + `'${paramName}' parameter to expose a '${expectedMethod}' method.`;
-      },
-      'add-to-cache-list-unexpected-type': ({
-        entry
-      }) => {
-        return `An unexpected entry was passed to ` + `'workbox-precaching.PrecacheController.addToCacheList()' The entry ` + `'${JSON.stringify(entry)}' isn't supported. You must supply an array of ` + `strings with one or more characters, objects with a url property or ` + `Request objects.`;
-      },
-      'add-to-cache-list-conflicting-entries': ({
-        firstEntry,
-        secondEntry
-      }) => {
-        if (!firstEntry || !secondEntry) {
-          throw new Error(`Unexpected input to ` + `'add-to-cache-list-duplicate-entries' error.`);
-        }
-
-        return `Two of the entries passed to ` + `'workbox-precaching.PrecacheController.addToCacheList()' had the URL ` + `${firstEntry._entryId} but different revision details. Workbox is ` + `unable to cache and version the asset correctly. Please remove one ` + `of the entries.`;
-      },
-      'plugin-error-request-will-fetch': ({
-        thrownError
-      }) => {
-        if (!thrownError) {
-          throw new Error(`Unexpected input to ` + `'plugin-error-request-will-fetch', error.`);
-        }
-
-        return `An error was thrown by a plugins 'requestWillFetch()' method. ` + `The thrown error message was: '${thrownError.message}'.`;
-      },
-      'invalid-cache-name': ({
-        cacheNameId,
-        value
-      }) => {
-        if (!cacheNameId) {
-          throw new Error(`Expected a 'cacheNameId' for error 'invalid-cache-name'`);
-        }
-
-        return `You must provide a name containing at least one character for ` + `setCacheDetails({${cacheNameId}: '...'}). Received a value of ` + `'${JSON.stringify(value)}'`;
-      },
-      'unregister-route-but-not-found-with-method': ({
-        method
-      }) => {
-        if (!method) {
-          throw new Error(`Unexpected input to ` + `'unregister-route-but-not-found-with-method' error.`);
-        }
-
-        return `The route you're trying to unregister was not  previously ` + `registered for the method type '${method}'.`;
-      },
-      'unregister-route-route-not-registered': () => {
-        return `The route you're trying to unregister was not previously ` + `registered.`;
-      },
-      'queue-replay-failed': ({
-        name
-      }) => {
-        return `Replaying the background sync queue '${name}' failed.`;
-      },
-      'duplicate-queue-name': ({
-        name
-      }) => {
-        return `The Queue name '${name}' is already being used. ` + `All instances of backgroundSync.Queue must be given unique names.`;
-      },
-      'expired-test-without-max-age': ({
-        methodName,
-        paramName
-      }) => {
-        return `The '${methodName}()' method can only be used when the ` + `'${paramName}' is used in the constructor.`;
-      },
-      'unsupported-route-type': ({
-        moduleName,
-        className,
-        funcName,
-        paramName
-      }) => {
-        return `The supplied '${paramName}' parameter was an unsupported type. ` + `Please check the docs for ${moduleName}.${className}.${funcName} for ` + `valid input types.`;
-      },
-      'not-array-of-class': ({
-        value,
-        expectedClass,
-        moduleName,
-        className,
-        funcName,
-        paramName
-      }) => {
-        return `The supplied '${paramName}' parameter must be an array of ` + `'${expectedClass}' objects. Received '${JSON.stringify(value)},'. ` + `Please check the call to ${moduleName}.${className}.${funcName}() ` + `to fix the issue.`;
-      },
-      'max-entries-or-age-required': ({
-        moduleName,
-        className,
-        funcName
-      }) => {
-        return `You must define either config.maxEntries or config.maxAgeSeconds` + `in ${moduleName}.${className}.${funcName}`;
-      },
-      'statuses-or-headers-required': ({
-        moduleName,
-        className,
-        funcName
-      }) => {
-        return `You must define either config.statuses or config.headers` + `in ${moduleName}.${className}.${funcName}`;
-      },
-      'invalid-string': ({
-        moduleName,
-        funcName,
-        paramName
-      }) => {
-        if (!paramName || !moduleName || !funcName) {
-          throw new Error(`Unexpected input to 'invalid-string' error.`);
-        }
-
-        return `When using strings, the '${paramName}' parameter must start with ` + `'http' (for cross-origin matches) or '/' (for same-origin matches). ` + `Please see the docs for ${moduleName}.${funcName}() for ` + `more info.`;
-      },
-      'channel-name-required': () => {
-        return `You must provide a channelName to construct a ` + `BroadcastCacheUpdate instance.`;
-      },
-      'invalid-responses-are-same-args': () => {
-        return `The arguments passed into responsesAreSame() appear to be ` + `invalid. Please ensure valid Responses are used.`;
-      },
-      'expire-custom-caches-only': () => {
-        return `You must provide a 'cacheName' property when using the ` + `expiration plugin with a runtime caching strategy.`;
-      },
-      'unit-must-be-bytes': ({
-        normalizedRangeHeader
-      }) => {
-        if (!normalizedRangeHeader) {
-          throw new Error(`Unexpected input to 'unit-must-be-bytes' error.`);
-        }
-
-        return `The 'unit' portion of the Range header must be set to 'bytes'. ` + `The Range header provided was "${normalizedRangeHeader}"`;
-      },
-      'single-range-only': ({
-        normalizedRangeHeader
-      }) => {
-        if (!normalizedRangeHeader) {
-          throw new Error(`Unexpected input to 'single-range-only' error.`);
-        }
-
-        return `Multiple ranges are not supported. Please use a  single start ` + `value, and optional end value. The Range header provided was ` + `"${normalizedRangeHeader}"`;
-      },
-      'invalid-range-values': ({
-        normalizedRangeHeader
-      }) => {
-        if (!normalizedRangeHeader) {
-          throw new Error(`Unexpected input to 'invalid-range-values' error.`);
-        }
-
-        return `The Range header is missing both start and end values. At least ` + `one of those values is needed. The Range header provided was ` + `"${normalizedRangeHeader}"`;
-      },
-      'no-range-header': () => {
-        return `No Range header was found in the Request provided.`;
-      },
-      'range-not-satisfiable': ({
-        size,
-        start,
-        end
-      }) => {
-        return `The start (${start}) and end (${end}) values in the Range are ` + `not satisfiable by the cached response, which is ${size} bytes.`;
-      },
-      'attempt-to-cache-non-get-request': ({
-        url,
-        method
-      }) => {
-        return `Unable to cache '${url}' because it is a '${method}' request and ` + `only 'GET' requests can be cached.`;
-      },
-      'cache-put-with-no-response': ({
-        url
-      }) => {
-        return `There was an attempt to cache '${url}' but the response was not ` + `defined.`;
-      },
-      'no-response': ({
-        url,
-        error
-      }) => {
-        let message = `The strategy could not generate a response for '${url}'.`;
-
-        if (error) {
-          message += ` The underlying error is ${error}.`;
-        }
-
-        return message;
-      },
-      'bad-precaching-response': ({
-        url,
-        status
-      }) => {
-        return `The precaching request for '${url}' failed with an HTTP ` + `status of ${status}.`;
-      },
-      'non-precached-url': ({
-        url
-      }) => {
-        return `createHandlerBoundToURL('${url}') was called, but that URL is ` + `not precached. Please pass in a URL that is precached instead.`;
-      },
-      'add-to-cache-list-conflicting-integrities': ({
-        url
-      }) => {
-        return `Two of the entries passed to ` + `'workbox-precaching.PrecacheController.addToCacheList()' had the URL ` + `${url} with different integrity values. Please remove one of them.`;
-      },
-      'missing-precache-entry': ({
-        cacheName,
-        url
-      }) => {
-        return `Unable to find a precached response in ${cacheName} for ${url}.`;
-      }
-    };
-
-    /*
-      Copyright 2018 Google LLC
-
-      Use of this source code is governed by an MIT-style
-      license that can be found in the LICENSE file or at
-      https://opensource.org/licenses/MIT.
-    */
-
-    const generatorFunction$1 = (code, details = {}) => {
-      const message = messages$1[code];
-
-      if (!message) {
-        throw new Error(`Unable to find message for code '${code}'.`);
-      }
-
-      return message(details);
-    };
-
-    const messageGenerator$1 =  generatorFunction$1;
-
-    /*
-      Copyright 2018 Google LLC
-
-      Use of this source code is governed by an MIT-style
-      license that can be found in the LICENSE file or at
-      https://opensource.org/licenses/MIT.
-    */
-    /**
-     * Workbox errors should be thrown with this class.
-     * This allows use to ensure the type easily in tests,
-     * helps developers identify errors from workbox
-     * easily and allows use to optimise error
-     * messages correctly.
-     *
-     * @private
-     */
-
-    class WorkboxError$1 extends Error {
-      /**
-       *
-       * @param {string} errorCode The error code that
-       * identifies this particular error.
-       * @param {Object=} details Any relevant arguments
-       * that will help developers identify issues should
-       * be added as a key on the context object.
-       */
-      constructor(errorCode, details) {
-        const message = messageGenerator$1(errorCode, details);
-        super(message);
-        this.name = errorCode;
-        this.details = details;
-      }
-
-    }
-
-    /*
-      Copyright 2018 Google LLC
-
-      Use of this source code is governed by an MIT-style
-      license that can be found in the LICENSE file or at
-      https://opensource.org/licenses/MIT.
-    */
-    /*
-     * This method throws if the supplied value is not an array.
-     * The destructed values are required to produce a meaningful error for users.
-     * The destructed and restructured object is so it's clear what is
-     * needed.
-     */
-
-    const isArray$1 = (value, details) => {
-      if (!Array.isArray(value)) {
-        throw new WorkboxError$1('not-an-array', details);
-      }
-    };
-
-    const hasMethod$1 = (object, expectedMethod, details) => {
-      const type = typeof object[expectedMethod];
-
-      if (type !== 'function') {
-        details['expectedMethod'] = expectedMethod;
-        throw new WorkboxError$1('missing-a-method', details);
-      }
-    };
-
-    const isType$1 = (object, expectedType, details) => {
-      if (typeof object !== expectedType) {
-        details['expectedType'] = expectedType;
-        throw new WorkboxError$1('incorrect-type', details);
-      }
-    };
-
-    const isInstance$1 = (object, expectedClass, details) => {
-      if (!(object instanceof expectedClass)) {
-        details['expectedClass'] = expectedClass;
-        throw new WorkboxError$1('incorrect-class', details);
-      }
-    };
-
-    const isOneOf$1 = (value, validValues, details) => {
-      if (!validValues.includes(value)) {
-        details['validValueDescription'] = `Valid values are ${JSON.stringify(validValues)}.`;
-        throw new WorkboxError$1('invalid-value', details);
-      }
-    };
-
-    const isArrayOfClass$1 = (value, expectedClass, details) => {
-      const error = new WorkboxError$1('not-array-of-class', details);
-
-      if (!Array.isArray(value)) {
-        throw error;
-      }
-
-      for (const item of value) {
-        if (!(item instanceof expectedClass)) {
-          throw error;
-        }
-      }
-    };
-
-    const finalAssertExports$1 =  {
-      hasMethod: hasMethod$1,
-      isArray: isArray$1,
-      isInstance: isInstance$1,
-      isOneOf: isOneOf$1,
-      isType: isType$1,
-      isArrayOfClass: isArrayOfClass$1
-    };
-
     /*
       Copyright 2018 Google LLC
 
@@ -1686,71 +1281,6 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
     };
 
     /*
-      Copyright 2019 Google LLC
-      Use of this source code is governed by an MIT-style
-      license that can be found in the LICENSE file or at
-      https://opensource.org/licenses/MIT.
-    */
-    const logger$1 =  (() => {
-      // Don't overwrite this value if it's already set.
-      // See https://github.com/GoogleChrome/workbox/pull/2284#issuecomment-560470923
-      if (!('__WB_DISABLE_DEV_LOGS' in self)) {
-        self.__WB_DISABLE_DEV_LOGS = false;
-      }
-
-      let inGroup = false;
-      const methodToColorMap = {
-        debug: `#7f8c8d`,
-        log: `#2ecc71`,
-        warn: `#f39c12`,
-        error: `#c0392b`,
-        groupCollapsed: `#3498db`,
-        groupEnd: null
-      };
-
-      const print = function (method, args) {
-        if (self.__WB_DISABLE_DEV_LOGS) {
-          return;
-        }
-
-        if (method === 'groupCollapsed') {
-          // Safari doesn't print all console.groupCollapsed() arguments:
-          // https://bugs.webkit.org/show_bug.cgi?id=182754
-          if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-            console[method](...args);
-            return;
-          }
-        }
-
-        const styles = [`background: ${methodToColorMap[method]}`, `border-radius: 0.5em`, `color: white`, `font-weight: bold`, `padding: 2px 0.5em`]; // When in a group, the workbox prefix is not displayed.
-
-        const logPrefix = inGroup ? [] : ['%cworkbox', styles.join(';')];
-        console[method](...logPrefix, ...args);
-
-        if (method === 'groupCollapsed') {
-          inGroup = true;
-        }
-
-        if (method === 'groupEnd') {
-          inGroup = false;
-        }
-      };
-
-      const api = {};
-      const loggerMethods = Object.keys(methodToColorMap);
-
-      for (const key of loggerMethods) {
-        const method = key;
-
-        api[method] = (...args) => {
-          print(method, args);
-        };
-      }
-
-      return api;
-    })();
-
-    /*
       Copyright 2018 Google LLC
 
       Use of this source code is governed by an MIT-style
@@ -1777,36 +1307,21 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
 
     async function executeQuotaErrorCallbacks() {
       {
-        logger$1.log(`About to run ${quotaErrorCallbacks.size} ` + `callbacks to clean up caches.`);
+        logger.log(`About to run ${quotaErrorCallbacks.size} ` + `callbacks to clean up caches.`);
       }
 
       for (const callback of quotaErrorCallbacks) {
         await callback();
 
         {
-          logger$1.log(callback, 'is complete.');
+          logger.log(callback, 'is complete.');
         }
       }
 
       {
-        logger$1.log('Finished running callbacks.');
+        logger.log('Finished running callbacks.');
       }
     }
-
-    /*
-      Copyright 2018 Google LLC
-
-      Use of this source code is governed by an MIT-style
-      license that can be found in the LICENSE file or at
-      https://opensource.org/licenses/MIT.
-    */
-
-    const getFriendlyURL$1 = url => {
-      const urlObj = new URL(String(url), location.href); // See https://github.com/GoogleChrome/workbox/issues/2323
-      // We want to include everything, except for the origin if it's same-origin.
-
-      return urlObj.href.replace(new RegExp(`^${location.origin}`), '');
-    };
 
     /*
       Copyright 2018 Google LLC
@@ -1867,7 +1382,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
         }
 
         {
-          finalAssertExports$1.isInstance(effectiveRequest, Request, {
+          finalAssertExports.isInstance(effectiveRequest, Request, {
             moduleName: 'Plugin',
             funcName: "cacheKeyWillBeUsed"
             /* CACHE_KEY_WILL_BE_USED */
@@ -1920,7 +1435,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
 
           {
             if (responseToCache) {
-              finalAssertExports$1.isInstance(responseToCache, Response, {
+              finalAssertExports.isInstance(responseToCache, Response, {
                 moduleName: 'Plugin',
                 funcName: "cacheWillUpdate"
                 /* CACHE_WILL_UPDATE */
@@ -1941,9 +1456,9 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
           if (responseToCache) {
             if (responseToCache.status !== 200) {
               if (responseToCache.status === 0) {
-                logger$1.warn(`The response for '${request.url}' is an opaque ` + `response. The caching strategy that you're using will not ` + `cache opaque responses by default.`);
+                logger.warn(`The response for '${request.url}' is an opaque ` + `response. The caching strategy that you're using will not ` + `cache opaque responses by default.`);
               } else {
-                logger$1.debug(`The response for '${request.url}' returned ` + `a status code of '${response.status}' and won't be cached as a ` + `result.`);
+                logger.debug(`The response for '${request.url}' returned ` + `a status code of '${response.status}' and won't be cached as a ` + `result.`);
               }
             }
           }
@@ -1988,9 +1503,9 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
 
       {
         if (cachedResponse) {
-          logger$1.debug(`Found a cached response in '${cacheName}'.`);
+          logger.debug(`Found a cached response in '${cacheName}'.`);
         } else {
-          logger$1.debug(`No cached response found in '${cacheName}'.`);
+          logger.debug(`No cached response found in '${cacheName}'.`);
         }
       }
 
@@ -2011,7 +1526,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
 
           {
             if (cachedResponse) {
-              finalAssertExports$1.isInstance(cachedResponse, Response, {
+              finalAssertExports.isInstance(cachedResponse, Response, {
                 moduleName: 'Plugin',
                 funcName: "cachedResponseWillBeUsed"
                 /* CACHED_RESPONSE_WILL_BE_USED */
@@ -2054,8 +1569,8 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
     }) => {
       {
         if (request.method && request.method !== 'GET') {
-          throw new WorkboxError$1('attempt-to-cache-non-get-request', {
-            url: getFriendlyURL$1(request.url),
+          throw new WorkboxError('attempt-to-cache-non-get-request', {
+            url: getFriendlyURL(request.url),
             method: request.method
           });
         }
@@ -2069,11 +1584,11 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
 
       if (!response) {
         {
-          logger$1.error(`Cannot cache non-existent response for ` + `'${getFriendlyURL$1(effectiveRequest.url)}'.`);
+          logger.error(`Cannot cache non-existent response for ` + `'${getFriendlyURL(effectiveRequest.url)}'.`);
         }
 
-        throw new WorkboxError$1('cache-put-with-no-response', {
-          url: getFriendlyURL$1(effectiveRequest.url)
+        throw new WorkboxError('cache-put-with-no-response', {
+          url: getFriendlyURL(effectiveRequest.url)
         });
       }
 
@@ -2086,7 +1601,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
 
       if (!responseToCache) {
         {
-          logger$1.debug(`Response '${getFriendlyURL$1(effectiveRequest.url)}' will ` + `not be cached.`, responseToCache);
+          logger.debug(`Response '${getFriendlyURL(effectiveRequest.url)}' will ` + `not be cached.`, responseToCache);
         }
 
         return;
@@ -2103,7 +1618,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
       }) : null;
 
       {
-        logger$1.debug(`Updating the '${cacheName}' cache with a new Response for ` + `${getFriendlyURL$1(effectiveRequest.url)}.`);
+        logger.debug(`Updating the '${cacheName}' cache with a new Response for ` + `${getFriendlyURL(effectiveRequest.url)}.`);
       }
 
       try {
@@ -2176,7 +1691,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
 
         if (possiblePreloadResponse) {
           {
-            logger$1.log(`Using a preloaded navigation response for ` + `'${getFriendlyURL$1(request.url)}'`);
+            logger.log(`Using a preloaded navigation response for ` + `'${getFriendlyURL(request.url)}'`);
           }
 
           return possiblePreloadResponse;
@@ -2184,7 +1699,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
       }
 
       {
-        finalAssertExports$1.isInstance(request, Request, {
+        finalAssertExports.isInstance(request, Request, {
           paramName: 'request',
           expectedClass: Request,
           moduleName: 'workbox-core',
@@ -2217,7 +1732,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
 
             if ("development" !== 'production') {
               if (request) {
-                finalAssertExports$1.isInstance(request, Request, {
+                finalAssertExports.isInstance(request, Request, {
                   moduleName: 'Plugin',
                   funcName: "cachedResponseWillBeUsed"
                   /* CACHED_RESPONSE_WILL_BE_USED */
@@ -2229,7 +1744,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
           }
         }
       } catch (err) {
-        throw new WorkboxError$1('plugin-error-request-will-fetch', {
+        throw new WorkboxError('plugin-error-request-will-fetch', {
           thrownError: err
         });
       } // The request can be altered by plugins with `requestWillFetch` making
@@ -2249,7 +1764,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
         }
 
         if ("development" !== 'production') {
-          logger$1.debug(`Network request for ` + `'${getFriendlyURL$1(request.url)}' returned a response with ` + `status '${fetchResponse.status}'.`);
+          logger.debug(`Network request for ` + `'${getFriendlyURL(request.url)}' returned a response with ` + `status '${fetchResponse.status}'.`);
         }
 
         for (const plugin of plugins) {
@@ -2266,7 +1781,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
 
             if ("development" !== 'production') {
               if (fetchResponse) {
-                finalAssertExports$1.isInstance(fetchResponse, Response, {
+                finalAssertExports.isInstance(fetchResponse, Response, {
                   moduleName: 'Plugin',
                   funcName: "fetchDidSucceed"
                   /* FETCH_DID_SUCCEED */
@@ -2281,7 +1796,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
         return fetchResponse;
       } catch (error) {
         {
-          logger$1.error(`Network request for ` + `'${getFriendlyURL$1(request.url)}' threw an error.`, error);
+          logger.error(`Network request for ` + `'${getFriendlyURL(request.url)}' threw an error.`, error);
         }
 
         for (const plugin of failedFetchPlugins) {
@@ -2314,13 +1829,13 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
       license that can be found in the LICENSE file or at
       https://opensource.org/licenses/MIT.
     */
-    const messages$2 = {
-      strategyStart: (strategyName, request) => `Using ${strategyName} to respond to '${getFriendlyURL$1(request.url)}'`,
+    const messages$1 = {
+      strategyStart: (strategyName, request) => `Using ${strategyName} to respond to '${getFriendlyURL(request.url)}'`,
       printFinalResponse: response => {
         if (response) {
-          logger$1.groupCollapsed(`View the final response here.`);
-          logger$1.log(response || '[No response returned]');
-          logger$1.groupEnd();
+          logger.groupCollapsed(`View the final response here.`);
+          logger.log(response || '[No response returned]');
+          logger.groupEnd();
         }
       }
     };
@@ -2411,7 +1926,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
 
         {
           if (this._networkTimeoutSeconds) {
-            finalAssertExports$1.isType(this._networkTimeoutSeconds, 'number', {
+            finalAssertExports.isType(this._networkTimeoutSeconds, 'number', {
               moduleName: 'workbox-strategies',
               className: 'NetworkFirst',
               funcName: 'constructor',
@@ -2446,7 +1961,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
         }
 
         {
-          finalAssertExports$1.isInstance(request, Request, {
+          finalAssertExports.isInstance(request, Request, {
             moduleName: 'workbox-strategies',
             className: 'NetworkFirst',
             funcName: 'handle',
@@ -2491,18 +2006,18 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
         }
 
         {
-          logger$1.groupCollapsed(messages$2.strategyStart('NetworkFirst', request));
+          logger.groupCollapsed(messages$1.strategyStart('NetworkFirst', request));
 
           for (const log of logs) {
-            logger$1.log(log);
+            logger.log(log);
           }
 
-          messages$2.printFinalResponse(response);
-          logger$1.groupEnd();
+          messages$1.printFinalResponse(response);
+          logger.groupEnd();
         }
 
         if (!response) {
-          throw new WorkboxError$1('no-response', {
+          throw new WorkboxError('no-response', {
             url: request.url
           });
         }
@@ -2620,7 +2135,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
               event.waitUntil(cachePut);
             } catch (err) {
               {
-                logger$1.warn(`Unable to ensure service worker stays alive when ` + `updating cache for '${getFriendlyURL$1(request.url)}'.`);
+                logger.warn(`Unable to ensure service worker stays alive when ` + `updating cache for '${getFriendlyURL(request.url)}'.`);
               }
             }
           }
@@ -2693,7 +2208,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
       constructor(config = {}) {
         {
           if (!(config.statuses || config.headers)) {
-            throw new WorkboxError$1('statuses-or-headers-required', {
+            throw new WorkboxError('statuses-or-headers-required', {
               moduleName: 'workbox-cacheable-response',
               className: 'CacheableResponse',
               funcName: 'constructor'
@@ -2701,7 +2216,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
           }
 
           if (config.statuses) {
-            finalAssertExports$1.isArray(config.statuses, {
+            finalAssertExports.isArray(config.statuses, {
               moduleName: 'workbox-cacheable-response',
               className: 'CacheableResponse',
               funcName: 'constructor',
@@ -2710,7 +2225,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
           }
 
           if (config.headers) {
-            finalAssertExports$1.isType(config.headers, 'object', {
+            finalAssertExports.isType(config.headers, 'object', {
               moduleName: 'workbox-cacheable-response',
               className: 'CacheableResponse',
               funcName: 'constructor',
@@ -2735,7 +2250,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
 
       isResponseCacheable(response) {
         {
-          finalAssertExports$1.isInstance(response, Response, {
+          finalAssertExports.isInstance(response, Response, {
             moduleName: 'workbox-cacheable-response',
             className: 'CacheableResponse',
             funcName: 'isResponseCacheable',
@@ -2757,24 +2272,24 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
 
         {
           if (!cacheable) {
-            logger$1.groupCollapsed(`The request for ` + `'${getFriendlyURL$1(response.url)}' returned a response that does ` + `not meet the criteria for being cached.`);
-            logger$1.groupCollapsed(`View cacheability criteria here.`);
-            logger$1.log(`Cacheable statuses: ` + JSON.stringify(this._statuses));
-            logger$1.log(`Cacheable headers: ` + JSON.stringify(this._headers, null, 2));
-            logger$1.groupEnd();
+            logger.groupCollapsed(`The request for ` + `'${getFriendlyURL(response.url)}' returned a response that does ` + `not meet the criteria for being cached.`);
+            logger.groupCollapsed(`View cacheability criteria here.`);
+            logger.log(`Cacheable statuses: ` + JSON.stringify(this._statuses));
+            logger.log(`Cacheable headers: ` + JSON.stringify(this._headers, null, 2));
+            logger.groupEnd();
             const logFriendlyHeaders = {};
             response.headers.forEach((value, key) => {
               logFriendlyHeaders[key] = value;
             });
-            logger$1.groupCollapsed(`View response status and headers here.`);
-            logger$1.log(`Response status: ` + response.status);
-            logger$1.log(`Response headers: ` + JSON.stringify(logFriendlyHeaders, null, 2));
-            logger$1.groupEnd();
-            logger$1.groupCollapsed(`View full response details here.`);
-            logger$1.log(response.headers);
-            logger$1.log(response);
-            logger$1.groupEnd();
-            logger$1.groupEnd();
+            logger.groupCollapsed(`View response status and headers here.`);
+            logger.log(`Response status: ` + response.status);
+            logger.log(`Response headers: ` + JSON.stringify(logFriendlyHeaders, null, 2));
+            logger.groupEnd();
+            logger.groupCollapsed(`View full response details here.`);
+            logger.log(response.headers);
+            logger.log(response);
+            logger.groupEnd();
+            logger.groupEnd();
           }
         }
 
@@ -2898,7 +2413,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
         }
 
         {
-          finalAssertExports$1.isInstance(request, Request, {
+          finalAssertExports.isInstance(request, Request, {
             moduleName: 'workbox-strategies',
             className: 'CacheFirst',
             funcName: 'makeRequest',
@@ -2940,18 +2455,18 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
         }
 
         {
-          logger$1.groupCollapsed(messages$2.strategyStart('CacheFirst', request));
+          logger.groupCollapsed(messages$1.strategyStart('CacheFirst', request));
 
           for (const log of logs) {
-            logger$1.log(log);
+            logger.log(log);
           }
 
-          messages$2.printFinalResponse(response);
-          logger$1.groupEnd();
+          messages$1.printFinalResponse(response);
+          logger.groupEnd();
         }
 
         if (!response) {
-          throw new WorkboxError$1('no-response', {
+          throw new WorkboxError('no-response', {
             url: request.url,
             error
           });
@@ -2992,7 +2507,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
             event.waitUntil(cachePutPromise);
           } catch (error) {
             {
-              logger$1.warn(`Unable to ensure service worker stays alive when ` + `updating cache for '${getFriendlyURL$1(request.url)}'.`);
+              logger.warn(`Unable to ensure service worker stays alive when ` + `updating cache for '${getFriendlyURL(request.url)}'.`);
             }
           }
         }
@@ -3144,7 +2659,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
 
     function createCacheKey(entry) {
       if (!entry) {
-        throw new WorkboxError$1('add-to-cache-list-unexpected-type', {
+        throw new WorkboxError('add-to-cache-list-unexpected-type', {
           entry
         });
       } // If a precache manifest entry is a string, it's assumed to be a versioned
@@ -3165,7 +2680,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
       } = entry;
 
       if (!url) {
-        throw new WorkboxError$1('add-to-cache-list-unexpected-type', {
+        throw new WorkboxError('add-to-cache-list-unexpected-type', {
           entry
         });
       } // If there's just a URL and no revision, then it's also assumed to be a
@@ -3206,13 +2721,13 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
      */
 
     const logGroup = (groupTitle, deletedURLs) => {
-      logger$1.groupCollapsed(groupTitle);
+      logger.groupCollapsed(groupTitle);
 
       for (const url of deletedURLs) {
-        logger$1.log(url);
+        logger.log(url);
       }
 
-      logger$1.groupEnd();
+      logger.groupEnd();
     };
     /**
      * @param {Array<string>} deletedURLs
@@ -3226,9 +2741,9 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
       const deletionCount = deletedURLs.length;
 
       if (deletionCount > 0) {
-        logger$1.groupCollapsed(`During precaching cleanup, ` + `${deletionCount} cached ` + `request${deletionCount === 1 ? ' was' : 's were'} deleted.`);
+        logger.groupCollapsed(`During precaching cleanup, ` + `${deletionCount} cached ` + `request${deletionCount === 1 ? ' was' : 's were'} deleted.`);
         logGroup('Deleted Cache Requests', deletedURLs);
-        logger$1.groupEnd();
+        logger.groupEnd();
       }
     }
 
@@ -3251,13 +2766,13 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
         return;
       }
 
-      logger$1.groupCollapsed(groupTitle);
+      logger.groupCollapsed(groupTitle);
 
       for (const url of urls) {
-        logger$1.log(url);
+        logger.log(url);
       }
 
-      logger$1.groupEnd();
+      logger.groupEnd();
     }
     /**
      * @param {Array<string>} urlsToPrecache
@@ -3279,13 +2794,13 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
           message += ` ${alreadyPrecachedCount} ` + `file${alreadyPrecachedCount === 1 ? ' is' : 's are'} already cached.`;
         }
 
-        logger$1.groupCollapsed(message);
+        logger.groupCollapsed(message);
 
         _nestedGroup(`View newly precached URLs.`, urlsToPrecache);
 
         _nestedGroup(`View previously precached URLs.`, urlsAlreadyPrecached);
 
-        logger$1.groupEnd();
+        logger.groupEnd();
       }
     }
 
@@ -3327,7 +2842,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
 
       addToCacheList(entries) {
         {
-          finalAssertExports$1.isArray(entries, {
+          finalAssertExports.isArray(entries, {
             moduleName: 'workbox-precaching',
             className: 'PrecacheController',
             funcName: 'addToCacheList',
@@ -3352,7 +2867,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
           const cacheMode = typeof entry !== 'string' && entry.revision ? 'reload' : 'default';
 
           if (this._urlsToCacheKeys.has(url) && this._urlsToCacheKeys.get(url) !== cacheKey) {
-            throw new WorkboxError$1('add-to-cache-list-conflicting-entries', {
+            throw new WorkboxError('add-to-cache-list-conflicting-entries', {
               firstEntry: this._urlsToCacheKeys.get(url),
               secondEntry: cacheKey
             });
@@ -3360,7 +2875,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
 
           if (typeof entry !== 'string' && entry.integrity) {
             if (this._cacheKeysToIntegrities.has(cacheKey) && this._cacheKeysToIntegrities.get(cacheKey) !== entry.integrity) {
-              throw new WorkboxError$1('add-to-cache-list-conflicting-integrities', {
+              throw new WorkboxError('add-to-cache-list-conflicting-integrities', {
                 url
               });
             }
@@ -3376,7 +2891,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
             const warningMessage = `Workbox is precaching URLs without revision ` + `info: ${urlsToWarnAbout.join(', ')}\nThis is generally NOT safe. ` + `Learn more at https://bit.ly/wb-precache`;
 
             {
-              logger$1.warn(warningMessage);
+              logger.warn(warningMessage);
             }
           }
         }
@@ -3399,7 +2914,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
       } = {}) {
         {
           if (plugins) {
-            finalAssertExports$1.isArray(plugins, {
+            finalAssertExports.isArray(plugins, {
               moduleName: 'workbox-precaching',
               className: 'PrecacheController',
               funcName: 'install',
@@ -3547,7 +3062,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
         // we get back an invalid response.
 
         if (!isValidResponse) {
-          throw new WorkboxError$1('bad-precaching-response', {
+          throw new WorkboxError('bad-precaching-response', {
             url,
             status: response.status
           });
@@ -3668,14 +3183,14 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
             // https://github.com/GoogleChrome/workbox/issues/1441
 
 
-            throw new WorkboxError$1('missing-precache-entry', {
+            throw new WorkboxError('missing-precache-entry', {
               cacheName: this._cacheName,
               url: request instanceof Request ? request.url : request
             });
           } catch (error) {
             if (fallbackToNetwork) {
               {
-                logger$1.debug(`Unable to respond with precached response. ` + `Falling back to network.`, error);
+                logger.debug(`Unable to respond with precached response. ` + `Falling back to network.`, error);
               }
 
               return fetch(request);
@@ -3705,7 +3220,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
         const cacheKey = this.getCacheKeyForURL(url);
 
         if (!cacheKey) {
-          throw new WorkboxError$1('non-precached-url', {
+          throw new WorkboxError('non-precached-url', {
             url
           });
         }
@@ -3910,7 +3425,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
 
         if (!precachedURL) {
           {
-            logger$1.debug(`Precaching did not find a match for ` + getFriendlyURL$1(event.request.url));
+            logger.debug(`Precaching did not find a match for ` + getFriendlyURL(event.request.url));
           }
 
           return;
@@ -3926,7 +3441,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
 
 
           {
-            logger$1.warn(`The precached response for ` + `${getFriendlyURL$1(precachedURL)} in ${cacheName} was not found. ` + `Falling back to the network instead.`);
+            logger.warn(`The precached response for ` + `${getFriendlyURL(precachedURL)} in ${cacheName} was not found. ` + `Falling back to the network instead.`);
           }
 
           return fetch(precachedURL);
@@ -3936,15 +3451,15 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
           responsePromise = responsePromise.then(response => {
             // Workbox is going to handle the route.
             // print the routing details to the console.
-            logger$1.groupCollapsed(`Precaching is responding to: ` + getFriendlyURL$1(event.request.url));
-            logger$1.log(`Serving the precached url: ${precachedURL}`);
-            logger$1.groupCollapsed(`View request details here.`);
-            logger$1.log(event.request);
-            logger$1.groupEnd();
-            logger$1.groupCollapsed(`View response details here.`);
-            logger$1.log(response);
-            logger$1.groupEnd();
-            logger$1.groupEnd();
+            logger.groupCollapsed(`Precaching is responding to: ` + getFriendlyURL(event.request.url));
+            logger.log(`Serving the precached url: ${precachedURL}`);
+            logger.groupCollapsed(`View request details here.`);
+            logger.log(event.request);
+            logger.groupEnd();
+            logger.groupCollapsed(`View response details here.`);
+            logger.log(response);
+            logger.groupEnd();
+            logger.groupEnd();
             return response;
           });
         }
@@ -4035,7 +3550,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
         plugins
       }).catch(error => {
         {
-          logger$1.error(`Service worker installation failed. It will ` + `be retried automatically during the next navigation.`);
+          logger.error(`Service worker installation failed. It will ` + `be retried automatically during the next navigation.`);
         } // Re-throw the error to ensure installation fails.
 
 
@@ -4166,7 +3681,7 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
         event.waitUntil(deleteOutdatedCaches(cacheName).then(cachesDeleted => {
           {
             if (cachesDeleted.length > 0) {
-              logger$1.log(`The following out-of-date precaches were cleaned up ` + `automatically:`, cachesDeleted);
+              logger.log(`The following out-of-date precaches were cleaned up ` + `automatically:`, cachesDeleted);
             }
           }
         }));
@@ -4183,4 +3698,4 @@ define("./workbox-f35d6f88.js",['exports'], function (exports) { 'use strict';
     exports.skipWaiting = skipWaiting;
 
 });
-//# sourceMappingURL=workbox-f35d6f88.js.map
+//# sourceMappingURL=workbox-2de04002.js.map
