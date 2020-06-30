@@ -15,7 +15,6 @@ const getSecret = (key) => {
 
 module.exports = withPWA({
   pwa: {
-    dest: 'public',
     runtimeCaching: [
       {
         urlPattern: '/',
