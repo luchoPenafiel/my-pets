@@ -3,7 +3,10 @@ import cookies from 'next-cookies';
 import Head from 'next/head';
 import getConfig from 'next/config';
 
-const Home = (): ReactElement => {
+const Home = ({ isValidToken }: any): ReactElement => {
+  // eslint-disable-next-line no-console
+  console.log('isValidToken', isValidToken);
+
   return (
     <>
       <Head>
@@ -21,10 +24,9 @@ Home.getInitialProps = async (ctx) => {
 
   if (!token) {
     if (ctx.res) {
-      ctx.res.redirect('/login');
-      // ctx.res.writeHead(302, {
-      //   Location: '/login',
-      // });
+      ctx.res.writeHead(302, {
+        Location: '/login',
+      });
       ctx.res.end();
     }
   }
@@ -39,10 +41,9 @@ Home.getInitialProps = async (ctx) => {
 
   if (isValidToken.error) {
     if (ctx.res) {
-      ctx.res.redirect('/login');
-      // ctx.res.writeHead(302, {
-      //   Location: '/login',
-      // });
+      ctx.res.writeHead(302, {
+        Location: '/login',
+      });
       ctx.res.end();
     }
   }
