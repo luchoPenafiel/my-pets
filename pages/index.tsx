@@ -1,11 +1,25 @@
-import React, { ReactElement } from 'react';
-import cookies from 'next-cookies';
+import React, { ReactElement, useEffect } from 'react';
 import Head from 'next/head';
-import getConfig from 'next/config';
+import Router from 'next/router';
+import { getPets, getLocalStorage } from '../services';
 
-const Home = ({ isValidToken }: any): ReactElement => {
-  // eslint-disable-next-line no-console
-  console.log('isValidToken', isValidToken);
+const Home = (): ReactElement => {
+  useEffect(() => {
+    const validateAuth = async () => {
+      try {
+        const owner = await getLocalStorage('user');
+        const pets = await getPets(owner.id);
+        // eslint-disable-next-line no-console
+        console.log('pets', pets);
+      } catch (err) {
+        // eslint-disable-next-line no-console
+        console.log('err', err);
+        Router.push('/login');
+      }
+    };
+
+    validateAuth();
+  }, []);
 
   return (
     <>
@@ -16,39 +30,6 @@ const Home = ({ isValidToken }: any): ReactElement => {
       <p>Mis mascotas</p>
     </>
   );
-};
-
-Home.getInitialProps = async (ctx) => {
-  const baseURL = await getConfig().publicRuntimeConfig.BASE_URL;
-  const { token } = cookies(ctx);
-
-  if (!token) {
-    if (ctx.res) {
-      ctx.res.writeHead(302, {
-        Location: '/login',
-      });
-      ctx.res.end();
-    }
-  }
-
-  const headers: HeadersInit = {
-    'Content-Type': 'application/json',
-    Authorization: JSON.stringify({ token }),
-  };
-
-  const result = await fetch(`${baseURL}/api/validateToken`, { headers });
-  const isValidToken = await result.json();
-
-  if (isValidToken.error) {
-    if (ctx.res) {
-      ctx.res.writeHead(302, {
-        Location: '/login',
-      });
-      ctx.res.end();
-    }
-  }
-
-  return { isValidToken };
 };
 
 export default Home;

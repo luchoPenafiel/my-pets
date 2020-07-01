@@ -1,6 +1,5 @@
 import React, { ReactElement, useState } from 'react';
 import styled from 'styled-components';
-import cookie from 'js-cookie';
 import { Title1 } from '../Types/Titles/Titles';
 import Container from '../Container/Container';
 import theme from '../../constants/theme';
@@ -8,7 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '../Button/Button';
 import { useForm } from 'react-hook-form';
 import NextLink from 'next/link';
-import { login } from '../../services';
+import { login, setLocalStorage } from '../../services';
 import Router from 'next/router';
 
 const Wrapper = styled.div`
@@ -89,10 +88,9 @@ const Login = (): ReactElement => {
     try {
       setErrorServices('');
 
-      const response = await login(email, password);
-      const token = response.stsTokenManager.accessToken;
+      const user = await login(email, password);
+      await setLocalStorage('user', user);
 
-      cookie.set('token', token, { expires: 1 * 360 });
       Router.push('/');
     } catch (err) {
       setErrorServices(err.message);
