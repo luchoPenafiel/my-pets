@@ -13,32 +13,6 @@ const getSecret = (key) => {
 module.exports = withPWA({
   pwa: {
     dest: 'public',
-    runtimeCaching: [
-      {
-        urlPattern: '/',
-        handler: 'NetworkFirst',
-        options: {
-          cacheName: 'html-cache',
-        },
-      },
-      {
-        urlPattern: /[^3]\/login\//,
-        handler: 'NetworkFirst',
-        options: {
-          cacheName: 'html-cache',
-        },
-      },
-      {
-        urlPattern: /.*\.(?:png|jpg|jpeg|svg|gif)/,
-        handler: 'CacheFirst',
-        options: {
-          cacheName: 'image-cache',
-          cacheableResponse: {
-            statuses: [0, 200],
-          },
-        },
-      },
-    ],
   },
   serverRuntimeConfig: {
     BASE_URL: getSecret('BASE_URL'),
