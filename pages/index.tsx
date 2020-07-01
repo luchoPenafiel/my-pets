@@ -12,8 +12,6 @@ const Home = (): ReactElement => {
         // eslint-disable-next-line no-console
         console.log('pets', pets);
       } catch (err) {
-        // eslint-disable-next-line no-console
-        console.log('err', err);
         Router.push('/login');
       }
     };
