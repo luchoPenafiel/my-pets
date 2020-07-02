@@ -2,7 +2,8 @@ import React, { ReactElement, useEffect, useState } from 'react';
 import Head from 'next/head';
 import Router from 'next/router';
 import { getPets, getLocalStorage } from '../services';
-import { Splashscreen } from '../components';
+import { Container, PageWrapper, Splashscreen, Navbar } from '../components';
+import { Title1 } from '../components/Types/Titles/Titles';
 
 const Home = (): ReactElement => {
   const [loading, setLoading] = useState(true);
@@ -27,18 +28,61 @@ const Home = (): ReactElement => {
 
   return (
     <>
-      {loading ? (
-        <Splashscreen />
-      ) : (
-        <>
-          <Head>
-            <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-            <title>Vetapp</title>
-          </Head>
-
-          <p>Mis mascotas</p>
-        </>
-      )}
+      <Head>
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <title>Vetapp</title>
+      </Head>
+      <>
+        {loading ? (
+          <Splashscreen />
+        ) : (
+          <>
+            <Navbar />
+            <PageWrapper>
+              <Container>
+                <Title1>Mis</Title1>
+                <Title1>mascotas</Title1>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit obcaecati doloribus sequi? Nisi
+                  quidem itaque tempora! Minus itaque quod eum tempora doloribus corrupti explicabo cumque nulla porro
+                  nemo, odio animi. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit obcaecati
+                  doloribus sequi? Nisi quidem itaque tempora! Minus itaque quod eum tempora doloribus corrupti
+                  explicabo cumque nulla porro nemo, odio animi.Lorem ipsum dolor sit, amet consectetur adipisicing
+                  elit. Suscipit obcaecati doloribus sequi? Nisi quidem itaque tempora! Minus itaque quod eum tempora
+                  doloribus corrupti explicabo cumque nulla porro nemo, odio animi.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit obcaecati doloribus sequi? Nisi
+                  quidem itaque tempora! Minus itaque quod eum tempora doloribus corrupti explicabo cumque nulla porro
+                  nemo, odio animi. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit obcaecati
+                  doloribus sequi? Nisi quidem itaque tempora! Minus itaque quod eum tempora doloribus corrupti
+                  explicabo cumque nulla porro nemo, odio animi.Lorem ipsum dolor sit, amet consectetur adipisicing
+                  elit. Suscipit obcaecati doloribus sequi? Nisi quidem itaque tempora! Minus itaque quod eum tempora
+                  doloribus corrupti explicabo cumque nulla porro nemo, odio animi.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit obcaecati doloribus sequi? Nisi
+                  quidem itaque tempora! Minus itaque quod eum tempora doloribus corrupti explicabo cumque nulla porro
+                  nemo, odio animi. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit obcaecati
+                  doloribus sequi? Nisi quidem itaque tempora! Minus itaque quod eum tempora doloribus corrupti
+                  explicabo cumque nulla porro nemo, odio animi.Lorem ipsum dolor sit, amet consectetur adipisicing
+                  elit. Suscipit obcaecati doloribus sequi? Nisi quidem itaque tempora! Minus itaque quod eum tempora
+                  doloribus corrupti explicabo cumque nulla porro nemo, odio animi.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit obcaecati doloribus sequi? Nisi
+                  quidem itaque tempora! Minus itaque quod eum tempora doloribus corrupti explicabo cumque nulla porro
+                  nemo, odio animi. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit obcaecati
+                  doloribus sequi? Nisi quidem itaque tempora! Minus itaque quod eum tempora doloribus corrupti
+                  explicabo cumque nulla porro nemo, odio animi.Lorem ipsum dolor sit, amet consectetur adipisicing
+                  elit. Suscipit obcaecati doloribus sequi? Nisi quidem itaque tempora! Minus itaque quod eum tempora
+                  doloribus corrupti explicabo cumque nulla porro nemo, odio animi.
+                </p>
+              </Container>
+            </PageWrapper>
+          </>
+        )}
+      </>
     </>
   );
 };
