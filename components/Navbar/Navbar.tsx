@@ -3,26 +3,32 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: ${({ backButton }): string => (backButton ? 'space-between' : 'flex-end')};
   align-items: center;
 
   width: 100%;
-  height: 50px;
+  height: 40px;
   padding: 0 25px;
 
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 2;
 
-  background: white;
+  background: ${({ bgColor }): string => bgColor};
 
   box-sizing: border-box;
 `;
 
-const Navbar = (): ReactElement => {
+type NavbarType = {
+  backButton?: boolean;
+  bgColor?: string;
+};
+
+const Navbar = ({ backButton, bgColor = 'white' }: NavbarType): ReactElement => {
   return (
-    <Wrapper>
-      <button>back</button>
+    <Wrapper bgColor={bgColor} backButton={backButton}>
+      {backButton && <button>back</button>}
       <button>menu</button>
     </Wrapper>
   );
