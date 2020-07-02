@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useState, useContext } from 'react';
 import styled from 'styled-components';
 import { Title1 } from '../Types/Titles/Titles';
 import Container from '../Container/Container';
@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import NextLink from 'next/link';
 import { login, setLocalStorage } from '../../services';
 import Router from 'next/router';
+import { LoadingContext } from '../../contexts/LoadingContext';
 
 const Wrapper = styled.div`
   display: flex;
@@ -80,10 +81,10 @@ const Error = styled.p`
 const Login = (): ReactElement => {
   const [errorServices, setErrorServices] = useState('');
   const { register, handleSubmit, errors } = useForm();
+  const { changeStateLoading } = useContext(LoadingContext);
 
   const onSubmit = async ({ email, password }) => {
-    // eslint-disable-next-line no-console
-    console.log('Logeando...');
+    changeStateLoading(true);
 
     try {
       setErrorServices('');
@@ -94,6 +95,7 @@ const Login = (): ReactElement => {
       Router.push('/');
     } catch (err) {
       setErrorServices(err.message);
+      changeStateLoading(false);
     }
   };
 

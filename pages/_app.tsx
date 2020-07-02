@@ -5,6 +5,7 @@ import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'polished';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import theme from '../constants/theme';
+import { LoadingProvider } from '../contexts/LoadingContext';
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -42,10 +43,12 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
   }, []);
 
   return (
-    <ThemeProvider theme={themeMaterial}>
-      <Component {...pageProps} />
-      <GlobalStyles />
-    </ThemeProvider>
+    <LoadingProvider>
+      <ThemeProvider theme={themeMaterial}>
+        <Component {...pageProps} />
+        <GlobalStyles />
+      </ThemeProvider>
+    </LoadingProvider>
   );
 }
 
