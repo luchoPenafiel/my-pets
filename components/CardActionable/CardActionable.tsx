@@ -16,7 +16,7 @@ const Wrapper = styled.a`
   background: ${theme.color.gray3};
 
   &:active,
-  &:hover {
+  &:focus {
     color: ${theme.color.white};
     background: ${theme.color.primary};
   }

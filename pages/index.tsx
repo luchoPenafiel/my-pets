@@ -2,8 +2,7 @@ import React, { ReactElement, useEffect, useState } from 'react';
 import Head from 'next/head';
 import Router from 'next/router';
 import { getPets, getLocalStorage } from '../services';
-import { CardActionable, Container, PageWrapper, Separetor, Splashscreen, Navbar } from '../components';
-import { Title1 } from '../components/Types/Titles/Titles';
+import { AddButton, CardActionable, Container, PageWrapper, Splashscreen, Navbar } from '../components';
 
 const Home = (): ReactElement => {
   const [loading, setLoading] = useState(true);
@@ -37,11 +36,16 @@ const Home = (): ReactElement => {
         ) : (
           <>
             <Navbar />
-            <PageWrapper>
+            <PageWrapper
+              titleLine1="Mis"
+              titleline2="mascotas"
+              footer={
+                <Container>
+                  <AddButton text="Agregar mascota" />
+                </Container>
+              }
+            >
               <Container>
-                <Title1>Mis</Title1>
-                <Title1>mascotas</Title1>
-                <Separetor />
                 {pets.length
                   ? pets.map((pet) => {
                       return (
