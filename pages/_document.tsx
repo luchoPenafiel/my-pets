@@ -53,11 +53,15 @@ class MyDocument extends NextDocument {
           <meta name="theme-color" content="#ffffff" />
 
           <meta name="mobile-web-app-capable" content="yes" />
-          <meta name="apple-mobile-web-app-capable" content="yes" />
           <link rel="apple-touch-icon" href={`${baseUrl}/favicon/apple-touch-icon.png`} />
           <link rel="apple-touch-startup-image" href={`${baseUrl}/favicon/apple-touch-icon.png`} />
 
           <meta name="apple-mobile-web-app-title" content="Vetapp" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta
+            name="viewport"
+            content="viewport-fit=cover, user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"
+          />
 
           <link
             href={`${baseUrl}/splashscreens/iphone5_splash.png`}
