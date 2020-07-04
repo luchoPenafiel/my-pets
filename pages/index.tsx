@@ -35,7 +35,7 @@ const Home = (): ReactElement => {
           <Splashscreen />
         ) : (
           <>
-            <Navbar />
+            <Navbar backButton />
             <PageWrapper
               titleLine1="Mis"
               titleline2="mascotas"
@@ -49,14 +49,26 @@ const Home = (): ReactElement => {
                 {pets.length
                   ? pets.map((pet) => {
                       return (
-                        <CardActionable href="/detail" subtitle={pet.resena.especie} title={pet.nombre} key={pet.id} />
+                        <CardActionable
+                          href="/detail"
+                          subtitle={pet.resena.especie}
+                          title={pet.nombre}
+                          key={pet.id}
+                          icon={pet.resena.especie}
+                        />
                       );
                     })
                   : null}
                 {pets.length
                   ? pets.map((pet) => {
                       return (
-                        <CardActionable href="/detail" subtitle={pet.resena.especie} title={pet.nombre} key={pet.id} />
+                        <CardActionable
+                          href="/detail"
+                          subtitle={pet.resena.especie}
+                          title={pet.nombre}
+                          key={pet.id}
+                          icon={pet.resena.especie}
+                        />
                       );
                     })
                   : null}

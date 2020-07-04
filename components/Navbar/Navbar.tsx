@@ -1,5 +1,7 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
+import { IoIosMenu, IoIosArrowBack } from 'react-icons/io';
+import theme from '../../constants/theme';
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,6 +22,16 @@ const Wrapper = styled.div`
   box-sizing: border-box;
 `;
 
+const Button = styled.button`
+  padding: 0;
+  width: 30px;
+  height: 30px;
+
+  appearance: none;
+  border: none;
+  background: none;
+`;
+
 type NavbarType = {
   backButton?: boolean;
   bgColor?: string;
@@ -28,8 +40,14 @@ type NavbarType = {
 const Navbar = ({ backButton, bgColor = 'white' }: NavbarType): ReactElement => {
   return (
     <Wrapper bgColor={bgColor} backButton={backButton}>
-      {backButton && <button>back</button>}
-      <button>menu</button>
+      {backButton && (
+        <Button>
+          <IoIosArrowBack size={30} color={theme.color.gray1} />
+        </Button>
+      )}
+      <Button>
+        <IoIosMenu size={30} color={theme.color.gray1} />
+      </Button>
     </Wrapper>
   );
 };
