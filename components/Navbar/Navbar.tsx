@@ -33,6 +33,9 @@ const Button = styled.button`
   appearance: none;
   border: none;
   background: none;
+  outline: none;
+
+  cursor: pointer;
 `;
 
 const DrawerWrapper = styled.div`
@@ -43,6 +46,7 @@ const DrawerWrapper = styled.div`
 
   height: 100%;
   width: 80vw;
+  max-width: 500px;
   padding: 20px;
   padding-bottom: 40px;
 
@@ -83,9 +87,10 @@ const DrawerNavigation = styled.nav`
 type NavbarType = {
   backButton?: boolean;
   bgColor?: string;
+  color?: string;
 };
 
-const Navbar = ({ backButton, bgColor = 'white' }: NavbarType): ReactElement => {
+const Navbar = ({ backButton, bgColor = 'white', color }: NavbarType): ReactElement => {
   const [isOpenDrawe, setOpenDrawer] = useState(false);
 
   const toggleDrawer = (open) => (event) => {
@@ -101,11 +106,11 @@ const Navbar = ({ backButton, bgColor = 'white' }: NavbarType): ReactElement => 
       <Wrapper bgColor={bgColor} backButton={backButton}>
         {backButton && (
           <Button>
-            <IoIosArrowBack size={30} color={theme.color.gray1} />
+            <IoIosArrowBack size={30} color={color ? color : theme.color.gray1} />
           </Button>
         )}
         <Button onClick={toggleDrawer(true)}>
-          <IoIosMenu size={30} color={theme.color.gray1} />
+          <IoIosMenu size={30} color={color ? color : theme.color.gray1} />
         </Button>
       </Wrapper>
       <SwipeableDrawer anchor="right" open={isOpenDrawe} onClose={toggleDrawer(false)} onOpen={toggleDrawer(true)}>

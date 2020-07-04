@@ -1,12 +1,21 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState, useContext } from 'react';
 import Head from 'next/head';
 import Router from 'next/router';
-import { getPets, getLocalStorage } from '../services';
-import { AddButton, CardActionable, Container, PageWrapper, Splashscreen, Navbar } from '../components';
+import { getPets, getLocalStorage, setLocalStorage } from '../services';
+import { AddButton, CardActionable, Container, PageWrapper, Splashscreen, Navbar, Separetor } from '../components';
+import { Title1 } from '../components/Types/Titles/Titles';
+import { PetContext } from '../contexts/PetContext';
 
 const Home = (): ReactElement => {
+  const { changeStatePet } = useContext(PetContext);
   const [loading, setLoading] = useState(true);
   const [pets, setPets] = useState([]);
+
+  const handleClickCard = async (pet): Promise<void> => {
+    changeStatePet(pet);
+    await setLocalStorage('pet', pet);
+    Router.push('/detail');
+  };
 
   useEffect(() => {
     const validateAuth = async () => {
@@ -36,21 +45,17 @@ const Home = (): ReactElement => {
         ) : (
           <>
             <Navbar />
-            <PageWrapper
-              titleLine1="Mis"
-              titleline2="mascotas"
-              footer={
-                <Container>
-                  <AddButton text="Agregar mascota" />
-                </Container>
-              }
-            >
+            <PageWrapper>
               <Container>
+                <Title1>Mis</Title1>
+                <Title1>mascotas</Title1>
+                <Separetor />
+
                 {pets.length
                   ? pets.map((pet) => {
                       return (
                         <CardActionable
-                          href="/detail"
+                          onClick={() => handleClickCard(pet)}
                           subtitle={pet.resena.especie}
                           title={pet.nombre}
                           key={pet.id}
@@ -59,19 +64,10 @@ const Home = (): ReactElement => {
                       );
                     })
                   : null}
-                {pets.length
-                  ? pets.map((pet) => {
-                      return (
-                        <CardActionable
-                          href="/detail"
-                          subtitle={pet.resena.especie}
-                          title={pet.nombre}
-                          key={pet.id}
-                          icon={pet.resena.especie}
-                        />
-                      );
-                    })
-                  : null}
+
+                <Separetor />
+                <AddButton text="Agregar mascota" />
+                <Separetor />
               </Container>
             </PageWrapper>
           </>

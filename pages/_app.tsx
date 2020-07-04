@@ -6,6 +6,7 @@ import { normalize } from 'polished';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import theme from '../constants/theme';
 import { LoadingProvider } from '../contexts/LoadingContext';
+import { PetProvider } from '../contexts/PetContext';
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -13,7 +14,7 @@ const GlobalStyles = createGlobalStyle`
   }
   html, body {
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
   }
   body {
     -webkit-tap-highlight-color: transparent;
@@ -50,10 +51,12 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
 
   return (
     <LoadingProvider>
-      <ThemeProvider theme={themeMaterial}>
-        <Component {...pageProps} />
-        <GlobalStyles />
-      </ThemeProvider>
+      <PetProvider>
+        <ThemeProvider theme={themeMaterial}>
+          <Component {...pageProps} />
+          <GlobalStyles />
+        </ThemeProvider>
+      </PetProvider>
     </LoadingProvider>
   );
 }
