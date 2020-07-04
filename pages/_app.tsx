@@ -18,10 +18,7 @@ const GlobalStyles = createGlobalStyle`
   }
   body {
     -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-
-    background: white;
-  }
+    -webkit-touch-callout: none; }
   ${normalize()}
 `;
 
