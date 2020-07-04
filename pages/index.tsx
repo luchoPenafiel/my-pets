@@ -36,7 +36,7 @@ const Home = (): ReactElement => {
   return (
     <>
       <Head>
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="deafult" />
         <title>Vetapp</title>
       </Head>
       <>
