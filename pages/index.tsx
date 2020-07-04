@@ -35,7 +35,7 @@ const Home = (): ReactElement => {
           <Splashscreen />
         ) : (
           <>
-            <Navbar backButton />
+            <Navbar />
             <PageWrapper
               titleLine1="Mis"
               titleline2="mascotas"
