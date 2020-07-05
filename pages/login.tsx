@@ -9,7 +9,7 @@ const Login = (): ReactElement => {
   return (
     <>
       <Head>
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <title>Vetapp - Login</title>
       </Head>
       {isLoading ? <Splashscreen /> : <LoginComponent />}
