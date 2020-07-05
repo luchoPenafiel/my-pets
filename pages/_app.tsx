@@ -12,10 +12,7 @@ const GlobalStyles = createGlobalStyle`
   * {
     -webkit-font-smoothing: antialiased;
   }
-  html, body {
-    height: 100%;
-    overflow-x: hidden;
-  }
+
   body {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none; }

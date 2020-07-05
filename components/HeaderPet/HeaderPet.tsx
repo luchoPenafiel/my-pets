@@ -1,32 +1,30 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
-import theme from '../../constants/theme';
 
 const Wrapper = styled.div`
-  height: 200px;
-  position: relative;
-`;
+  height: 180px;
+  width: 100%;
 
-const BackgroundImage = styled.img`
-  width: 110%;
-  height: 100%;
-
-  position: absolute;
+  overflow: hidden;
+  position: sticky;
   top: 0;
-  left: 0;
 
-  transform: translateX(-5%);
-
-  object-fit: cover;
+  background-image: url('/images/bg-pet.svg');
+  background-repeat: none;
+  background-position: center;
+  background-size: cover;
 `;
 
 const PetAvatar = styled.img`
   display: block;
-  height: 200px;
+  height: 170px;
 
   margin: 0 auto;
 
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 2;
 `;
 
@@ -50,7 +48,6 @@ const Image = ({ especie }: HeaderPetType): ReactElement => {
 const HeaderPet = ({ especie }: HeaderPetType): ReactElement => {
   return (
     <Wrapper>
-      <BackgroundImage src="/images/bg-pet.svg" alt="Fondo" />
       <Image especie={especie} />
     </Wrapper>
   );

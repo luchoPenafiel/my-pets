@@ -1,5 +1,7 @@
 import AddButton from './AddButton/AddButton';
 import CardActionable from './CardActionable/CardActionable';
+import CardDetail from './CardDetail/CardDetail';
+import CardDetailActionable from './CardDetailActionable/CardDetailActionable';
 import CardTitle from './CardTitle/CardTitle';
 import Container from './Container/Container';
 import HeaderPet from './HeaderPet/HeaderPet';
@@ -13,6 +15,8 @@ export {
   AddButton,
   Container,
   CardActionable,
+  CardDetail,
+  CardDetailActionable,
   CardTitle,
   HeaderPet,
   Login,

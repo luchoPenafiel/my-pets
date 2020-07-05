@@ -19,7 +19,8 @@ const Wrapper = styled.div`
   width: 100%;
 
   padding: 50px 15px 20px 15px;
-  margin-top: -45px;
+  margin-top: -60px;
+  margin-bottom: 40px;
 
   position: relative;
 
@@ -36,8 +37,6 @@ const Wrapper = styled.div`
   border: none;
   appearance: none;
   outline: none;
-
-  cursor: pointer;
 
   transition: all 0.1s linear;
 

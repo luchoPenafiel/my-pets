@@ -1,9 +1,19 @@
 import React, { ReactElement, useState, useContext, useEffect } from 'react';
+import styled from 'styled-components';
 import Head from 'next/head';
-import { PetContext } from '../contexts/PetContext';
-import { CardTitle, Container, HeaderPet, Navbar, Splashscreen } from '../components';
+import { CardTitle, CardDetail, CardDetailActionable, Container, HeaderPet, Navbar, Splashscreen } from '../components';
 import { getLocalStorage } from '../services';
+import { PetContext } from '../contexts/PetContext';
+import { ParagraphMD } from '../components/Types/Paragraphs/Paragraphs';
 import IPet from '../interfaces/pet';
+
+const Sticky = styled.div`
+  position: -webkit-sticky;
+  position: sticky;
+  top: 120px;
+
+  z-index: 2;
+`;
 
 const Detail = (): ReactElement => {
   const [petData, setPetData] = useState<IPet>();
@@ -38,7 +48,51 @@ const Detail = (): ReactElement => {
         <>
           <HeaderPet especie={petData.resena.especie} />
           <Container>
-            <CardTitle subtitle={petData.resena.especie} title={petData.nombre} />
+            <Sticky>
+              <CardTitle subtitle={petData.resena.especie} title={petData.nombre} />
+            </Sticky>
+            <CardDetail title="Reseña">
+              <>
+                {petData?.resena?.especie && (
+                  <ParagraphMD>
+                    <strong>Especie</strong> {petData.resena.especie}
+                  </ParagraphMD>
+                )}
+                {petData?.resena?.raza && (
+                  <ParagraphMD>
+                    <strong>Raza</strong> {petData.resena.raza}
+                  </ParagraphMD>
+                )}
+                {petData?.resena?.sexo && (
+                  <ParagraphMD>
+                    <strong>Sexo</strong> {petData.resena.sexo}
+                  </ParagraphMD>
+                )}
+                {petData?.resena?.pelaje && (
+                  <ParagraphMD>
+                    <strong>Pelaje</strong> {petData.resena.pelaje}
+                  </ParagraphMD>
+                )}
+                {petData?.resena?.fechaNacimiento && (
+                  <ParagraphMD>
+                    <strong>Fecha de nacimiento</strong> {petData.resena.fechaNacimiento}
+                  </ParagraphMD>
+                )}
+                {petData?.resena?.fechaCastracion && (
+                  <ParagraphMD>
+                    <strong>Fecha de castración</strong> {petData.resena.fechaCastracion}
+                  </ParagraphMD>
+                )}
+              </>
+            </CardDetail>
+
+            <CardDetailActionable path="/" title="Carnet sanitario">
+              <ParagraphMD>Vacuna antirrábica y otras</ParagraphMD>
+            </CardDetailActionable>
+
+            <CardDetailActionable path="/" title="Consultas">
+              <ParagraphMD>Ver el historial de consultas.</ParagraphMD>
+            </CardDetailActionable>
           </Container>
         </>
       )}

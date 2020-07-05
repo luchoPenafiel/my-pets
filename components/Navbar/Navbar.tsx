@@ -5,6 +5,7 @@ import { IoIosMenu, IoIosArrowBack, IoIosClose } from 'react-icons/io';
 import { Logo } from '../Icons';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import theme from '../../constants/theme';
+import Router from 'next/router';
 
 const Wrapper = styled.div`
   display: flex;
@@ -12,7 +13,7 @@ const Wrapper = styled.div`
   align-items: center;
 
   width: 100%;
-  height: 40px;
+  height: 50px;
   padding: 0 25px;
 
   position: fixed;
@@ -101,11 +102,15 @@ const Navbar = ({ backButton, bgColor = 'white', color }: NavbarType): ReactElem
     setOpenDrawer(open);
   };
 
+  const handleBackButton = () => {
+    Router.back();
+  };
+
   return (
     <>
       <Wrapper bgColor={bgColor} backButton={backButton}>
         {backButton && (
-          <Button>
+          <Button onClick={handleBackButton}>
             <IoIosArrowBack size={30} color={color ? color : theme.color.gray1} />
           </Button>
         )}

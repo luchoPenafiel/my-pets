@@ -1,10 +1,22 @@
 import React, { ReactElement, useEffect, useState, useContext } from 'react';
+import styled from 'styled-components';
 import Head from 'next/head';
 import Router from 'next/router';
 import { getPets, getLocalStorage, setLocalStorage } from '../services';
 import { AddButton, CardActionable, Container, PageWrapper, Splashscreen, Navbar, Separetor } from '../components';
 import { Title1 } from '../components/Types/Titles/Titles';
 import { PetContext } from '../contexts/PetContext';
+import theme from '../constants/theme';
+
+const StickyTitles = styled.div`
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
+
+  z-index: 2;
+
+  background: ${theme.color.white};
+`;
 
 const Home = (): ReactElement => {
   const { changeStatePet } = useContext(PetContext);
@@ -47,8 +59,10 @@ const Home = (): ReactElement => {
             <Navbar />
             <PageWrapper>
               <Container>
-                <Title1>Mis</Title1>
-                <Title1>mascotas</Title1>
+                <StickyTitles>
+                  <Title1>Mis</Title1>
+                  <Title1>mascotas</Title1>
+                </StickyTitles>
                 <Separetor />
 
                 {pets.length
