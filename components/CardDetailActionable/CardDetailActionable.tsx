@@ -34,12 +34,11 @@ type CardDetailActionableType = {
   children: ReactElement;
   title?: string;
   path: string;
-  as: string;
 };
 
-const CardDetailActionable = ({ title, path, as, children }: CardDetailActionableType): ReactElement => {
+const CardDetailActionable = ({ title, path, children }: CardDetailActionableType): ReactElement => {
   return (
-    <LinkRouter href={path} as={as} passHref>
+    <LinkRouter href={path} passHref>
       <Wrapper>
         <div>
           {title && <Title>{title}</Title>}

@@ -85,13 +85,12 @@ const Detail = (): ReactElement => {
                 )}
               </>
             </CardDetail>
-
-            <CardDetailActionable path="/carnet/[id]" as={`/carnet/${petData.id}`} title="Carnet sanitario">
-              <ParagraphMD>Vacuna antirrábica y otras</ParagraphMD>
+            <CardDetailActionable path="/consultas" title="Consultas">
+              <ParagraphMD>Ver el historial de consultas.</ParagraphMD>
             </CardDetailActionable>
 
-            <CardDetailActionable path="/consultas/[id]" as={`/consultas/${petData.id}`} title="Consultas">
-              <ParagraphMD>Ver el historial de consultas.</ParagraphMD>
+            <CardDetailActionable path="/carnet" title="Carnet sanitario">
+              <ParagraphMD>Vacuna antirrábica y otras</ParagraphMD>
             </CardDetailActionable>
           </Container>
         </>
