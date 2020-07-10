@@ -1,24 +1,43 @@
 import React, { ReactElement, useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
-import { AddButton, CardActionable, Container, PageWrapper, Splashscreen, Navbar, Separetor } from '../components';
+import {
+  AddButton,
+  Button,
+  CardActionable,
+  Container,
+  EmptyState,
+  PageWrapper,
+  Splashscreen,
+  Navbar,
+  Separetor,
+} from '../components';
 import { Title1 } from '../components/Types/Titles/Titles';
+import { ParagraphMD } from '../components/Types/Paragraphs/Paragraphs';
 import { getConsultas, getLocalStorage } from '../services';
 import { PetContext } from '../contexts/PetContext';
 import theme from '../constants/theme';
 import IPet from '../interfaces/pet';
 import IConsulta from '../interfaces/consulta';
+import Router from 'next/router';
 
 const StickyTitles = styled.div`
   position: -webkit-sticky;
   position: sticky;
-  top: 50px;
+  top: 60px;
 
   z-index: 2;
 
   background: ${theme.color.white};
 
   box-sizing: border-box;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+
+  margin-top: 100px;
 `;
 
 const Consultas = (): ReactElement => {
@@ -49,6 +68,10 @@ const Consultas = (): ReactElement => {
     console.log(consulta);
   };
 
+  const handleClickEmptyStateButton = () => {
+    Router.replace('/mi-veterinaria');
+  };
+
   useEffect(() => {
     if (!!pet.id) {
       setPetData(pet);
@@ -73,7 +96,7 @@ const Consultas = (): ReactElement => {
         <Splashscreen />
       ) : (
         <>
-          <Navbar backButton />
+          <Navbar previusScreen="mascota" />
           <PageWrapper>
             <Container>
               <StickyTitles>
@@ -82,18 +105,30 @@ const Consultas = (): ReactElement => {
               </StickyTitles>
               <Separetor />
 
-              {consultas.length
-                ? consultas.map((consulta) => {
-                    return (
-                      <CardActionable
-                        onClick={() => handleClickCard(consulta)}
-                        subtitle={consulta.motivo}
-                        title={consulta.fecha}
-                        key={consulta.id}
-                      />
-                    );
-                  })
-                : null}
+              {consultas.length ? (
+                consultas.map((consulta) => {
+                  return (
+                    <CardActionable
+                      onClick={() => handleClickCard(consulta)}
+                      subtitle={consulta.motivo}
+                      title={consulta.fecha}
+                      key={consulta.id}
+                    />
+                  );
+                })
+              ) : (
+                <EmptyState>
+                  <>
+                    <ParagraphMD>{petData.nombre} no tiene consultas cargadas todavía.</ParagraphMD>
+                    <ParagraphMD>¡Pide turno a la veterinaria!</ParagraphMD>
+                    <ButtonWrapper>
+                      <Button onClick={handleClickEmptyStateButton}>
+                        <>Mi Veterinaria</>
+                      </Button>
+                    </ButtonWrapper>
+                  </>
+                </EmptyState>
+              )}
 
               {!!petData.veterinaria ? null : (
                 <>

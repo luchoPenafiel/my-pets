@@ -15,7 +15,7 @@ const Sticky = styled.div`
   z-index: 2;
 `;
 
-const Detail = (): ReactElement => {
+const Mascota = (): ReactElement => {
   const [petData, setPetData] = useState<IPet>();
   const [loading, setLoading] = useState(true);
   const { pet } = useContext(PetContext);
@@ -41,7 +41,7 @@ const Detail = (): ReactElement => {
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <title>Vetapp - Mascota</title>
       </Head>
-      <Navbar bgColor="transparent" color="white" backButton />
+      <Navbar bgColor="transparent" color="white" previusScreen="index" />
       {loading ? (
         <Splashscreen />
       ) : (
@@ -99,4 +99,4 @@ const Detail = (): ReactElement => {
   );
 };
 
-export default Detail;
+export default Mascota;

@@ -23,7 +23,7 @@ type ButtonType = {
   onClick?: any;
   variant?: 'contained' | 'outlined' | 'text';
   color?: 'primary' | 'secondary';
-  type: 'button' | 'submit';
+  type?: 'button' | 'submit';
 };
 const Button = ({
   children,

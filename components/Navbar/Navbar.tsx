@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   align-items: center;
 
   width: 100%;
-  height: 50px;
+  height: 60px;
   padding: 0 25px;
 
   position: fixed;
@@ -86,12 +86,12 @@ const DrawerNavigation = styled.nav`
 `;
 
 type NavbarType = {
-  backButton?: boolean;
   bgColor?: string;
   color?: string;
+  previusScreen?: string;
 };
 
-const Navbar = ({ backButton, bgColor = 'white', color }: NavbarType): ReactElement => {
+const Navbar = ({ bgColor = 'white', color, previusScreen }: NavbarType): ReactElement => {
   const [isOpenDrawe, setOpenDrawer] = useState(false);
 
   const toggleDrawer = (open) => (event) => {
@@ -103,13 +103,13 @@ const Navbar = ({ backButton, bgColor = 'white', color }: NavbarType): ReactElem
   };
 
   const handleBackButton = () => {
-    Router.back();
+    Router.replace(`/${previusScreen}`);
   };
 
   return (
     <>
-      <Wrapper bgColor={bgColor} backButton={backButton}>
-        {backButton && (
+      <Wrapper bgColor={bgColor} backButton={previusScreen}>
+        {previusScreen && (
           <Button onClick={handleBackButton}>
             <IoIosArrowBack size={30} color={color ? color : theme.color.gray1} />
           </Button>

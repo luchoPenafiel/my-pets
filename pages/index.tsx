@@ -11,7 +11,10 @@ import theme from '../constants/theme';
 const StickyTitles = styled.div`
   position: -webkit-sticky;
   position: sticky;
-  top: 50px;
+  top: 60px;
+  box-sizing: border-box;
+
+  border-bottom: 10px solid ${theme.color.white};
 
   z-index: 2;
 
@@ -26,7 +29,7 @@ const Home = (): ReactElement => {
   const handleClickCard = async (pet): Promise<void> => {
     changeStatePet(pet);
     await setLocalStorage('pet', pet);
-    Router.push('/detail');
+    Router.push('/mascota');
   };
 
   useEffect(() => {

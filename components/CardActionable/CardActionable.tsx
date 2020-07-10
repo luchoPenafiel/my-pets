@@ -52,9 +52,7 @@ const Wrapper = styled.button`
 
   transition: all 0.1s linear;
 
-  &:active,
-  &:focus,
-  &:hover {
+  &:focus {
     color: ${theme.color.white};
     background: ${theme.color.primary};
 
