@@ -7,6 +7,7 @@ import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import theme from '../constants/theme';
 import { LoadingProvider } from '../contexts/LoadingContext';
 import { PetProvider } from '../contexts/PetContext';
+import { ConsultProvider } from '../contexts/ConsultContext';
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -60,12 +61,14 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
   return (
     <LoadingProvider>
       <PetProvider>
-        <ThemeProvider theme={themeMaterial}>
-          <MainContainer>
-            <Component {...pageProps} />
-          </MainContainer>
-          <GlobalStyles />
-        </ThemeProvider>
+        <ConsultProvider>
+          <ThemeProvider theme={themeMaterial}>
+            <MainContainer>
+              <Component {...pageProps} />
+            </MainContainer>
+            <GlobalStyles />
+          </ThemeProvider>
+        </ConsultProvider>
       </PetProvider>
     </LoadingProvider>
   );

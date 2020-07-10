@@ -6,8 +6,14 @@ import { Canino, Felino } from '../Icons';
 import { FaOptinMonster } from 'react-icons/fa';
 
 const Subtitle = styled.p`
+  width: 90%;
+
   font-family: ${theme.fontFamily.primary};
   font-size: ${theme.fontSize.mobile.h5};
+  text-overflow: ellipsis;
+
+  overflow: hidden;
+  white-space: nowrap;
 `;
 
 const Title = styled.p`
@@ -63,6 +69,10 @@ const Wrapper = styled.button`
 
   p {
     margin: 0;
+  }
+
+  ${Subtitle} {
+    margin-bottom: 5px;
   }
 `;
 

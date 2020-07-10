@@ -14,12 +14,14 @@ import {
 } from '../components';
 import { Title1 } from '../components/Types/Titles/Titles';
 import { ParagraphMD } from '../components/Types/Paragraphs/Paragraphs';
-import { getConsultas, getLocalStorage } from '../services';
+import { getConsultas, getLocalStorage, setLocalStorage } from '../services';
 import { PetContext } from '../contexts/PetContext';
+import { ConsultContext } from '../contexts/ConsultContext';
 import theme from '../constants/theme';
 import IPet from '../interfaces/pet';
 import IConsulta from '../interfaces/consulta';
 import Router from 'next/router';
+import formatDate from '../utils/formatDate';
 
 const StickyTitles = styled.div`
   position: -webkit-sticky;
@@ -45,6 +47,7 @@ const Consultas = (): ReactElement => {
   const [consultas, setConsulta] = useState<IConsulta[]>();
   const [loading, setLoading] = useState(true);
   const { pet } = useContext(PetContext);
+  const { changeStateConsult } = useContext(ConsultContext);
 
   const getDataFromLocalStorage = async () => {
     const response = await getLocalStorage('pet');
@@ -64,8 +67,16 @@ const Consultas = (): ReactElement => {
   };
 
   const handleClickCard = (consulta) => {
-    // eslint-disable-next-line no-console
-    console.log(consulta);
+    changeStateConsult(consulta);
+
+    try {
+      setLocalStorage('consulta', consulta);
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error('LocalStorage no disponible');
+    }
+
+    Router.push('/consulta');
   };
 
   const handleClickEmptyStateButton = () => {
@@ -99,23 +110,24 @@ const Consultas = (): ReactElement => {
           <Navbar previusScreen="mascota" />
           <PageWrapper>
             <Container>
-              <StickyTitles>
-                <Title1>Consultas</Title1>
-                <Title1>de {petData.nombre}</Title1>
-              </StickyTitles>
-              <Separetor />
-
               {consultas.length ? (
-                consultas.map((consulta) => {
-                  return (
-                    <CardActionable
-                      onClick={() => handleClickCard(consulta)}
-                      subtitle={consulta.motivo}
-                      title={consulta.fecha}
-                      key={consulta.id}
-                    />
-                  );
-                })
+                <>
+                  <StickyTitles>
+                    <Title1>Consultas</Title1>
+                    <Title1>de {petData.nombre}</Title1>
+                  </StickyTitles>
+                  <Separetor />
+                  {consultas.map((consulta) => {
+                    return (
+                      <CardActionable
+                        onClick={() => handleClickCard(consulta)}
+                        subtitle={consulta.motivo}
+                        title={formatDate(consulta.fecha)}
+                        key={consulta.id}
+                      />
+                    );
+                  })}
+                </>
               ) : (
                 <EmptyState>
                   <>
