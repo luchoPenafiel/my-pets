@@ -1,20 +1,20 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
-import { Container, Navbar, PageWrapper } from '../components';
+import { Container, Map, Navbar, PageWrapper, Separetor, StickyTitles } from '../components';
 import { Title1 } from '../components/Types/Titles/Titles';
 import theme from '../constants/theme';
+import { ParagraphMD } from '../components/Types/Paragraphs/Paragraphs';
 
-const StickyTitles = styled.div`
-  position: -webkit-sticky;
-  position: sticky;
-  top: 60px;
+const VetName = styled.p`
+  margin: 0;
+  margin-bottom: 10px;
 
-  z-index: 2;
+  font-family: ${theme.fontFamily.primary};
+  font-size: ${theme.fontSize.desktop.paragraphLG};
+  font-weight: ${theme.fontStyle.semibold};
 
-  background: ${theme.color.white};
-
-  box-sizing: border-box;
+  color: ${theme.color.primary};
 `;
 
 const MiVeterinaria = (): ReactElement => {
@@ -27,10 +27,17 @@ const MiVeterinaria = (): ReactElement => {
       <Navbar />
       <PageWrapper>
         <Container>
+          <Separetor />
           <StickyTitles>
-            <Title1>Mi</Title1>
-            <Title1>Veterinaria</Title1>
+            <>
+              <Title1>Mi</Title1>
+              <Title1>Veterinaria</Title1>
+            </>
           </StickyTitles>
+          <Separetor />
+          <Map lat={-31.539} lng={-68.5277} />
+          <VetName>Veterinaria Dr. Chapatín</VetName>
+          <ParagraphMD>Av Siempre Viva 123 (oeste)</ParagraphMD>
         </Container>
       </PageWrapper>
     </>
