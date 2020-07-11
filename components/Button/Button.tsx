@@ -4,8 +4,10 @@ import { Button as MUIButton } from '@material-ui/core';
 import theme from '../../constants/theme';
 
 const Wrapper = styled.div`
-  & > button {
+  & > button,
+  & > a {
     padding: 6px 24px;
+    min-width: 200px;
 
     font-size: 20px;
 
@@ -24,6 +26,7 @@ type ButtonType = {
   variant?: 'contained' | 'outlined' | 'text';
   color?: 'primary' | 'secondary';
   type?: 'button' | 'submit';
+  href?: string;
 };
 const Button = ({
   children,
@@ -31,10 +34,11 @@ const Button = ({
   variant = 'contained',
   color = 'primary',
   type = 'button',
+  href,
 }: ButtonType): ReactElement => {
   return (
     <Wrapper>
-      <MUIButton type={type} variant={variant} color={color} onClick={onClick}>
+      <MUIButton type={type} variant={variant} color={color} onClick={onClick} href={href}>
         {children}
       </MUIButton>
     </Wrapper>

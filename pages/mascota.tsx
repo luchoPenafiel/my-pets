@@ -6,6 +6,7 @@ import { getLocalStorage } from '../services';
 import { PetContext } from '../contexts/PetContext';
 import { ParagraphMD } from '../components/Types/Paragraphs/Paragraphs';
 import IPet from '../interfaces/pet';
+import Router from 'next/router';
 
 const Sticky = styled.div`
   position: -webkit-sticky;
@@ -16,6 +17,7 @@ const Sticky = styled.div`
 `;
 
 const Mascota = (): ReactElement => {
+  const [authState, setAuthState] = useState(false);
   const [petData, setPetData] = useState<IPet>();
   const [loading, setLoading] = useState(true);
   const { pet } = useContext(PetContext);
@@ -27,13 +29,32 @@ const Mascota = (): ReactElement => {
   };
 
   useEffect(() => {
-    if (!!pet.id) {
-      setPetData(pet);
-      setLoading(false);
-    } else {
-      getDataFromLocalStorage();
-    }
+    const validateAuth = async () => {
+      try {
+        const user = await getLocalStorage('user');
+        if (user) {
+          setAuthState(true);
+        } else {
+          Router.push('/login');
+        }
+      } catch (err) {
+        Router.push('/login');
+      }
+    };
+
+    validateAuth();
   }, []);
+
+  useEffect(() => {
+    if (authState) {
+      if (!!pet.id) {
+        setPetData(pet);
+        setLoading(false);
+      } else {
+        getDataFromLocalStorage();
+      }
+    }
+  }, [authState]);
 
   return (
     <>
@@ -46,10 +67,10 @@ const Mascota = (): ReactElement => {
         <Splashscreen />
       ) : (
         <>
-          <HeaderPet especie={petData.resena.especie} />
+          <HeaderPet especie={petData?.resena?.especie} />
           <Container>
             <Sticky>
-              <CardTitle subtitle={petData.resena.especie} title={petData.nombre} />
+              <CardTitle subtitle={petData?.resena?.especie} title={petData?.nombre} />
             </Sticky>
             <CardDetail title="Reseña">
               <>

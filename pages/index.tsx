@@ -7,6 +7,7 @@ import { AddButton, CardActionable, Container, PageWrapper, Splashscreen, Navbar
 import { Title1 } from '../components/Types/Titles/Titles';
 import { PetContext } from '../contexts/PetContext';
 import theme from '../constants/theme';
+import { LoadingContext } from '../contexts/LoadingContext';
 
 const StickyTitles = styled.div`
   position: -webkit-sticky;
@@ -23,6 +24,7 @@ const StickyTitles = styled.div`
 
 const Home = (): ReactElement => {
   const { changeStatePet } = useContext(PetContext);
+  const { changeStateLoading } = useContext(LoadingContext);
   const [loading, setLoading] = useState(true);
   const [pets, setPets] = useState([]);
 
@@ -33,6 +35,7 @@ const Home = (): ReactElement => {
   };
 
   useEffect(() => {
+    changeStateLoading(false);
     const validateAuth = async () => {
       try {
         const owner = await getLocalStorage('user');

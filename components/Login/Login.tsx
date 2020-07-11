@@ -7,9 +7,6 @@ import TextField from '@material-ui/core/TextField';
 import Button from '../Button/Button';
 import { useForm } from 'react-hook-form';
 import NextLink from 'next/link';
-import { login, setLocalStorage } from '../../services';
-import Router from 'next/router';
-import { LoadingContext } from '../../contexts/LoadingContext';
 
 const Wrapper = styled.div`
   display: flex;
@@ -78,25 +75,11 @@ const Error = styled.p`
   font-weight: ${theme.fontStyle.regular};
 `;
 
-const Login = (): ReactElement => {
-  const [errorServices, setErrorServices] = useState('');
+const Login = ({ errorService, handleLogin }: any): ReactElement => {
   const { register, handleSubmit, errors } = useForm();
-  const { changeStateLoading } = useContext(LoadingContext);
 
   const onSubmit = async ({ email, password }) => {
-    changeStateLoading(true);
-
-    try {
-      setErrorServices('');
-
-      const user = await login(email, password);
-      await setLocalStorage('user', user);
-
-      Router.push('/');
-    } catch (err) {
-      setErrorServices(err.message);
-      changeStateLoading(false);
-    }
+    handleLogin(email, password);
   };
 
   return (
@@ -151,7 +134,7 @@ const Login = (): ReactElement => {
               </NextLink>
             </ButtonWrapper>
           </form>
-          <Error>{errorServices}</Error>
+          <Error>{errorService}</Error>
         </div>
 
         <Logo src="/images/logo.svg" alt="Vetapp" />

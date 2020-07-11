@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import GoogleMapReact from 'google-map-react';
 
 const Wrapper = styled.div`
-  height: 200px;
+  height: 300px;
   width: 100%;
 
   margin-bottom: 20px;

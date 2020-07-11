@@ -1,26 +1,10 @@
-import firebaseConfig from '../constants/firebaseConfig';
-import * as firebase from 'firebase';
-
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-const checkAuthState = () => {
-  if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-  }
-
+const checkAuthState = (): Promise<any> => {
   return new Promise((resolve, reject) => {
-    const user = firebase.auth().currentUser;
-
-    if (user) {
-      resolve({
-        ok: true,
-        auth: true,
-        user,
-      });
-    } else {
-      reject({
-        ok: true,
-        auth: false,
-      });
+    try {
+      const user = window.localStorage.getItem('user');
+      resolve(user);
+    } catch (err) {
+      reject(new Error('User not login'));
     }
   });
 };
