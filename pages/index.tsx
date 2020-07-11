@@ -12,13 +12,13 @@ const StickyTitles = styled.div`
   position: -webkit-sticky;
   position: sticky;
   top: 60px;
-  box-sizing: border-box;
-
-  border-bottom: 10px solid ${theme.color.white};
 
   z-index: 2;
 
   background: ${theme.color.white};
+  border-bottom: 10px solid ${theme.color.white};
+
+  box-sizing: border-box;
 `;
 
 const Home = (): ReactElement => {
@@ -62,6 +62,7 @@ const Home = (): ReactElement => {
             <Navbar />
             <PageWrapper>
               <Container>
+                <Separetor />
                 <StickyTitles>
                   <Title1>Mis</Title1>
                   <Title1>mascotas</Title1>

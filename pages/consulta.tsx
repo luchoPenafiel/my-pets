@@ -1,26 +1,12 @@
 import React, { ReactElement, useEffect, useContext, useState } from 'react';
-import styled from 'styled-components';
 import Head from 'next/head';
-import { Container, CardDetail, Navbar, PageWrapper, Separetor } from '../components';
+import { Container, CardDetail, Navbar, PageWrapper, Separetor, StickyTitles } from '../components';
 import { Title1 } from '../components/Types/Titles/Titles';
-import theme from '../constants/theme';
 import { ConsultContext } from '../contexts/ConsultContext';
 import IConsult from '../interfaces/consulta';
 import { getLocalStorage } from '../services';
 import { ParagraphMD } from '../components/Types/Paragraphs/Paragraphs';
 import formatDate from '../utils/formatDate';
-
-const StickyTitles = styled.div`
-  position: -webkit-sticky;
-  position: sticky;
-  top: 60px;
-
-  z-index: 2;
-
-  background: ${theme.color.white};
-
-  box-sizing: border-box;
-`;
 
 const Consulta = (): ReactElement => {
   const [consultData, setConsultData] = useState<IConsult>();
@@ -48,6 +34,7 @@ const Consulta = (): ReactElement => {
       <Navbar previusScreen="consultas" />
       <PageWrapper>
         <Container>
+          <Separetor />
           <StickyTitles>
             <Title1>Consulta</Title1>
           </StickyTitles>
@@ -71,8 +58,25 @@ const Consulta = (): ReactElement => {
                   <strong>Profesional que atendió</strong> {consultData.doctor}
                 </ParagraphMD>
               )}
+              {consultData?.controlEn && (
+                <ParagraphMD>
+                  <strong>Próximo control</strong> {formatDate(consultData.controlEn)}
+                </ParagraphMD>
+              )}
             </>
           </CardDetail>
+
+          {consultData?.diagnostico && (
+            <CardDetail title="Diagóstico">
+              <ParagraphMD>{consultData.diagnostico}</ParagraphMD>
+            </CardDetail>
+          )}
+
+          {consultData?.tratamiento?.domicilio && (
+            <CardDetail title="Tratamiento">
+              <ParagraphMD>{consultData.tratamiento.domicilio}</ParagraphMD>
+            </CardDetail>
+          )}
         </Container>
       </PageWrapper>
     </>

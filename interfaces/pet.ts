@@ -14,6 +14,19 @@ type IPet = {
   };
   tutor: string;
   veterinaria: string;
+  carnetSanitario?: {
+    vacAntirrabica?: {
+      fecha?: string;
+      proximaDosis?: string;
+    };
+    otrasVacunas?: [
+      {
+        nombre?: string;
+        fecha?: string;
+        proximaDosis?: string;
+      },
+    ];
+  };
 };
 
 export default IPet;

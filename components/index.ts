@@ -12,6 +12,7 @@ import Navbar from './Navbar/Navbar';
 import PageWrapper from './PageWrapper/PageWrapper';
 import Separetor from './Separetor/Separetor';
 import Splashscreen from './Splashscreen/Splashscreen';
+import StickyTitles from './StickyTitles/StickyTitles';
 
 export {
   AddButton,
@@ -28,4 +29,5 @@ export {
   PageWrapper,
   Separetor,
   Splashscreen,
+  StickyTitles,
 };

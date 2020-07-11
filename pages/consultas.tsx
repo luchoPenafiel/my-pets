@@ -31,6 +31,7 @@ const StickyTitles = styled.div`
   z-index: 2;
 
   background: ${theme.color.white};
+  border-bottom: 10px solid ${theme.color.white};
 
   box-sizing: border-box;
 `;
@@ -112,6 +113,7 @@ const Consultas = (): ReactElement => {
             <Container>
               {consultas.length ? (
                 <>
+                  <Separetor />
                   <StickyTitles>
                     <Title1>Consultas</Title1>
                     <Title1>de {petData.nombre}</Title1>

@@ -1,7 +1,7 @@
 /* eslint-disable import/extensions */
 import React, { useEffect, ReactElement } from 'react';
 import { AppProps } from 'next/app';
-import styled, { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'polished';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import theme from '../constants/theme';
@@ -22,16 +22,16 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
   }
 
-  ${normalize()}
-`;
+  #main-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
+  }
 
-const MainContainer = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow: auto;
+  ${normalize()}
 `;
 
 const themeMaterial = createMuiTheme({
@@ -63,9 +63,9 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
       <PetProvider>
         <ConsultProvider>
           <ThemeProvider theme={themeMaterial}>
-            <MainContainer>
+            <div id="main-container">
               <Component {...pageProps} />
-            </MainContainer>
+            </div>
             <GlobalStyles />
           </ThemeProvider>
         </ConsultProvider>
