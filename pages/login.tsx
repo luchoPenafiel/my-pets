@@ -1,7 +1,7 @@
 import React, { ReactElement, useContext, useState } from 'react';
 import Head from 'next/head';
 import Router from 'next/router';
-import { Login as LoginComponent, Splashscreen } from '../components';
+import { Login as LoginComponent, Loading } from '../components';
 import { LoadingContext } from '../contexts/LoadingContext';
 import { login, setLocalStorage } from '../services';
 
@@ -28,7 +28,8 @@ const Login = (): ReactElement => {
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <title>Vetapp - Login</title>
       </Head>
-      {isLoading ? <Splashscreen /> : <LoginComponent errorService={errorService} handleLogin={handleLogin} />}
+      <LoginComponent errorService={errorService} handleLogin={handleLogin} />
+      {isLoading && <Loading />}
     </>
   );
 };
