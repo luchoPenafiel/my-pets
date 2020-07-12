@@ -4,9 +4,12 @@ import CardActionable from './CardActionable/CardActionable';
 import CardDetail from './CardDetail/CardDetail';
 import CardDetailActionable from './CardDetailActionable/CardDetailActionable';
 import CardTitle from './CardTitle/CardTitle';
+import CenterButton from './CenterButton/CenterButton';
 import Container from './Container/Container';
 import EmptyState from './EmptyState/EmptyState';
 import HeaderPet from './HeaderPet/HeaderPet';
+import InputWrapper from './InputWrapper/InputWrapper';
+import Loading from './Loading/Loading';
 import Login from './Login/Login';
 import Map from './Map/Map';
 import Navbar from './Navbar/Navbar';
@@ -18,13 +21,16 @@ import StickyTitles from './StickyTitles/StickyTitles';
 export {
   AddButton,
   Button,
-  Container,
   CardActionable,
   CardDetail,
   CardDetailActionable,
   CardTitle,
+  CenterButton,
+  Container,
   EmptyState,
   HeaderPet,
+  InputWrapper,
+  Loading,
   Login,
   Map,
   Navbar,

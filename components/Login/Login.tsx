@@ -1,4 +1,4 @@
-import React, { ReactElement, useState, useContext } from 'react';
+import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import { Title1 } from '../Types/Titles/Titles';
 import Container from '../Container/Container';
@@ -121,7 +121,7 @@ const Login = ({ errorService, handleLogin }: any): ReactElement => {
                 helperText={errors.password?.message}
               />
             </InputWrapper>
-            <NextLink href={`/forgot-password`} passHref>
+            <NextLink href="/olvide-mi-clave" passHref>
               <ForgotPasswordLink>¿Olvidaste tu contraseña?</ForgotPasswordLink>
             </NextLink>
             <ButtonWrapper>

@@ -89,9 +89,10 @@ type NavbarType = {
   bgColor?: string;
   color?: string;
   previusScreen?: string;
+  withDrawer?: boolean;
 };
 
-const Navbar = ({ bgColor = 'white', color, previusScreen }: NavbarType): ReactElement => {
+const Navbar = ({ bgColor = 'white', color, previusScreen, withDrawer = true }: NavbarType): ReactElement => {
   const [isOpenDrawe, setOpenDrawer] = useState(false);
 
   const toggleDrawer = (open) => (event) => {
@@ -114,31 +115,35 @@ const Navbar = ({ bgColor = 'white', color, previusScreen }: NavbarType): ReactE
             <IoIosArrowBack size={30} color={color ? color : theme.color.gray1} />
           </Button>
         )}
-        <Button onClick={toggleDrawer(true)}>
-          <IoIosMenu size={30} color={color ? color : theme.color.gray1} />
-        </Button>
+        {withDrawer && (
+          <Button onClick={toggleDrawer(true)}>
+            <IoIosMenu size={30} color={color ? color : theme.color.gray1} />
+          </Button>
+        )}
       </Wrapper>
-      <SwipeableDrawer anchor="right" open={isOpenDrawe} onClose={toggleDrawer(false)} onOpen={toggleDrawer(true)}>
-        <DrawerWrapper>
-          <DrawerContent>
-            <Button onClick={toggleDrawer(false)}>
-              <IoIosClose color={theme.color.white} size={40} />
-            </Button>
-            <DrawerNavigation>
-              <Link href="/">
-                <a>Mis mascotas</a>
-              </Link>
-              <Link href="/mi-veterinaria">
-                <a>Mis veterinaria</a>
-              </Link>
-              <Link href="/ajustes">
-                <a>Ajustes</a>
-              </Link>
-            </DrawerNavigation>
-          </DrawerContent>
-          <Logo size={80} color={theme.color.white} />
-        </DrawerWrapper>
-      </SwipeableDrawer>
+      {withDrawer && (
+        <SwipeableDrawer anchor="right" open={isOpenDrawe} onClose={toggleDrawer(false)} onOpen={toggleDrawer(true)}>
+          <DrawerWrapper>
+            <DrawerContent>
+              <Button onClick={toggleDrawer(false)}>
+                <IoIosClose color={theme.color.white} size={40} />
+              </Button>
+              <DrawerNavigation>
+                <Link href="/">
+                  <a>Mis mascotas</a>
+                </Link>
+                <Link href="/mi-veterinaria">
+                  <a>Mis veterinaria</a>
+                </Link>
+                <Link href="/ajustes">
+                  <a>Ajustes</a>
+                </Link>
+              </DrawerNavigation>
+            </DrawerContent>
+            <Logo size={80} color={theme.color.white} />
+          </DrawerWrapper>
+        </SwipeableDrawer>
+      )}
     </>
   );
 };

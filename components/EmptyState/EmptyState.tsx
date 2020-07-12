@@ -15,12 +15,13 @@ const Title = styled(Title1)`
 
 type EmptyStateType = {
   children: ReactElement;
+  title?: string;
 };
 
-const EmptyState = ({ children }: EmptyStateType): ReactElement => {
+const EmptyState = ({ children, title = 'Oops' }: EmptyStateType): ReactElement => {
   return (
     <Wrapper>
-      <Title>Oops</Title>
+      <Title>{title}</Title>
       {children}
     </Wrapper>
   );
