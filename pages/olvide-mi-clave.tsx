@@ -66,7 +66,6 @@ const OlvideMiClave = (): ReactElement => {
                   <Title1>mi clave</Title1>
                 </>
               </StickyTitles>
-              <Separetor />
               <ParagraphMD>
                 Si olvidaste tu clave, no te preocupes, solo debes ingresar a continuación tu email y te enviaremos las
                 instrucciones para recuperarla.

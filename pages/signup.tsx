@@ -1,7 +1,139 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
+import Head from 'next/head';
+import Router from 'next/router';
+import {
+  Button,
+  CenterButton,
+  Container,
+  InputWrapper,
+  ErrorText,
+  Loading,
+  Navbar,
+  PageWrapper,
+  Separetor,
+  StickyTitles,
+} from '../components';
+import { Title1 } from '../components/Types/Titles/Titles';
+import { ParagraphMD } from '../components/Types/Paragraphs/Paragraphs';
+import { useForm } from 'react-hook-form';
+import TextField from '@material-ui/core/TextField';
+import { signup, setLocalStorage } from '../services';
 
 const Signup = (): ReactElement => {
-  return <div>Signup</div>;
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorService, setErrorService] = useState('');
+  const { register, handleSubmit, errors } = useForm();
+
+  const onSubmit = async (formData) => {
+    setIsLoading(true);
+    setErrorService('');
+
+    try {
+      const user = await signup(formData);
+      await setLocalStorage('user', user);
+
+      Router.push('/');
+      setIsLoading(false);
+    } catch (err) {
+      setErrorService(err.message);
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <>
+      <Head>
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <title>Crear Usuario | Vetapp</title>
+      </Head>
+      <Navbar previusScreen="login" withDrawer={false} />
+      <PageWrapper>
+        <Container>
+          <Separetor />
+          <StickyTitles>
+            <>
+              <Title1>Crear</Title1>
+              <Title1>usuario</Title1>
+            </>
+          </StickyTitles>
+          <ParagraphMD>
+            Completa tus datos para crear una cuenta y empezar a llevar toda la información de tus mascotas de manera
+            facíl.
+          </ParagraphMD>
+
+          <Separetor />
+
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <InputWrapper>
+              <TextField
+                name="nombre"
+                label="Nombre"
+                fullWidth
+                InputProps={{
+                  inputProps: {
+                    name: 'nombre',
+                    ref: register({ required: 'Tienes que ingresar tu nombre' }),
+                  },
+                }}
+                error={Boolean(errors.nombre)}
+                helperText={errors.nombre?.message}
+              />
+            </InputWrapper>
+
+            <InputWrapper>
+              <TextField
+                name="email"
+                label="Email"
+                fullWidth
+                type="email"
+                InputProps={{
+                  inputProps: {
+                    name: 'email',
+                    ref: register({ required: 'Tienes que ingresar tu email' }),
+                  },
+                }}
+                error={Boolean(errors.email)}
+                helperText={errors.email?.message}
+              />
+            </InputWrapper>
+
+            <InputWrapper>
+              <TextField
+                name="password"
+                label="Contraseña"
+                fullWidth
+                type="password"
+                InputProps={{
+                  inputProps: {
+                    name: 'password',
+                    ref: register({
+                      required: 'Tienes que ingresar una contraseña',
+                      minLength: {
+                        value: 6,
+                        message: 'La contraseña debe tener al menos 6 caracteres',
+                      },
+                    }),
+                  },
+                }}
+                error={Boolean(errors.password)}
+                helperText={errors.password?.message}
+              />
+            </InputWrapper>
+
+            <ErrorText>{errorService}</ErrorText>
+            <Separetor />
+            <CenterButton>
+              <Button type="submit">
+                <>Crear usuario</>
+              </Button>
+            </CenterButton>
+            <Separetor />
+          </form>
+        </Container>
+      </PageWrapper>
+      {isLoading && <Loading />}
+    </>
+  );
 };
 
 export default Signup;

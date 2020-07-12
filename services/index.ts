@@ -7,6 +7,7 @@ import getVeterinaria from './getVeterinaria';
 import login from './login';
 import passwordResetEmail from './resetPassword';
 import setLocalStorage from './setLocalStorage';
+import signup from './signup';
 
 export {
   checkAuthState,
@@ -18,4 +19,5 @@ export {
   login,
   passwordResetEmail,
   setLocalStorage,
+  signup,
 };

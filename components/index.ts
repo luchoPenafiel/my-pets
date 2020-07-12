@@ -7,6 +7,7 @@ import CardTitle from './CardTitle/CardTitle';
 import CenterButton from './CenterButton/CenterButton';
 import Container from './Container/Container';
 import EmptyState from './EmptyState/EmptyState';
+import ErrorText from './ErrorText/ErrorText';
 import HeaderPet from './HeaderPet/HeaderPet';
 import InputWrapper from './InputWrapper/InputWrapper';
 import Loading from './Loading/Loading';
@@ -28,6 +29,7 @@ export {
   CenterButton,
   Container,
   EmptyState,
+  ErrorText,
   HeaderPet,
   InputWrapper,
   Loading,
