@@ -1,3 +1,20 @@
+# [0.3.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v0.2.0...v0.3.0) (2020-07-12)
+
+
+### Bug Fixes
+
+* dynamic data in ajustes view ([c78bd13](https://github.com/luchoPenafiel/mis-mascotas/commit/c78bd13d84770aaf149abc66d46e573e806b3402))
+* minor fixes in carnet view and texts ([7943448](https://github.com/luchoPenafiel/mis-mascotas/commit/7943448ec4b99b939661279ff96124ffe147e66b))
+
+
+### Features
+
+* add version number in ajustes view ([f9e7153](https://github.com/luchoPenafiel/mis-mascotas/commit/f9e7153c11299e0f63bd671330a9de9eae94ebc4))
+* improve add pet flow ([24566cd](https://github.com/luchoPenafiel/mis-mascotas/commit/24566cd088824d962eaa1e4b78102bf2bd164d5a))
+* replace splascreen for loading component in login view ([d43bbb2](https://github.com/luchoPenafiel/mis-mascotas/commit/d43bbb25b934e9619e77b4435bfbd0fa4ec66ba0))
+* reset password view and services ([18990fc](https://github.com/luchoPenafiel/mis-mascotas/commit/18990fcfa1781605fb8bb2980cacfd2e86af8432))
+* signup ([475fc77](https://github.com/luchoPenafiel/mis-mascotas/commit/475fc77e39e6955077001f8992313a340f2fbb88))
+
 # 0.2.0 (2020-07-11)
 
 
