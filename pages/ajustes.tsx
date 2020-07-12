@@ -12,10 +12,11 @@ import {
   Splashscreen,
 } from '../components';
 import { Title1 } from '../components/Types/Titles/Titles';
-import { ParagraphMD } from '../components/Types/Paragraphs/Paragraphs';
+import { ParagraphMD, ParagraphSM } from '../components/Types/Paragraphs/Paragraphs';
 import Router from 'next/router';
 import { getUserData, getLocalStorage, setLocalStorage } from '../services';
 import IUser from '../interfaces/user';
+import pkg from '../package.json';
 
 const ButtonsWrapper = styled.div`
   display: flex;
@@ -26,6 +27,10 @@ const ButtonsWrapper = styled.div`
   & > div {
     margin-bottom: 15px;
   }
+`;
+
+const Version = styled.div`
+  text-align: center;
 `;
 
 const Ajustes = (): ReactElement => {
@@ -109,6 +114,8 @@ const Ajustes = (): ReactElement => {
                 </>
               </CardDetail>
 
+              <Separetor />
+
               <ButtonsWrapper>
                 <Button>
                   <>Editar datos</>
@@ -117,6 +124,12 @@ const Ajustes = (): ReactElement => {
                   <>Cerrar sesión</>
                 </Button>
               </ButtonsWrapper>
+
+              <Separetor />
+
+              <Version>
+                <ParagraphSM>v.{pkg.version}</ParagraphSM>
+              </Version>
             </Container>
           </PageWrapper>
         </>
