@@ -16,6 +16,10 @@ const Sticky = styled.div`
   z-index: 2;
 `;
 
+const Capitalize = styled.span`
+  text-transform: capitalize;
+`;
+
 const Mascota = (): ReactElement => {
   const [authState, setAuthState] = useState(false);
   const [petData, setPetData] = useState<IPet>();
@@ -86,7 +90,7 @@ const Mascota = (): ReactElement => {
                 )}
                 {petData?.resena?.sexo && (
                   <ParagraphMD>
-                    <strong>Sexo</strong> {petData.resena.sexo}
+                    <strong>Sexo</strong> <Capitalize>{petData.resena.sexo}</Capitalize>
                   </ParagraphMD>
                 )}
                 {petData?.resena?.pelaje && (

@@ -70,10 +70,6 @@ const Wrapper = styled.button`
   p {
     margin: 0;
   }
-
-  ${Subtitle} {
-    margin-bottom: 5px;
-  }
 `;
 
 type IconType = {

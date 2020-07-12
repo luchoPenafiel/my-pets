@@ -7,7 +7,7 @@ const ParagraphMD = styled.p`
   color: ${theme.color.fonts};
   font-family: ${theme.fontFamily.primary};
   font-size: ${theme.fontSize.desktop.paragraphMD};
-  line-height: 1;
+  line-height: 1.4;
 `;
 
 export { ParagraphMD };

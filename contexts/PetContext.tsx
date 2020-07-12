@@ -30,7 +30,7 @@ export const PetProvider = ({ children }: PetProviderType): ReactElement => {
   });
 
   const changeStatePet = (newState): void => {
-    setPet({ ...pet, ...newState });
+    setPet({ ...newState });
   };
 
   return <PetContext.Provider value={{ pet, changeStatePet }}>{children}</PetContext.Provider>;
