@@ -85,17 +85,19 @@ const Home = (): ReactElement => {
               <Container>
                 <Separetor />
                 {pets.length ? (
-                  <StickyTitles>
-                    <Title1>Mis</Title1>
-                    <Title1>mascotas</Title1>
-                  </StickyTitles>
+                  <>
+                    <StickyTitles>
+                      <Title1>Mis</Title1>
+                      <Title1>mascotas</Title1>
+                    </StickyTitles>
+                    <Separetor />
+                  </>
                 ) : (
                   <StickyTitles>
                     <Title1>Hola</Title1>
                     <Title1>{userData.nombre}</Title1>
                   </StickyTitles>
                 )}
-                <Separetor />
 
                 {!pets.length && (
                   <>
@@ -122,6 +124,7 @@ const Home = (): ReactElement => {
 
                 {!userData?.veterinaria && !pets.length ? (
                   <>
+                    <Separetor />
                     <CenterButton>
                       <Button onClick={addPet}>
                         <>Agregar mascota</>
