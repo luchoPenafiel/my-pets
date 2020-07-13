@@ -17,7 +17,7 @@ import { Title1 } from '../components/Types/Titles/Titles';
 import { ParagraphMD } from '../components/Types/Paragraphs/Paragraphs';
 import { useForm } from 'react-hook-form';
 import TextField from '@material-ui/core/TextField';
-import { signup, setLocalStorage } from '../services';
+import { addUser, signup as signupService, setLocalStorage } from '../services';
 
 const Signup = (): ReactElement => {
   const [isLoading, setIsLoading] = useState(false);
@@ -29,11 +29,19 @@ const Signup = (): ReactElement => {
     setErrorService('');
 
     try {
-      const user = await signup(formData);
-      await setLocalStorage('user', user);
+      const uid = await signupService(formData);
+      const dataToAdd = {
+        nombre: formData.nombre,
+        email: formData.email,
+        uid,
+      };
 
-      Router.push('/');
+      const userData = await addUser(dataToAdd);
+
+      await setLocalStorage('user', userData);
+
       setIsLoading(false);
+      Router.push('/');
     } catch (err) {
       setErrorService(err.message);
       setIsLoading(false);

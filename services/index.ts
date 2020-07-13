@@ -1,3 +1,4 @@
+import addUser from './addUser';
 import checkAuthState from './checkAuthState';
 import getConsultas from './getConsultas';
 import getLocalStorage from './getLocalStorage';
@@ -10,6 +11,7 @@ import setLocalStorage from './setLocalStorage';
 import signup from './signup';
 
 export {
+  addUser,
   checkAuthState,
   getConsultas,
   getLocalStorage,

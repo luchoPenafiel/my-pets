@@ -1,23 +1,17 @@
 import firebaseConfig from '../constants/firebaseConfig';
-import firebase from 'firebase/app';
-require('firebase/auth');
+import * as firebase from 'firebase';
 
 type signupType = {
-  nombre: string;
   email: string;
   password: string;
 };
 
-const signup = ({ nombre, email, password }: signupType): Promise<any> => {
+const signup = ({ email, password }: signupType): Promise<any> => {
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
   }
 
   return new Promise((resolve, reject) => {
-    if (!nombre) {
-      reject(new Error('El nombre es obligatorio.'));
-    }
-
     if (!email) {
       reject(new Error('El email es obligatorio.'));
     }
@@ -30,35 +24,7 @@ const signup = ({ nombre, email, password }: signupType): Promise<any> => {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((response) => {
-        if (response.user.uid) {
-          firebase
-            .firestore()
-            .collection('tutores')
-            .add({
-              celular: '',
-              direccion: '',
-              telFijo: '',
-              veterinaria: '',
-              nombre,
-              email,
-              uid: response.user.uid,
-            })
-            .then((ref) => {
-              // TODO: enviar un correo al tutor de confirmación de alta
-              resolve({
-                celular: '',
-                direccion: '',
-                telFijo: '',
-                veterinaria: '',
-                nombre,
-                email,
-                id: ref.id,
-              });
-            })
-            .catch((error) => {
-              reject(new Error(error));
-            });
-        }
+        resolve(response.user.uid);
       })
       .catch((error) => {
         reject(error);
