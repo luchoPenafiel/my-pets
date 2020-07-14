@@ -1,3 +1,4 @@
+import addPet from './addPet';
 import addUser from './addUser';
 import checkAuthState from './checkAuthState';
 import getConsultas from './getConsultas';
@@ -11,6 +12,7 @@ import setLocalStorage from './setLocalStorage';
 import signup from './signup';
 
 export {
+  addPet,
   addUser,
   checkAuthState,
   getConsultas,

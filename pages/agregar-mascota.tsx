@@ -1,29 +1,42 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import Head from 'next/head';
+import Router from 'next/router';
 import {
-  AddButton,
   Button,
-  CardActionable,
   CenterButton,
   Container,
+  ErrorText,
   InputWrapper,
+  Loading,
   PageWrapper,
-  Splashscreen,
   Navbar,
   Separetor,
   StickyTitles,
 } from '../components';
 import { Title1 } from '../components/Types/Titles/Titles';
-import { ParagraphMD } from '../components/Types/Paragraphs/Paragraphs';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import TextField from '@material-ui/core/TextField';
+import { Select as Dropdown, MenuItem, FormControl, InputLabel, FormHelperText } from '@material-ui/core';
+import { addPet, getLocalStorage } from '../services';
 
 const AagregarMascota = (): ReactElement => {
-  const { register, handleSubmit, errors } = useForm();
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorService, setErrorService] = useState('');
+  const { register, handleSubmit, errors, control } = useForm();
 
-  const onSubmit = (formData) => {
-    // eslint-disable-next-line no-console
-    console.log(formData);
+  const onSubmit = async (formData) => {
+    setIsLoading(true);
+
+    try {
+      const user = await getLocalStorage('user');
+      await addPet({ ...formData, tutor: user.id });
+
+      setIsLoading(false);
+      Router.push('/');
+    } catch (err) {
+      setErrorService(err.message);
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -60,47 +73,50 @@ const AagregarMascota = (): ReactElement => {
               />
             </InputWrapper>
 
-            {/* TODO: esto debe ser un select */}
             <InputWrapper>
-              <TextField
-                name="especie"
-                label="Especie *"
-                fullWidth
-                InputProps={{
-                  inputProps: {
-                    name: 'especie',
-                    ref: register({ required: 'Tienes que ingresar una especie' }),
-                  },
-                }}
-                error={Boolean(errors.especie)}
-                helperText={errors.especie?.message}
-              />
+              <FormControl fullWidth error={Boolean(errors?.resena?.especie)}>
+                <InputLabel>Especie *</InputLabel>
+                <Controller
+                  as={
+                    <Dropdown>
+                      <MenuItem value="Canino">Canino</MenuItem>
+                      <MenuItem value="Felino">Felino</MenuItem>
+                      <MenuItem value="Otros">Otros</MenuItem>
+                    </Dropdown>
+                  }
+                  name="resena[especie]"
+                  rules={{ required: 'Seleccione una opción' }}
+                  control={control}
+                  defaultValue=""
+                />
+                <FormHelperText>{errors?.resena?.especie?.message}</FormHelperText>
+              </FormControl>
             </InputWrapper>
 
             <InputWrapper>
               <TextField
-                name="raza"
+                name="resena[raza]"
                 label="Raza *"
                 fullWidth
                 InputProps={{
                   inputProps: {
-                    name: 'raza',
+                    name: 'resena[raza]',
                     ref: register({ required: 'Tienes que ingresar una raza' }),
                   },
                 }}
-                error={Boolean(errors.raza)}
-                helperText={errors.raza?.message}
+                error={Boolean(errors?.resena?.raza)}
+                helperText={errors?.resena?.raza?.message}
               />
             </InputWrapper>
 
             <InputWrapper>
               <TextField
-                name="pelaje"
+                name="resena[pelaje]"
                 label="Pelaje"
                 fullWidth
                 InputProps={{
                   inputProps: {
-                    name: 'pelaje',
+                    name: 'resena[pelaje]',
                     ref: register(),
                   },
                 }}
@@ -109,10 +125,57 @@ const AagregarMascota = (): ReactElement => {
               />
             </InputWrapper>
 
-            {/* TODO: falta agregar fecha de nacimiento y sexo */}
+            <InputWrapper>
+              <FormControl fullWidth error={Boolean(errors?.resena?.sexo)}>
+                <InputLabel>Sexo</InputLabel>
+                <Controller
+                  as={
+                    <Dropdown>
+                      <MenuItem value="hembra">Hembra</MenuItem>
+                      <MenuItem value="macho">Macho</MenuItem>
+                    </Dropdown>
+                  }
+                  name="resena[sexo]"
+                  control={control}
+                  defaultValue=""
+                />
+                <FormHelperText>{errors?.resena?.sexo?.message}</FormHelperText>
+              </FormControl>
+            </InputWrapper>
+
+            <InputWrapper>
+              <TextField
+                name="resena[fechaNacimiento]"
+                label="Fecha de Nacimiento"
+                type="date"
+                fullWidth
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                InputProps={{
+                  inputProps: {
+                    name: 'resena[fechaNacimiento]',
+                    ref: register(),
+                  },
+                }}
+                error={Boolean(errors?.resena?.fechaNacimiento)}
+                helperText={errors?.resena?.fechaNacimiento?.message}
+              />
+            </InputWrapper>
+
+            <ErrorText>{errorService}</ErrorText>
+
+            <Separetor />
+            <CenterButton>
+              <Button type="submit">
+                <>Crear mascota</>
+              </Button>
+            </CenterButton>
+            <Separetor />
           </form>
         </Container>
       </PageWrapper>
+      {isLoading && <Loading />}
     </>
   );
 };
