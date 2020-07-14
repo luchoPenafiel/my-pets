@@ -1,3 +1,16 @@
+# [0.4.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v0.3.0...v0.4.0) (2020-07-14)
+
+
+### Bug Fixes
+
+* singup and add user ([f887f79](https://github.com/luchoPenafiel/mis-mascotas/commit/f887f7942e4be0de503659004e872aba26564ca2))
+
+
+### Features
+
+* add pet view and service ([cabccff](https://github.com/luchoPenafiel/mis-mascotas/commit/cabccffad6c2038ad5c7d85f8b07f4de997ad894))
+* working on add pet view ([ce75907](https://github.com/luchoPenafiel/mis-mascotas/commit/ce7590702328bc3b12e63cea229fe767feb3c92d))
+
 # [0.3.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v0.2.0...v0.3.0) (2020-07-12)
 
 
