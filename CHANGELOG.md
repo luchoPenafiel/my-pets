@@ -1,3 +1,10 @@
+## [0.4.1](https://github.com/luchoPenafiel/mis-mascotas/compare/v0.4.0...v0.4.1) (2020-07-15)
+
+
+### Features
+
+* add edit button in card detail title ([7b9590e](https://github.com/luchoPenafiel/mis-mascotas/commit/7b9590ee8788971199f7c22e33d4d84297a1ac0b))
+
 # [0.4.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v0.3.0...v0.4.0) (2020-07-14)
 
 
