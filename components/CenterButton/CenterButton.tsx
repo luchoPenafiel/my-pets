@@ -6,6 +6,12 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  div:not(:last-of-type) {
+    button {
+      margin-bottom: 15px;
+    }
+  }
 `;
 
 type CenterButtonType = {

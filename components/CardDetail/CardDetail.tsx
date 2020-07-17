@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import Link from 'next/link';
 import styled from 'styled-components';
 import theme from '../../constants/theme';
 import { MdEdit } from 'react-icons/md';
@@ -24,34 +25,29 @@ const Title = styled.p`
 
   color: ${theme.color.primary};
 
-  button {
+  a {
     color: ${theme.color.gray1};
-
-    border: none;
-    background: none;
-    box-shadow: none;
-    appearance: none;
-
-    outline: none;
   }
 `;
 
 type CardDetailType = {
   children: ReactElement;
   title?: string;
-  onClick?: any;
+  pathButton?: string;
 };
 
-const CardDetail = ({ title, children, onClick }: CardDetailType): ReactElement => {
+const CardDetail = ({ title, children, pathButton }: CardDetailType): ReactElement => {
   return (
     <Wrapper>
       {title && (
-        <Title withButton={onClick}>
+        <Title withButton={pathButton}>
           {title}{' '}
-          {onClick && (
-            <button onClick={onClick}>
-              <MdEdit />
-            </button>
+          {pathButton && (
+            <Link href={pathButton} passHref>
+              <a>
+                <MdEdit />
+              </a>
+            </Link>
           )}
         </Title>
       )}

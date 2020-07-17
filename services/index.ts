@@ -10,6 +10,7 @@ import login from './login';
 import passwordResetEmail from './resetPassword';
 import setLocalStorage from './setLocalStorage';
 import signup from './signup';
+import updatePet from './updatePet';
 
 export {
   addPet,
@@ -24,4 +25,5 @@ export {
   passwordResetEmail,
   setLocalStorage,
   signup,
+  updatePet,
 };

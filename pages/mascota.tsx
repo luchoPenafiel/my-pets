@@ -32,11 +32,6 @@ const Mascota = (): ReactElement => {
     setLoading(false);
   };
 
-  const editResena = () => {
-    // eslint-disable-next-line no-console
-    console.log('editResena');
-  };
-
   useEffect(() => {
     const validateAuth = async () => {
       try {
@@ -81,7 +76,7 @@ const Mascota = (): ReactElement => {
             <Sticky>
               <CardTitle subtitle={petData?.resena?.especie} title={petData?.nombre} />
             </Sticky>
-            <CardDetail title="Reseña" onClick={!petData.veterinaria && editResena}>
+            <CardDetail title="Reseña" pathButton={!petData.veterinaria && '/editar-mascota'}>
               <>
                 {petData?.resena?.especie && (
                   <ParagraphMD>
