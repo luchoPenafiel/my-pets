@@ -1,3 +1,10 @@
+# [0.5.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v0.4.1...v0.5.0) (2020-07-17)
+
+
+### Features
+
+* edit pet data ([22bd7ee](https://github.com/luchoPenafiel/mis-mascotas/commit/22bd7eed2d469ca54f12f0d99a8b3fbdbdf8c290))
+
 ## [0.4.1](https://github.com/luchoPenafiel/mis-mascotas/compare/v0.4.0...v0.4.1) (2020-07-15)
 
 
