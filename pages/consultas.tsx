@@ -80,6 +80,10 @@ const Consultas = (): ReactElement => {
     Router.push('/consulta');
   };
 
+  const handleAddConsultButton = () => {
+    Router.push('/agregar-consulta');
+  };
+
   const handleClickEmptyStateButton = () => {
     Router.replace('/mi-veterinaria');
   };
@@ -132,25 +136,37 @@ const Consultas = (): ReactElement => {
                 </>
               ) : (
                 <EmptyState>
-                  <>
-                    <ParagraphMD>{petData.nombre} no tiene consultas cargadas todavía.</ParagraphMD>
-                    <ParagraphMD>¡Pide turno a la veterinaria!</ParagraphMD>
-                    <ButtonWrapper>
-                      <Button onClick={handleClickEmptyStateButton}>
-                        <>Mi Veterinaria</>
-                      </Button>
-                    </ButtonWrapper>
-                  </>
+                  {petData.veterinaria ? (
+                    <>
+                      <ParagraphMD>{petData.nombre} no tiene consultas cargadas todavía.</ParagraphMD>
+                      <ParagraphMD>¡Pide turno a la veterinaria!</ParagraphMD>
+                      <ButtonWrapper>
+                        <Button onClick={handleClickEmptyStateButton}>
+                          <>Mi Veterinaria</>
+                        </Button>
+                      </ButtonWrapper>
+                    </>
+                  ) : (
+                    <>
+                      <ParagraphMD>{petData.nombre} no tiene consultas cargadas todavía.</ParagraphMD>
+                      <ParagraphMD>¡Vamos a cargar la primera!</ParagraphMD>
+                      <ButtonWrapper>
+                        <Button onClick={handleAddConsultButton}>
+                          <>Agregar consulta</>
+                        </Button>
+                      </ButtonWrapper>
+                    </>
+                  )}
                 </EmptyState>
               )}
 
-              {!!petData.veterinaria ? null : (
+              {!petData.veterinaria && consultas.length ? (
                 <>
                   <Separetor />
-                  <AddButton text="Agregar consulta" />
+                  <AddButton text="Agregar consulta" onTap={handleAddConsultButton} />
                   <Separetor />
                 </>
-              )}
+              ) : null}
             </Container>
           </PageWrapper>
         </>
