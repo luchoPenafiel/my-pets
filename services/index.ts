@@ -1,3 +1,4 @@
+import addConsult from './addConsult';
 import addPet from './addPet';
 import addUser from './addUser';
 import checkAuthState from './checkAuthState';
@@ -13,6 +14,7 @@ import signup from './signup';
 import updatePet from './updatePet';
 
 export {
+  addConsult,
   addPet,
   addUser,
   checkAuthState,
