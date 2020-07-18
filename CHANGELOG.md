@@ -1,3 +1,11 @@
+# [0.6.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v0.5.0...v0.6.0) (2020-07-18)
+
+
+### Features
+
+* add consult and set control ([be2e799](https://github.com/luchoPenafiel/mis-mascotas/commit/be2e79991709344f4b36e4e745fcf876bb69727c))
+* working on add consult ([3cb1243](https://github.com/luchoPenafiel/mis-mascotas/commit/3cb1243158c06cdc5d7e50ad7685db63907b63ad))
+
 # [0.5.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v0.4.1...v0.5.0) (2020-07-17)
 
 
