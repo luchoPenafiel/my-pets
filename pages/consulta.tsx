@@ -1,6 +1,15 @@
 import React, { ReactElement, useEffect, useContext, useState } from 'react';
 import Head from 'next/head';
-import { Container, CardDetail, Navbar, PageWrapper, Separetor, StickyTitles } from '../components';
+import {
+  Button,
+  CenterButton,
+  Container,
+  CardDetail,
+  Navbar,
+  PageWrapper,
+  Separetor,
+  StickyTitles,
+} from '../components';
 import { Title1 } from '../components/Types/Titles/Titles';
 import { ConsultContext } from '../contexts/ConsultContext';
 import IConsult from '../interfaces/consulta';
@@ -77,6 +86,12 @@ const Consulta = (): ReactElement => {
               <ParagraphMD>{consultData.tratamiento.domicilio}</ParagraphMD>
             </CardDetail>
           )}
+
+          <CenterButton>
+            <Button variant="outlined" href="/editar-consulta" color="primary">
+              <>Editar</>
+            </Button>
+          </CenterButton>
         </Container>
       </PageWrapper>
     </>
