@@ -1,3 +1,10 @@
+# [0.7.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v0.6.0...v0.7.0) (2020-07-19)
+
+
+### Features
+
+* update consult ([2904cc0](https://github.com/luchoPenafiel/mis-mascotas/commit/2904cc0225322d98a8e7ed7d6c2f81ef2c08aa32))
+
 # [0.6.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v0.5.0...v0.6.0) (2020-07-18)
 
 
