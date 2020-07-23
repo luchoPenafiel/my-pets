@@ -1,7 +1,6 @@
 import React, { ReactElement, useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
-import Router from 'next/router';
 import { PetContext } from '../contexts/PetContext';
 import { getLocalStorage } from '../services';
 import {
@@ -38,10 +37,6 @@ const CarnetSanitario = (): ReactElement => {
     setLoading(false);
   };
 
-  const handleClickEmptyStateButton = () => {
-    Router.replace('/mi-veterinaria');
-  };
-
   useEffect(() => {
     setLoading(true);
 
@@ -65,7 +60,10 @@ const CarnetSanitario = (): ReactElement => {
       ) : (
         <PageWrapper>
           <Container>
-            {petData?.carnetSanitario ? (
+            {petData?.carnetSanitario &&
+            (petData?.carnetSanitario?.otrasVacunas?.length ||
+              petData?.carnetSanitario?.vacAntirrabica?.fecha ||
+              petData?.carnetSanitario?.vacAntirrabica?.proximaDosis) ? (
               <>
                 <Separetor />
                 <StickyTitles>
@@ -73,50 +71,61 @@ const CarnetSanitario = (): ReactElement => {
                 </StickyTitles>
                 <Separetor />
 
-                {petData?.carnetSanitario?.vacAntirrabica && (
+                {(petData?.carnetSanitario?.vacAntirrabica?.fecha ||
+                  petData?.carnetSanitario?.vacAntirrabica?.proximaDosis) && (
                   <CardDetail title="Vacuna Antirrábica">
                     <>
                       <ParagraphMD>
                         <strong>Fecha</strong>{' '}
                         {petData?.carnetSanitario?.vacAntirrabica?.fecha
                           ? formatDate(petData?.carnetSanitario?.vacAntirrabica?.fecha)
-                          : '-'}
+                          : null}
                       </ParagraphMD>
                       <ParagraphMD>
                         <strong>Próxima dosis</strong>{' '}
                         {petData?.carnetSanitario?.vacAntirrabica?.proximaDosis
                           ? formatDate(petData?.carnetSanitario?.vacAntirrabica?.proximaDosis)
-                          : '-'}
+                          : null}
                       </ParagraphMD>
                     </>
                   </CardDetail>
                 )}
 
-                {petData?.carnetSanitario?.otrasVacunas?.length &&
-                  petData.carnetSanitario.otrasVacunas.map((vacuna, idx) => {
-                    return (
-                      <CardDetail title={vacuna.nombre} key={`${vacuna.nombre}-${idx}`}>
-                        <>
-                          <ParagraphMD>
-                            <strong>Fecha</strong> {vacuna.fecha ? formatDate(vacuna.fecha) : '-'}
-                          </ParagraphMD>
-                          <ParagraphMD>
-                            <strong>Próxima dosis</strong> {vacuna.proximaDosis ? formatDate(vacuna.proximaDosis) : '-'}
-                          </ParagraphMD>
-                        </>
-                      </CardDetail>
-                    );
-                  })}
+                {petData?.carnetSanitario?.otrasVacunas?.length
+                  ? petData.carnetSanitario.otrasVacunas.map((vacuna, idx) => {
+                      return (
+                        <CardDetail title={vacuna.nombre} key={`${vacuna.nombre}-${idx}`}>
+                          <>
+                            <ParagraphMD>
+                              <strong>Fecha</strong> {vacuna.fecha ? formatDate(vacuna.fecha) : '-'}
+                            </ParagraphMD>
+                            <ParagraphMD>
+                              <strong>Próxima dosis</strong>{' '}
+                              {vacuna.proximaDosis ? formatDate(vacuna.proximaDosis) : '-'}
+                            </ParagraphMD>
+                          </>
+                        </CardDetail>
+                      );
+                    })
+                  : null}
               </>
             ) : (
               <EmptyState>
                 <>
                   <ParagraphMD>{petData.nombre} no tiene vacunas cargadas todavía.</ParagraphMD>
-                  <ParagraphMD>¡Pide turno a la veterinaria!</ParagraphMD>
+                  <ParagraphMD>
+                    {petData.veterinaria ? '¡Pide turno a la veterinaria!' : '¡Vamos a agregar las primeras!'}
+                  </ParagraphMD>
                   <ButtonWrapper>
-                    <Button onClick={handleClickEmptyStateButton}>
-                      <>Mi Veterinaria</>
-                    </Button>
+                    {petData.veterinaria ? (
+                      <Button href="/mi-veterinaria">
+                        <>Mi Veterinaria</>
+                      </Button>
+                    ) : (
+                      <Button href="/agregar-vacunas">
+                        <>Agregar Vacunas</>
+                      </Button>
+                    )}
                   </ButtonWrapper>
                 </>
               </EmptyState>

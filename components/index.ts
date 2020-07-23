@@ -16,6 +16,7 @@ import Map from './Map/Map';
 import Navbar from './Navbar/Navbar';
 import PageWrapper from './PageWrapper/PageWrapper';
 import Separetor from './Separetor/Separetor';
+import SmallSeparetor from './SmallSeparetor/SmallSeparetor';
 import Splashscreen from './Splashscreen/Splashscreen';
 import StickyTitles from './StickyTitles/StickyTitles';
 
@@ -38,6 +39,7 @@ export {
   Navbar,
   PageWrapper,
   Separetor,
+  SmallSeparetor,
   Splashscreen,
   StickyTitles,
 };
