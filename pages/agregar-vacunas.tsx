@@ -1,4 +1,4 @@
-import React, { ReactElement, useContext, useState } from 'react';
+import React, { ReactElement, useContext, useState, useEffect } from 'react';
 import Head from 'next/head';
 import {
   Button,
@@ -13,30 +13,67 @@ import {
   Separetor,
   SmallSeparetor,
   StickyTitles,
-  Splashscreen,
 } from '../components';
 import { Title1 } from '../components/Types/Titles/Titles';
 import { useForm } from 'react-hook-form';
 import TextField from '@material-ui/core/TextField';
 import { PetContext } from '../contexts/PetContext';
+import { getLocalStorage, addCarnet, setLocalStorage } from '../services';
+import Router from 'next/router';
 import IPet from '../interfaces/pet';
 
 const AgregarVacuna = (): ReactElement => {
   const [isLoading, setIsLoading] = useState(false);
-  const [showSplashScreen, setShowSplasScreen] = useState(true);
   const [errorService, setErrorService] = useState('');
 
   const [otrasVacunasState, setOtrasVacunasState] = useState([{ nombre: '', fecha: '', proximaDosis: '' }]);
 
   const [petData, setPetData] = useState<IPet>();
-
   const { pet } = useContext(PetContext);
   const { register, handleSubmit, errors } = useForm();
 
-  const onSubmit = (formData) => {
-    // eslint-disable-next-line no-console
-    console.log(formData);
+  const onSubmit = async (formData) => {
+    if (!formData.vacAntirrabica.proximaDosis && !formData.otrasVacunas.nombre) {
+      setErrorService('Tienes que completar al menos una vacuna.');
+
+      return;
+    }
+
+    setIsLoading(true);
+    setErrorService('');
+
+    const body = {
+      petId: petData.id,
+      carnetSanitario: {
+        vacAntirrabica: formData.vacAntirrabica,
+        otrasVacunas: [formData.otrasVacunas],
+      },
+    };
+
+    try {
+      await addCarnet({ ...body });
+      await setLocalStorage('pet', { ...petData, carnetSanitario: body.carnetSanitario });
+      setIsLoading(false);
+
+      Router.push('/carnet');
+    } catch (err) {
+      setErrorService('Algo salió mal, vuelve a intentar en unos minutos.');
+      setIsLoading(false);
+    }
   };
+
+  const updatePetData = async () => {
+    const petFromLocalStorage = await getLocalStorage('pet');
+    setPetData(petFromLocalStorage);
+  };
+
+  useEffect(() => {
+    if (pet.id) {
+      setPetData(pet);
+    } else {
+      updatePetData();
+    }
+  }, []);
 
   return (
     <>
@@ -168,6 +205,14 @@ const AgregarVacuna = (): ReactElement => {
                 })}
               </>
             </CardDetail>
+
+            {errorService && <ErrorText>{errorService}</ErrorText>}
+
+            <CenterButton>
+              <Button type="submit">
+                <>Agregar</>
+              </Button>
+            </CenterButton>
           </form>
         </Container>
       </PageWrapper>

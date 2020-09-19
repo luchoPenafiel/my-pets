@@ -116,6 +116,7 @@ const CarnetSanitario = (): ReactElement => {
                   <ParagraphMD>
                     {petData.veterinaria ? '¡Pide turno a la veterinaria!' : '¡Vamos a agregar las primeras!'}
                   </ParagraphMD>
+                  {!petData.veterinaria && <ParagraphMD>Luego podrás seguir agregando.</ParagraphMD>}
                   <ButtonWrapper>
                     {petData.veterinaria ? (
                       <Button href="/mi-veterinaria">

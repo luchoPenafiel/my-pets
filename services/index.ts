@@ -1,3 +1,4 @@
+import addCarnet from './addCarnet';
 import addConsult from './addConsult';
 import addPet from './addPet';
 import addUser from './addUser';
@@ -15,6 +16,7 @@ import updateConsult from './updateConsult';
 import updatePet from './updatePet';
 
 export {
+  addCarnet,
   addConsult,
   addPet,
   addUser,
