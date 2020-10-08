@@ -5,7 +5,7 @@ import { PetContext } from '../contexts/PetContext';
 import { getLocalStorage } from '../services';
 import {
   Button,
-  CardDetail,
+  CardActionable,
   Container,
   EmptyState,
   Navbar,
@@ -18,6 +18,7 @@ import { ParagraphMD } from '../components/Types/Paragraphs/Paragraphs';
 import { Title1 } from '../components/Types/Titles/Titles';
 import IPet from '../interfaces/pet';
 import formatDate from '../utils/formatDate';
+import Router from 'next/router';
 
 const ButtonWrapper = styled.div`
   display: flex;
@@ -35,6 +36,14 @@ const CarnetSanitario = (): ReactElement => {
     const response = await getLocalStorage('pet');
     setPetData(response);
     setLoading(false);
+  };
+
+  const handleClickVacunAntirrabica = (): void => {
+    Router.push('/vacuna-antirrabica');
+  };
+
+  const handleClickVacuna = (idx): void => {
+    Router.push(`/vacuna/${idx}`);
   };
 
   useEffect(() => {
@@ -73,38 +82,26 @@ const CarnetSanitario = (): ReactElement => {
 
                 {(petData?.carnetSanitario?.vacAntirrabica?.fecha ||
                   petData?.carnetSanitario?.vacAntirrabica?.proximaDosis) && (
-                  <CardDetail title="Vacuna Antirrábica">
-                    <>
-                      <ParagraphMD>
-                        <strong>Fecha</strong>{' '}
-                        {petData?.carnetSanitario?.vacAntirrabica?.fecha
-                          ? formatDate(petData?.carnetSanitario?.vacAntirrabica?.fecha)
-                          : null}
-                      </ParagraphMD>
-                      <ParagraphMD>
-                        <strong>Próxima dosis</strong>{' '}
-                        {petData?.carnetSanitario?.vacAntirrabica?.proximaDosis
-                          ? formatDate(petData?.carnetSanitario?.vacAntirrabica?.proximaDosis)
-                          : null}
-                      </ParagraphMD>
-                    </>
-                  </CardDetail>
+                  <CardActionable
+                    onClick={handleClickVacunAntirrabica}
+                    subtitle={
+                      petData?.carnetSanitario?.vacAntirrabica?.fecha
+                        ? formatDate(petData?.carnetSanitario?.vacAntirrabica?.fecha)
+                        : null
+                    }
+                    title="Vacuna Antirrábica"
+                  />
                 )}
 
                 {petData?.carnetSanitario?.otrasVacunas?.length
                   ? petData.carnetSanitario.otrasVacunas.map((vacuna, idx) => {
                       return (
-                        <CardDetail title={vacuna.nombre} key={`${vacuna.nombre}-${idx}`}>
-                          <>
-                            <ParagraphMD>
-                              <strong>Fecha</strong> {vacuna.fecha ? formatDate(vacuna.fecha) : '-'}
-                            </ParagraphMD>
-                            <ParagraphMD>
-                              <strong>Próxima dosis</strong>{' '}
-                              {vacuna.proximaDosis ? formatDate(vacuna.proximaDosis) : '-'}
-                            </ParagraphMD>
-                          </>
-                        </CardDetail>
+                        <CardActionable
+                          onClick={() => handleClickVacuna(idx)}
+                          subtitle={vacuna.fecha ? formatDate(vacuna.fecha) : ''}
+                          title={vacuna.nombre}
+                          key={`${vacuna.nombre}-${idx}`}
+                        />
                       );
                     })
                   : null}
