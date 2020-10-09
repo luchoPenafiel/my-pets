@@ -96,33 +96,45 @@ const CarnetSanitario = (): ReactElement => {
 
                 {petData?.carnetSanitario?.otrasVacunas?.length
                   ? petData.carnetSanitario.otrasVacunas.map((vacuna, idx) => {
-                      return (
-                        <CardActionable
-                          onClick={() => handleClickVacuna(idx)}
-                          subtitle={vacuna.fecha ? formatDate(vacuna.fecha) : ''}
-                          title={vacuna.nombre}
-                          key={`${vacuna.nombre}-${idx}`}
-                        />
-                      );
+                      if (vacuna.nombre) {
+                        return (
+                          <CardActionable
+                            onClick={() => handleClickVacuna(idx)}
+                            subtitle={vacuna.fecha ? formatDate(vacuna.fecha) : ''}
+                            title={vacuna.nombre}
+                            key={`${vacuna.nombre}-${idx}`}
+                          />
+                        );
+                      }
                     })
                   : null}
+
+                {!petData.veterinaria &&
+                  (petData?.carnetSanitario?.otrasVacunas?.length ||
+                    petData?.carnetSanitario?.vacAntirrabica?.fecha ||
+                    petData?.carnetSanitario?.vacAntirrabica?.proximaDosis) && (
+                    <ButtonWrapper>
+                      <Button href="/agregar-vacuna">
+                        <>Agrega vacuna</>
+                      </Button>
+                    </ButtonWrapper>
+                  )}
               </>
             ) : (
               <EmptyState>
                 <>
                   <ParagraphMD>{petData.nombre} no tiene vacunas cargadas todavía.</ParagraphMD>
                   <ParagraphMD>
-                    {petData.veterinaria ? '¡Pide turno a la veterinaria!' : '¡Vamos a cargar las primeras!'}
+                    {petData.veterinaria ? '¡Pide turno a la veterinaria!' : '¡Vamos a cargar la primera!'}
                   </ParagraphMD>
-                  {!petData.veterinaria && <ParagraphMD>Luego podrás seguir agregando.</ParagraphMD>}
                   <ButtonWrapper>
                     {petData.veterinaria ? (
                       <Button href="/mi-veterinaria">
                         <>Mi Veterinaria</>
                       </Button>
                     ) : (
-                      <Button href="/agregar-vacunas">
-                        <>Agregar Vacunas</>
+                      <Button href="/switch-vacuna">
+                        <>Agregar vacuna</>
                       </Button>
                     )}
                   </ButtonWrapper>
