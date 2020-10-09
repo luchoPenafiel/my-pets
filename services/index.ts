@@ -12,6 +12,7 @@ import login from './login';
 import passwordResetEmail from './resetPassword';
 import setLocalStorage from './setLocalStorage';
 import signup from './signup';
+import addNewCarnet from './addNewCarnet';
 import updateConsult from './updateConsult';
 import updatePet from './updatePet';
 
@@ -30,6 +31,7 @@ export {
   passwordResetEmail,
   setLocalStorage,
   signup,
+  addNewCarnet,
   updateConsult,
   updatePet,
 };

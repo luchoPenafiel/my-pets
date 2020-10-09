@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import React, { ReactElement, useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
@@ -111,7 +112,7 @@ const CarnetSanitario = (): ReactElement => {
                 <>
                   <ParagraphMD>{petData.nombre} no tiene vacunas cargadas todavía.</ParagraphMD>
                   <ParagraphMD>
-                    {petData.veterinaria ? '¡Pide turno a la veterinaria!' : '¡Vamos a agregar las primeras!'}
+                    {petData.veterinaria ? '¡Pide turno a la veterinaria!' : '¡Vamos a cargar las primeras!'}
                   </ParagraphMD>
                   {!petData.veterinaria && <ParagraphMD>Luego podrás seguir agregando.</ParagraphMD>}
                   <ButtonWrapper>
