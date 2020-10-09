@@ -20,8 +20,9 @@ import { Title1 } from '../components/Types/Titles/Titles';
 import { useForm } from 'react-hook-form';
 import TextField from '@material-ui/core/TextField';
 import { PetContext } from '../contexts/PetContext';
-import { updateCarnet, getLocalStorage, setLocalStorage } from '../services';
+import { addNewCarnet, getLocalStorage, setLocalStorage } from '../services';
 import IPet from '../interfaces/pet';
+import IUser from '../interfaces/user';
 
 const AgregarVacuna = (): ReactElement => {
   const [isLoading, setIsLoading] = useState(false);
@@ -29,6 +30,7 @@ const AgregarVacuna = (): ReactElement => {
   const [errorService, setErrorService] = useState('');
 
   const [petData, setPetData] = useState<IPet>();
+  const [userData, setUserData] = useState<IUser>();
 
   const { pet, changeStatePet } = useContext(PetContext);
   const { register, handleSubmit, errors } = useForm();
@@ -40,6 +42,9 @@ const AgregarVacuna = (): ReactElement => {
       const petFromLocalStorage = await getLocalStorage('pet');
       setPetData(petFromLocalStorage);
     }
+
+    const userFromLocalStorage = await getLocalStorage('user');
+    setUserData(userFromLocalStorage);
 
     setShowSplasScreen(false);
   };
@@ -57,7 +62,7 @@ const AgregarVacuna = (): ReactElement => {
     };
 
     try {
-      await updateCarnet({ petId: petData.id, carnetSanitario });
+      await addNewCarnet({ petId: petData.id, petName: petData.nombre, tutorData: userData, carnetSanitario });
 
       changeStatePet({ ...petData, carnetSanitario });
       await setLocalStorage('pet', { ...petData, carnetSanitario });

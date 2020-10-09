@@ -3,7 +3,7 @@ type IUser = {
   direccion?: string;
   email: string;
   nombre: string;
-  telFijo?: '422333333';
+  telFijo?: string;
   id: string;
   veterinaria?: string;
 };

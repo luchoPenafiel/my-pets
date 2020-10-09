@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import React, { ReactElement, useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
@@ -6,6 +7,7 @@ import { getLocalStorage } from '../services';
 import {
   Button,
   CardDetail,
+  CardActionable,
   Container,
   EmptyState,
   Navbar,
@@ -73,39 +75,27 @@ const CarnetSanitario = (): ReactElement => {
 
                 {(petData?.carnetSanitario?.vacAntirrabica?.fecha ||
                   petData?.carnetSanitario?.vacAntirrabica?.proximaDosis) && (
-                  <CardDetail title="Vacuna Antirrábica">
-                    <>
-                      <ParagraphMD>
-                        <strong>Fecha</strong>{' '}
-                        {petData?.carnetSanitario?.vacAntirrabica?.fecha
-                          ? formatDate(petData?.carnetSanitario?.vacAntirrabica?.fecha)
-                          : null}
-                      </ParagraphMD>
-                      <ParagraphMD>
-                        <strong>Próxima dosis</strong>{' '}
-                        {petData?.carnetSanitario?.vacAntirrabica?.proximaDosis
-                          ? formatDate(petData?.carnetSanitario?.vacAntirrabica?.proximaDosis)
-                          : null}
-                      </ParagraphMD>
-                    </>
-                  </CardDetail>
+                  <CardActionable
+                    title="Vacuna Antirrábica"
+                    subtitle={formatDate(petData?.carnetSanitario?.vacAntirrabica?.fecha)}
+                    onClick={() => {}}
+                  />
                 )}
 
                 {petData?.carnetSanitario?.otrasVacunas?.length
                   ? petData.carnetSanitario.otrasVacunas.map((vacuna, idx) => {
-                      return (
-                        <CardDetail title={vacuna.nombre} key={`${vacuna.nombre}-${idx}`}>
-                          <>
-                            <ParagraphMD>
-                              <strong>Fecha</strong> {vacuna.fecha ? formatDate(vacuna.fecha) : '-'}
-                            </ParagraphMD>
-                            <ParagraphMD>
-                              <strong>Próxima dosis</strong>{' '}
-                              {vacuna.proximaDosis ? formatDate(vacuna.proximaDosis) : '-'}
-                            </ParagraphMD>
-                          </>
-                        </CardDetail>
-                      );
+                      if (vacuna.nombre) {
+                        return (
+                          <CardActionable
+                            key={`${vacuna.nombre}-${idx}`}
+                            title={vacuna.nombre}
+                            subtitle={vacuna.fecha ? formatDate(vacuna.fecha) : ''}
+                            onClick={() => {}}
+                          />
+                        );
+                      } else {
+                        return null;
+                      }
                     })
                   : null}
               </>
