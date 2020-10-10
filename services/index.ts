@@ -2,6 +2,7 @@ import addCarnet from './addCarnet';
 import addConsult from './addConsult';
 import addPet from './addPet';
 import addUser from './addUser';
+import addVacuna from './addVacuna';
 import checkAuthState from './checkAuthState';
 import getConsultas from './getConsultas';
 import getLocalStorage from './getLocalStorage';
@@ -12,7 +13,6 @@ import login from './login';
 import passwordResetEmail from './resetPassword';
 import setLocalStorage from './setLocalStorage';
 import signup from './signup';
-import addNewCarnet from './addNewCarnet';
 import updateConsult from './updateConsult';
 import updatePet from './updatePet';
 
@@ -31,7 +31,7 @@ export {
   passwordResetEmail,
   setLocalStorage,
   signup,
-  addNewCarnet,
+  addVacuna,
   updateConsult,
   updatePet,
 };

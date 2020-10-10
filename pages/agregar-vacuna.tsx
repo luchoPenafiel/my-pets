@@ -1,9 +1,8 @@
 import React, { ReactElement, useEffect, useContext, useState } from 'react';
 import Head from 'next/head';
-import Router from 'next/router';
+// import Router from 'next/router';
 import {
   Button,
-  CardDetail,
   CenterButton,
   Container,
   ErrorText,
@@ -13,14 +12,13 @@ import {
   Navbar,
   Separetor,
   Splashscreen,
-  SmallSeparetor,
   StickyTitles,
 } from '../components';
 import { Title1 } from '../components/Types/Titles/Titles';
 import { useForm } from 'react-hook-form';
 import TextField from '@material-ui/core/TextField';
 import { PetContext } from '../contexts/PetContext';
-import { addNewCarnet, getLocalStorage, setLocalStorage } from '../services';
+import { addVacuna, getLocalStorage, setLocalStorage } from '../services';
 import IPet from '../interfaces/pet';
 import IUser from '../interfaces/user';
 
@@ -53,26 +51,30 @@ const AgregarVacuna = (): ReactElement => {
     const newOtrasVacunas: any = petData.carnetSanitario?.otrasVacunas || [];
     newOtrasVacunas.push(data);
 
-    const newCarnetSanitario = {
+    const carnetSanitario = {
       vacAntirrabica: { ...petData.carnetSanitario?.vacAntirrabica },
       otrasVacunas: [...newOtrasVacunas],
     };
 
-    // console.log('newCarnetSanitario', newCarnetSanitario);
+    try {
+      await addVacuna({
+        petId: petData.id,
+        petName: petData.nombre,
+        tutorData: userData,
+        carnetSanitario,
+        vacunControl: data,
+      });
 
-    // try {
-    //   await addNewCarnet({ petId: petData.id, petName: petData.nombre, tutorData: userData, carnetSanitario });
+      changeStatePet({ ...petData, carnetSanitario });
+      await setLocalStorage('pet', { ...petData, carnetSanitario });
 
-    //   changeStatePet({ ...petData, carnetSanitario });
-    //   await setLocalStorage('pet', { ...petData, carnetSanitario });
+      setIsLoading(false);
 
-    //   setIsLoading(false);
-
-    //   Router.back();
-    // } catch (err) {
-    //   setErrorService(err.message);
-    //   setIsLoading(false);
-    // }
+      // Router.back();
+    } catch (err) {
+      setErrorService(err.message);
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {

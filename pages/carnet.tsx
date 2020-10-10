@@ -5,6 +5,7 @@ import Head from 'next/head';
 import { PetContext } from '../contexts/PetContext';
 import { getLocalStorage } from '../services';
 import {
+  AddButton,
   Button,
   CardActionable,
   Container,
@@ -45,6 +46,10 @@ const CarnetSanitario = (): ReactElement => {
 
   const handleClickVacuna = (idx): void => {
     Router.push(`/vacuna/${idx}`);
+  };
+
+  const handleAddVacunButton = (): void => {
+    Router.push('/agregar-vacuna');
   };
 
   useEffect(() => {
@@ -90,7 +95,7 @@ const CarnetSanitario = (): ReactElement => {
                         ? formatDate(petData?.carnetSanitario?.vacAntirrabica?.fecha)
                         : null
                     }
-                    title="Vacuna Antirrábica"
+                    title="Antirrábica"
                   />
                 )}
 
@@ -113,11 +118,11 @@ const CarnetSanitario = (): ReactElement => {
                   (petData?.carnetSanitario?.otrasVacunas?.length ||
                     petData?.carnetSanitario?.vacAntirrabica?.fecha ||
                     petData?.carnetSanitario?.vacAntirrabica?.proximaDosis) && (
-                    <ButtonWrapper>
-                      <Button href="/agregar-vacuna">
-                        <>Agrega vacuna</>
-                      </Button>
-                    </ButtonWrapper>
+                    <>
+                      <Separetor />
+                      <AddButton text="Agrega vacuna" onTap={handleAddVacunButton} />
+                      <Separetor />
+                    </>
                   )}
               </>
             ) : (
