@@ -16,14 +16,17 @@ import { ParagraphMD } from '../components/Types/Paragraphs/Paragraphs';
 import formatDate from '../utils/formatDate';
 import { PetContext } from '../contexts/PetContext';
 import { getLocalStorage } from '../services';
+import IPet from '../interfaces/pet';
 
 const VacunaAntirrabica = (): ReactElement => {
   const [loading, setLoading] = useState(true);
   const [vacunState, setVacunState] = useState<any>();
+  const [petState, setPetState] = useState<IPet>();
   const { pet } = useContext(PetContext);
 
   const getDataFromLocalStorage = async () => {
     const response = await getLocalStorage('pet');
+    setPetState(response);
     setVacunState(response.carnetSanitario.vacAntirrabica);
     setLoading(false);
   };
@@ -31,6 +34,7 @@ const VacunaAntirrabica = (): ReactElement => {
   useEffect(() => {
     if (!!pet.id) {
       setVacunState(pet.carnetSanitario.vacAntirrabica);
+      setPetState(pet);
       setLoading(false);
     } else {
       getDataFromLocalStorage();
@@ -54,7 +58,6 @@ const VacunaAntirrabica = (): ReactElement => {
               <Title1>Vacuna Antirrábica</Title1>
             </StickyTitles>
             <Separetor />
-
             <CardDetail title="Detalle">
               <>
                 {vacunState?.fecha && (
@@ -70,13 +73,16 @@ const VacunaAntirrabica = (): ReactElement => {
               </>
             </CardDetail>
 
-            <Separetor />
-
-            <CenterButton>
-              <Button href="/agregar-vacuna-antirrabica" variant="outlined">
-                <>Editar</>
-              </Button>
-            </CenterButton>
+            {!petState.veterinaria && (
+              <>
+                <Separetor />
+                <CenterButton>
+                  <Button href="/agregar-vacuna-antirrabica" variant="outlined">
+                    <>Editar</>
+                  </Button>
+                </CenterButton>
+              </>
+            )}
           </Container>
         </PageWrapper>
       )}

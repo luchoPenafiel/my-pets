@@ -79,6 +79,7 @@ const AgregarVacuna = (): ReactElement => {
   useEffect(() => {
     if (pet.id) {
       setPetData(pet);
+      setShowSplasScreen(false);
     } else {
       loadInitialData();
       loadInitialUserData();
