@@ -49,7 +49,11 @@ const CarnetSanitario = (): ReactElement => {
   };
 
   const handleAddVacunButton = (): void => {
-    Router.push('/agregar-vacuna');
+    if (petData?.carnetSanitario?.vacAntirrabica?.fecha || petData?.carnetSanitario?.vacAntirrabica?.proximaDosis) {
+      Router.push('/agregar-vacuna');
+    } else {
+      Router.push('/switch-vacuna');
+    }
   };
 
   useEffect(() => {

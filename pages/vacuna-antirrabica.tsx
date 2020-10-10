@@ -1,6 +1,16 @@
 import React, { ReactElement, useEffect, useContext, useState } from 'react';
 import Head from 'next/head';
-import { CardDetail, Container, Navbar, PageWrapper, Separetor, StickyTitles, Splashscreen } from '../components';
+import {
+  Button,
+  CardDetail,
+  CenterButton,
+  Container,
+  Navbar,
+  PageWrapper,
+  Separetor,
+  StickyTitles,
+  Splashscreen,
+} from '../components';
 import { Title1 } from '../components/Types/Titles/Titles';
 import { ParagraphMD } from '../components/Types/Paragraphs/Paragraphs';
 import formatDate from '../utils/formatDate';
@@ -59,6 +69,14 @@ const VacunaAntirrabica = (): ReactElement => {
                 )}
               </>
             </CardDetail>
+
+            <Separetor />
+
+            <CenterButton>
+              <Button href="/agregar-vacuna-antirrabica" variant="outlined">
+                <>Editar</>
+              </Button>
+            </CenterButton>
           </Container>
         </PageWrapper>
       )}

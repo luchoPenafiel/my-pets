@@ -3,31 +3,24 @@ import Head from 'next/head';
 import { CenterButton, Button, Container, Separetor, EmptyState, Navbar, PageWrapper } from '../components';
 import { ParagraphMD } from '../components/Types/Paragraphs/Paragraphs';
 
-const SwitchVacuna = (): ReactElement => {
+const SuccessVacuna = (): ReactElement => {
   return (
     <>
       <Head>
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <title>Vacuna | Vetapp</title>
       </Head>
-      <Navbar previusScreen="carnet" />
+      <Navbar />
       <PageWrapper>
         <Container>
-          <EmptyState title="🤔">
+          <EmptyState title="¡Genial!">
             <>
-              <ParagraphMD>¿Qué vacuna vas a agregar?</ParagraphMD>
+              <ParagraphMD>Agregaste una vacuna con éxito</ParagraphMD>
 
               <Separetor />
               <CenterButton>
-                <Button href="/agregar-vacuna-antirrabica">
-                  <>Antirrábica</>
-                </Button>
-              </CenterButton>
-
-              <Separetor />
-              <CenterButton>
-                <Button href="/agregar-vacuna">
-                  <>Otra vacuna</>
+                <Button href="/carnet" color="primary">
+                  <>Volver al carnet</>
                 </Button>
               </CenterButton>
             </>
@@ -38,4 +31,4 @@ const SwitchVacuna = (): ReactElement => {
   );
 };
 
-export default SwitchVacuna;
+export default SuccessVacuna;

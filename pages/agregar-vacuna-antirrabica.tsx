@@ -18,7 +18,7 @@ import { Title1 } from '../components/Types/Titles/Titles';
 import { useForm } from 'react-hook-form';
 import TextField from '@material-ui/core/TextField';
 import { PetContext } from '../contexts/PetContext';
-import { addVacuna, getLocalStorage, setLocalStorage } from '../services';
+import { addVacunaAntirrabica, getLocalStorage, setLocalStorage } from '../services';
 import IPet from '../interfaces/pet';
 import IUser from '../interfaces/user';
 
@@ -46,18 +46,25 @@ const AgregarVacuna = (): ReactElement => {
   };
 
   const onSubmit = async (data) => {
+    if (!data.fecha && !data.proximaDosis) {
+      setErrorService('Debes agregar al menos una fecha');
+
+      return;
+    }
+
+    setErrorService('');
     setIsLoading(true);
 
-    const newOtrasVacunas: any = petData.carnetSanitario?.otrasVacunas || [];
-    newOtrasVacunas.push(data);
-
     const carnetSanitario = {
-      vacAntirrabica: { ...petData.carnetSanitario?.vacAntirrabica },
-      otrasVacunas: [...newOtrasVacunas],
+      vacAntirrabica: {
+        fecha: data.fecha,
+        proximaDosis: data.proximaDosis,
+      },
+      otrasVacunas: [...petData.carnetSanitario.otrasVacunas],
     };
 
     try {
-      await addVacuna({
+      await addVacunaAntirrabica({
         petId: petData.id,
         petName: petData.nombre,
         tutorData: userData,
@@ -89,7 +96,7 @@ const AgregarVacuna = (): ReactElement => {
     <>
       <Head>
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <title>Agregar Vacuna | Vetapp</title>
+        <title>Vacuna Antirrábica | Vetapp</title>
       </Head>
       {showSplashScreen ? (
         <Splashscreen />
@@ -101,29 +108,13 @@ const AgregarVacuna = (): ReactElement => {
               <Separetor />
               <StickyTitles>
                 <>
-                  <Title1>Agregar</Title1>
-                  <Title1>vacuna</Title1>
+                  <Title1>Vacuna</Title1>
+                  <Title1>antirrábica</Title1>
                 </>
               </StickyTitles>
               <Separetor />
 
               <form onSubmit={handleSubmit(onSubmit)}>
-                <InputWrapper>
-                  <TextField
-                    name="nombre"
-                    label="Nombre"
-                    fullWidth
-                    InputProps={{
-                      inputProps: {
-                        name: 'nombre',
-                        ref: register({ required: 'El nombre es obligatório.' }),
-                      },
-                    }}
-                    error={Boolean(errors.nombre)}
-                    helperText={errors.nombre?.message}
-                  />
-                </InputWrapper>
-
                 <InputWrapper>
                   <TextField
                     name="fecha"
@@ -166,6 +157,7 @@ const AgregarVacuna = (): ReactElement => {
 
                 <ErrorText>{errorService}</ErrorText>
 
+                <Separetor />
                 <CenterButton>
                   <Button type="submit" color="primary">
                     <>Agregar</>

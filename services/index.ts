@@ -3,6 +3,7 @@ import addConsult from './addConsult';
 import addPet from './addPet';
 import addUser from './addUser';
 import addVacuna from './addVacuna';
+import addVacunaAntirrabica from './addVacunaAntirrabica';
 import checkAuthState from './checkAuthState';
 import getConsultas from './getConsultas';
 import getLocalStorage from './getLocalStorage';
@@ -21,6 +22,8 @@ export {
   addConsult,
   addPet,
   addUser,
+  addVacuna,
+  addVacunaAntirrabica,
   checkAuthState,
   getConsultas,
   getLocalStorage,
@@ -31,7 +34,6 @@ export {
   passwordResetEmail,
   setLocalStorage,
   signup,
-  addVacuna,
   updateConsult,
   updatePet,
 };
