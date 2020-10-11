@@ -1,5 +1,6 @@
 import AddButton from './AddButton/AddButton';
 import Button from './Button/Button';
+import ButtonsWrapper from './ButtonsWrapper/ButtonsWrapper';
 import CardActionable from './CardActionable/CardActionable';
 import CardDetail from './CardDetail/CardDetail';
 import CardDetailActionable from './CardDetailActionable/CardDetailActionable';
@@ -23,6 +24,7 @@ import StickyTitles from './StickyTitles/StickyTitles';
 export {
   AddButton,
   Button,
+  ButtonsWrapper,
   CardActionable,
   CardDetail,
   CardDetailActionable,

@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Router from 'next/router';
 import {
   Button,
-  CenterButton,
+  ButtonsWrapper,
   Container,
   ErrorText,
   InputWrapper,
@@ -42,20 +42,29 @@ const EditarConsulta = (): ReactElement => {
     setIsLoading(true);
 
     try {
-      const data = {
+      let data = {
         petID: petData.id,
         consultID: intialData.id,
         ownerID: userData.id,
         tutorData: userData,
         petName: petData.nombre,
         consultData: {
-          controlID: intialData.controlID,
           ...formData,
         },
       };
 
+      if (intialData.controlID) {
+        data = {
+          ...data,
+          consultData: {
+            ...data.consultData,
+            controlID: intialData.controlID,
+          },
+        };
+      }
+
       await updateConsult(data);
-      Router.push('/consultas');
+      Router.push('/success-edit-consult');
       setIsLoading(false);
     } catch (err) {
       setErrorService(err.message);
@@ -139,6 +148,9 @@ const EditarConsulta = (): ReactElement => {
                     name="motivo"
                     label="Motivo de la consulta *"
                     fullWidth
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
                     InputProps={{
                       inputProps: {
                         name: 'motivo',
@@ -156,6 +168,9 @@ const EditarConsulta = (): ReactElement => {
                     name="diagnostico"
                     label="Diagnóstico *"
                     fullWidth
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
                     InputProps={{
                       inputProps: {
                         name: 'diagnostico',
@@ -173,6 +188,9 @@ const EditarConsulta = (): ReactElement => {
                     name="tratamiento[domicilio]"
                     label="Tratamiento"
                     fullWidth
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
                     InputProps={{
                       inputProps: {
                         name: 'tratamiento[domicilio]',
@@ -209,17 +227,15 @@ const EditarConsulta = (): ReactElement => {
                 <ErrorText>{errorService}</ErrorText>
 
                 <Separetor />
-                <CenterButton>
-                  <>
-                    <Button type="submit">
-                      <>Guardar cambios</>
-                    </Button>
+                <ButtonsWrapper>
+                  <Button type="submit">
+                    <>Guardar cambios</>
+                  </Button>
 
-                    <Button type="button" variant="outlined" color="secondary">
-                      <>Cancelar cambios</>
-                    </Button>
-                  </>
-                </CenterButton>
+                  <Button type="button" variant="outlined" color="secondary">
+                    <>Cancelar cambios</>
+                  </Button>
+                </ButtonsWrapper>
                 <Separetor />
               </form>
             </Container>

@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Router from 'next/router';
 import {
   Button,
-  CenterButton,
+  ButtonsWrapper,
   Container,
   ErrorText,
   InputWrapper,
@@ -102,7 +102,13 @@ const AgregarVacuna = (): ReactElement => {
         <Splashscreen />
       ) : (
         <>
-          <Navbar previusScreen="carnet" />
+          <Navbar
+            previusScreen={
+              petData?.carnetSanitario?.vacAntirrabica?.fecha || petData?.carnetSanitario?.vacAntirrabica?.proximaDosis
+                ? 'vacuna-antirrabica'
+                : 'switch-vacuna'
+            }
+          />
           <PageWrapper>
             <Container>
               <Separetor />
@@ -130,6 +136,7 @@ const AgregarVacuna = (): ReactElement => {
                         ref: register(),
                       },
                     }}
+                    defaultValue={petData?.carnetSanitario?.vacAntirrabica?.fecha}
                     error={Boolean(errors.fecha)}
                     helperText={errors.fecha?.message}
                   />
@@ -150,6 +157,7 @@ const AgregarVacuna = (): ReactElement => {
                         ref: register(),
                       },
                     }}
+                    defaultValue={petData?.carnetSanitario?.vacAntirrabica?.proximaDosis}
                     error={Boolean(errors.proximaDosis)}
                     helperText={errors.proximaDosis?.message}
                   />
@@ -158,11 +166,25 @@ const AgregarVacuna = (): ReactElement => {
                 <ErrorText>{errorService}</ErrorText>
 
                 <Separetor />
-                <CenterButton>
+
+                <ButtonsWrapper>
                   <Button type="submit" color="primary">
                     <>Agregar</>
                   </Button>
-                </CenterButton>
+
+                  <Button
+                    href={
+                      petData?.carnetSanitario?.vacAntirrabica?.fecha ||
+                      petData?.carnetSanitario?.vacAntirrabica?.proximaDosis
+                        ? 'vacuna-antirrabica'
+                        : 'switch-vacuna'
+                    }
+                    color="secondary"
+                    variant="outlined"
+                  >
+                    <>Cancelar</>
+                  </Button>
+                </ButtonsWrapper>
               </form>
             </Container>
           </PageWrapper>

@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Router from 'next/router';
 import {
   Button,
-  CenterButton,
+  ButtonsWrapper,
   Container,
   ErrorText,
   InputWrapper,
@@ -46,6 +46,13 @@ const AgregarVacuna = (): ReactElement => {
   };
 
   const onSubmit = async (data) => {
+    if (!data.fecha && !data.proximaDosis) {
+      setErrorService('Debe agregar al menos una fecha');
+
+      return;
+    }
+
+    setErrorService('');
     setIsLoading(true);
 
     const newOtrasVacunas: any = petData.carnetSanitario?.otrasVacunas || [];
@@ -114,6 +121,9 @@ const AgregarVacuna = (): ReactElement => {
                     name="nombre"
                     label="Nombre"
                     fullWidth
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
                     InputProps={{
                       inputProps: {
                         name: 'nombre',
@@ -167,11 +177,17 @@ const AgregarVacuna = (): ReactElement => {
 
                 <ErrorText>{errorService}</ErrorText>
 
-                <CenterButton>
+                <Separetor />
+
+                <ButtonsWrapper>
                   <Button type="submit" color="primary">
                     <>Agregar</>
                   </Button>
-                </CenterButton>
+
+                  <Button href="/carnet" color="secondary" variant="outlined">
+                    <>Cancelar</>
+                  </Button>
+                </ButtonsWrapper>
               </form>
             </Container>
           </PageWrapper>
