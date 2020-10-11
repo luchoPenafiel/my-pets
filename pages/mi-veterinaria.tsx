@@ -5,7 +5,7 @@ import { Button, Container, Map, Navbar, PageWrapper, Separetor, StickyTitles, S
 import { Title1 } from '../components/Types/Titles/Titles';
 import theme from '../constants/theme';
 import { ParagraphMD } from '../components/Types/Paragraphs/Paragraphs';
-import { getVeterinaria, getLocalStorage } from '../services';
+import { getVeterinaria, getVeterinarias, getLocalStorage } from '../services';
 import IVet from '../interfaces/vet';
 
 const VetName = styled.p`
@@ -31,7 +31,8 @@ const ButtonsWrapper = styled.div`
 `;
 
 const MiVeterinaria = (): ReactElement => {
-  const [vetData, setVetData] = useState<IVet>();
+  const [vetData, setVetData] = useState<IVet[]>();
+  const [vetsLocation, setVetsLocations] = useState([{ lat: 0, lng: 0 }]);
   const [loading, setLoading] = useState(true);
 
   const loadData = async () => {
@@ -40,6 +41,19 @@ const MiVeterinaria = (): ReactElement => {
     if (user.veterinaria) {
       const response = await getVeterinaria(user.veterinaria);
       setVetData(response);
+    } else {
+      const veterinarias = await getVeterinarias();
+      setVetData(veterinarias);
+
+      const locations = [];
+
+      veterinarias.map((vet) => {
+        if (vet.ubicacion) {
+          locations.push({ lat: vet.ubicacion.latitude, lng: vet.ubicacion.longitude });
+        }
+      });
+
+      setVetsLocations(locations);
     }
 
     setLoading(false);
@@ -68,21 +82,44 @@ const MiVeterinaria = (): ReactElement => {
                   <Title1>veterinaria</Title1>
                 </>
               </StickyTitles>
+
               <Separetor />
 
-              {vetData?.ubicacion && <Map lat={vetData.ubicacion.latitude} lng={vetData.ubicacion.longitude} />}
+              {vetData?.length === 1 ? (
+                <>
+                  {vetData[0].ubicacion && (
+                    <Map markers={[{ lat: vetData[0].ubicacion.latitude, lng: vetData[0].ubicacion.longitude }]} />
+                  )}
 
-              <VetName>{vetData?.nombre}</VetName>
+                  <VetName>{vetData[0].nombre}</VetName>
 
-              {vetData?.direccion && <ParagraphMD>{vetData.direccion}</ParagraphMD>}
+                  {vetData[0].direccion && <ParagraphMD>{vetData[0].direccion}</ParagraphMD>}
 
-              <ButtonsWrapper>
-                {vetData?.telefono && (
-                  <Button href={`tel:${vetData.telefono}`}>
-                    <>Llamar</>
-                  </Button>
-                )}
-              </ButtonsWrapper>
+                  {vetData[0].telefono && (
+                    <ButtonsWrapper>
+                      <Button href={`tel:${vetData[0].telefono}`}>
+                        <>Llamar</>
+                      </Button>
+                    </ButtonsWrapper>
+                  )}
+                </>
+              ) : (
+                <>
+                  <Map markers={vetsLocation} />
+
+                  {vetData.map((vet) => {
+                    return (
+                      <div key={vet.nombre}>
+                        <VetName>{vet.nombre}</VetName>
+                        {vet.direccion && <ParagraphMD>{vet.direccion}</ParagraphMD>}
+                        {vet.telefono && <a href={`tel:${vet.telefono}`}>{vet.telefono}</a>}
+
+                        <Separetor />
+                      </div>
+                    );
+                  })}
+                </>
+              )}
             </Container>
           </PageWrapper>
         </>

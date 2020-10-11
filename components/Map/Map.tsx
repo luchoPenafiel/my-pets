@@ -39,17 +39,19 @@ const Marker = ({ lat, lng }: any): ReactElement => (
 );
 
 type MapType = {
-  lat: number;
-  lng: number;
+  markers?: {
+    lat: number;
+    lng: number;
+  }[];
 };
 
-const Map = ({ lat, lng }: MapType): ReactElement => {
+const Map = ({ markers }: MapType): ReactElement => {
   const mapProps = {
+    zoom: markers.length > 1 ? 12 : 15,
     center: {
-      lat,
-      lng,
+      lat: markers[0].lat,
+      lng: markers[0].lng,
     },
-    zoom: 15,
   };
 
   return (
@@ -62,7 +64,9 @@ const Map = ({ lat, lng }: MapType): ReactElement => {
         defaultZoom={mapProps.zoom}
         yesIWantToUseGoogleMapApiInternals
       >
-        <Marker lat={lat} lng={lng} />
+        {markers.map((marker) => {
+          return <Marker key={`${marker.lat}-${marker.lng}`} lat={marker.lat} lng={marker.lng} />;
+        })}
       </GoogleMapReact>
     </Wrapper>
   );

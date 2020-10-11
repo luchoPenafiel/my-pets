@@ -10,6 +10,7 @@ import getLocalStorage from './getLocalStorage';
 import getPets from './getPet';
 import getUserData from './getUserData';
 import getVeterinaria from './getVeterinaria';
+import getVeterinarias from './getVeterinarias';
 import login from './login';
 import passwordResetEmail from './resetPassword';
 import setLocalStorage from './setLocalStorage';
@@ -30,6 +31,7 @@ export {
   getPets,
   getUserData,
   getVeterinaria,
+  getVeterinarias,
   login,
   passwordResetEmail,
   setLocalStorage,
