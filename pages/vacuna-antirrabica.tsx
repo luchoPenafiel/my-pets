@@ -2,6 +2,7 @@ import React, { ReactElement, useEffect, useContext, useState } from 'react';
 import Head from 'next/head';
 import {
   Button,
+  ButtonsWrapper,
   CardDetail,
   CenterButton,
   Container,

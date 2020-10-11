@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Router, { useRouter } from 'next/router';
 import {
   Button,
-  CenterButton,
+  ButtonsWrapper,
   Container,
   ErrorText,
   InputWrapper,
@@ -51,6 +51,13 @@ const Vacuna = (): ReactElement => {
   };
 
   const onSubmit = async (formData) => {
+    if (!formData.fecha && !formData.proximaDosis) {
+      setErrorService('Debe agregar al menos una fecha');
+
+      return;
+    }
+
+    setErrorService('');
     setIsLoading(true);
 
     const newOtherVacuns = vacunState.otrasVacunas.filter(
@@ -131,7 +138,6 @@ const Vacuna = (): ReactElement => {
                   helperText={errors.nombre?.message}
                 />
               </InputWrapper>
-
               <InputWrapper>
                 <TextField
                   name="fecha"
@@ -152,7 +158,6 @@ const Vacuna = (): ReactElement => {
                   helperText={errors.fecha?.message}
                 />
               </InputWrapper>
-
               <InputWrapper>
                 <TextField
                   name="proximaDosis"
@@ -173,23 +178,18 @@ const Vacuna = (): ReactElement => {
                   helperText={errors.proximaDosis?.message}
                 />
               </InputWrapper>
-
               <ErrorText>{errorService}</ErrorText>
 
               <Separetor />
-              <CenterButton>
+
+              <ButtonsWrapper>
                 <Button type="submit">
                   <>Guardar cambios</>
                 </Button>
-              </CenterButton>
-
-              <Separetor />
-
-              <CenterButton>
                 <Button href="/carnet" color="secondary" variant="outlined">
                   <>Cancelar</>
                 </Button>
-              </CenterButton>
+              </ButtonsWrapper>
             </form>
           </Container>
         </PageWrapper>
