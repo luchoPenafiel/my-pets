@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Router from 'next/router';
 import {
   Button,
-  CenterButton,
+  ButtonsWrapper,
   Container,
   ErrorText,
   InputWrapper,
@@ -45,9 +45,9 @@ const AgregarConsulta = (): ReactElement => {
       };
 
       await addConsult({ ...data });
-      Router.push('/consultas');
-
       setIsLoading(false);
+
+      Router.push('/success-add-consult');
     } catch (err) {
       setErrorService(err.message);
       setIsLoading(false);
@@ -120,6 +120,9 @@ const AgregarConsulta = (): ReactElement => {
                     name="motivo"
                     label="Motivo de la consulta *"
                     fullWidth
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
                     InputProps={{
                       inputProps: {
                         name: 'motivo',
@@ -136,6 +139,9 @@ const AgregarConsulta = (): ReactElement => {
                     name="diagnostico"
                     label="Diagnóstico *"
                     fullWidth
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
                     InputProps={{
                       inputProps: {
                         name: 'diagnostico',
@@ -152,6 +158,9 @@ const AgregarConsulta = (): ReactElement => {
                     name="tratamiento[domicilio]"
                     label="Tratamiento"
                     fullWidth
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
                     InputProps={{
                       inputProps: {
                         name: 'tratamiento[domicilio]',
@@ -186,11 +195,14 @@ const AgregarConsulta = (): ReactElement => {
                 <ErrorText>{errorService}</ErrorText>
 
                 <Separetor />
-                <CenterButton>
+                <ButtonsWrapper>
                   <Button type="submit">
                     <>Agregar consulta</>
                   </Button>
-                </CenterButton>
+                  <Button href="consultas" variant="outlined" color="secondary">
+                    <>Cancelar</>
+                  </Button>
+                </ButtonsWrapper>
                 <Separetor />
               </form>
             </Container>
