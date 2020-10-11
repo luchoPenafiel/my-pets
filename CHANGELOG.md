@@ -1,3 +1,12 @@
+## [0.8.1](https://github.com/luchoPenafiel/mis-mascotas/compare/v0.8.0...v0.8.1) (2020-10-11)
+
+
+### Bug Fixes
+
+* all fixes in vacuns flow! ([beea7fe](https://github.com/luchoPenafiel/mis-mascotas/commit/beea7fe9641013fe269940962327c80bfa344219))
+* consults ([95c51ad](https://github.com/luchoPenafiel/mis-mascotas/commit/95c51add3383c990f7b9ccde5c02481210fc32b5))
+* input shrink and add cancel button in edit vacun ([1345ed4](https://github.com/luchoPenafiel/mis-mascotas/commit/1345ed46af0de6e8344dd455f045bb036151a47f))
+
 # [0.8.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v0.7.0...v0.8.0) (2020-10-10)
 
 
