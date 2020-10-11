@@ -36,9 +36,12 @@ const MiVeterinaria = (): ReactElement => {
 
   const loadData = async () => {
     const user = await getLocalStorage('user');
-    const response = await getVeterinaria(user.veterinaria);
 
-    setVetData(response);
+    if (user.veterinaria) {
+      const response = await getVeterinaria(user.veterinaria);
+      setVetData(response);
+    }
+
     setLoading(false);
   };
   useEffect(() => {
@@ -62,14 +65,14 @@ const MiVeterinaria = (): ReactElement => {
               <StickyTitles>
                 <>
                   <Title1>Mi</Title1>
-                  <Title1>Veterinaria</Title1>
+                  <Title1>veterinaria</Title1>
                 </>
               </StickyTitles>
               <Separetor />
 
               {vetData?.ubicacion && <Map lat={vetData.ubicacion.latitude} lng={vetData.ubicacion.longitude} />}
 
-              <VetName>{vetData.nombre}</VetName>
+              <VetName>{vetData?.nombre}</VetName>
 
               {vetData?.direccion && <ParagraphMD>{vetData.direccion}</ParagraphMD>}
 
