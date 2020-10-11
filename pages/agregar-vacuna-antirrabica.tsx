@@ -158,9 +158,18 @@ const AgregarVacuna = (): ReactElement => {
                 <ErrorText>{errorService}</ErrorText>
 
                 <Separetor />
+
                 <CenterButton>
                   <Button type="submit" color="primary">
                     <>Agregar</>
+                  </Button>
+                </CenterButton>
+
+                <Separetor />
+
+                <CenterButton>
+                  <Button href="/carnet" color="secondary" variant="outlined">
+                    <>Cancelar</>
                   </Button>
                 </CenterButton>
               </form>

@@ -182,6 +182,14 @@ const Vacuna = (): ReactElement => {
                   <>Guardar cambios</>
                 </Button>
               </CenterButton>
+
+              <Separetor />
+
+              <CenterButton>
+                <Button href="/carnet" color="secondary" variant="outlined">
+                  <>Cancelar</>
+                </Button>
+              </CenterButton>
             </form>
           </Container>
         </PageWrapper>

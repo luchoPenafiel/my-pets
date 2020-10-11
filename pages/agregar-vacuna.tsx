@@ -114,6 +114,9 @@ const AgregarVacuna = (): ReactElement => {
                     name="nombre"
                     label="Nombre"
                     fullWidth
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
                     InputProps={{
                       inputProps: {
                         name: 'nombre',
@@ -170,6 +173,14 @@ const AgregarVacuna = (): ReactElement => {
                 <CenterButton>
                   <Button type="submit" color="primary">
                     <>Agregar</>
+                  </Button>
+                </CenterButton>
+
+                <Separetor />
+
+                <CenterButton>
+                  <Button href="/carnet" color="secondary" variant="outlined">
+                    <>Cancelar</>
                   </Button>
                 </CenterButton>
               </form>
