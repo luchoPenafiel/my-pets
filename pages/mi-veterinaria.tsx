@@ -40,6 +40,10 @@ const ButtonsWrapper = styled.div`
   }
 `;
 
+const Link = styled.a`
+  color: ${theme.color.primary};
+`;
+
 const MiVeterinaria = (): ReactElement => {
   const [vetData, setVetData] = useState<IVet[]>();
   const [loading, setLoading] = useState(true);
@@ -120,20 +124,20 @@ const MiVeterinaria = (): ReactElement => {
 
                           {vet.telefono && (
                             <ParagraphMD>
-                              <strong>Teléfono:</strong> <a href={`tel:${vet.telefono}`}>{vet.telefono}</a>
+                              <strong>Teléfono:</strong> <Link href={`tel:${vet.telefono}`}>{vet.telefono}</Link>
                             </ParagraphMD>
                           )}
 
                           {vet.ubicacion && (
                             <ParagraphMD>
                               <strong>Ubicación:</strong>{' '}
-                              <a
-                                href={`https://www.google.com/maps/place/Vete/@${vet.ubicacion.latitude},${vet.ubicacion.longitude},16z/data=!3m1!4b1!4m6!3m5!1s0x0:0x0!7e2!8m2!3d${vet.ubicacion.latitude}!4d${vet.ubicacion.longitude}`}
+                              <Link
+                                href={`https://www.google.com/maps/place/${vet.nombre}/@${vet.ubicacion.latitude},${vet.ubicacion.longitude},16z/data=!3m1!4b1!4m6!3m5!1s0x0:0x0!7e2!8m2!3d${vet.ubicacion.latitude}!4d${vet.ubicacion.longitude}`}
                                 target="_blank"
                                 rel="noreferrer"
                               >
                                 Ver en Google Maps
-                              </a>
+                              </Link>
                             </ParagraphMD>
                           )}
                         </>
