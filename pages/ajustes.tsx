@@ -117,9 +117,6 @@ const Ajustes = (): ReactElement => {
               <Separetor />
 
               <ButtonsWrapper>
-                <Button>
-                  <>Editar datos</>
-                </Button>
                 <Button variant="outlined" color="secondary" onClick={logout}>
                   <>Cerrar sesión</>
                 </Button>

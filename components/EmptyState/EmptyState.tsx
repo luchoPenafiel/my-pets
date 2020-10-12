@@ -11,6 +11,7 @@ const Wrapper = styled.div`
 
 const Title = styled(Title1)`
   color: ${theme.color.primary};
+  margin-bottom: 32px;
 `;
 
 type EmptyStateType = {

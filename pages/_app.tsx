@@ -89,8 +89,6 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
                   <PageWrapper>
                     <EmptyState title="oops">
                       <>
-                        <Separetor />
-
                         <ParagraphMD>
                           Parece que no tienes internet y no podemos recuperar los datos de tus mascotas.
                         </ParagraphMD>

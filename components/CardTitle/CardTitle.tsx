@@ -9,7 +9,7 @@ const Subtitle = styled.p`
 
 const Title = styled.p`
   font-family: ${theme.fontFamily.primary};
-  font-size: ${theme.fontSize.mobile.h1};
+  font-size: ${theme.fontSize.mobile.h3};
   font-weight: ${theme.fontStyle.bold};
 `;
 

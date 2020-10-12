@@ -73,7 +73,7 @@ const DrawerNavigation = styled.nav`
     color: ${theme.color.white};
     font-family: ${theme.fontFamily.primary};
     font-weight: ${theme.fontStyle.semibold};
-    font-size: ${theme.fontSize.mobile.h2};
+    font-size: ${theme.fontSize.mobile.h3};
     text-decoration: none;
     text-align: right;
 
