@@ -1,3 +1,36 @@
+# [0.9.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v0.8.1...v0.9.0) (2020-10-12)
+
+
+### Features
+
+* improve maps ([66a5065](https://github.com/luchoPenafiel/mis-mascotas/commit/66a50657504ef179c21f9333a71ee4f22105f833))
+* veterinaria ([6fd8822](https://github.com/luchoPenafiel/mis-mascotas/commit/6fd8822eb98f69b91b7d60069c1d7939265572da))
+* working con vets ([286f61c](https://github.com/luchoPenafiel/mis-mascotas/commit/286f61ce9ae10de09f8edb136188ef32761754c3))
+
+## [0.8.1](https://github.com/luchoPenafiel/mis-mascotas/compare/v0.8.0...v0.8.1) (2020-10-11)
+
+
+### Bug Fixes
+
+* all fixes in vacuns flow! ([beea7fe](https://github.com/luchoPenafiel/mis-mascotas/commit/beea7fe9641013fe269940962327c80bfa344219))
+* consults ([95c51ad](https://github.com/luchoPenafiel/mis-mascotas/commit/95c51add3383c990f7b9ccde5c02481210fc32b5))
+* input shrink and add cancel button in edit vacun ([1345ed4](https://github.com/luchoPenafiel/mis-mascotas/commit/1345ed46af0de6e8344dd455f045bb036151a47f))
+
+# [0.8.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v0.7.0...v0.8.0) (2020-10-10)
+
+
+### Features
+
+* add and edit vacuna antirrabica ([95055e0](https://github.com/luchoPenafiel/mis-mascotas/commit/95055e083af70b7be454327890ff05616ef6460e))
+* add vacun ([ec3ceff](https://github.com/luchoPenafiel/mis-mascotas/commit/ec3ceffd1d0319bf23518fcac873e262505f41c0))
+* add vacuns ([f6b7387](https://github.com/luchoPenafiel/mis-mascotas/commit/f6b7387fc85e920c6561bfb6632af4e3838baf83))
+* improve update carnet ([11a8d86](https://github.com/luchoPenafiel/mis-mascotas/commit/11a8d863597ec539a3dac30599e20636d56795b9))
+* improve vacun handler ([a6afd17](https://github.com/luchoPenafiel/mis-mascotas/commit/a6afd17ab78ba33462e379787450c4d64b67ac95))
+* todo mal ([12a1c4e](https://github.com/luchoPenafiel/mis-mascotas/commit/12a1c4e143a819c544063a63e7ee7acb72d1afc0))
+* ui vacunas ([1350979](https://github.com/luchoPenafiel/mis-mascotas/commit/1350979899d57a6ccb0dbeb5f2b3c6efba78b40d))
+* working on add vacuns ([c5fac03](https://github.com/luchoPenafiel/mis-mascotas/commit/c5fac03d35739f7d7fccbda11b8b51558a1855bf))
+* working on add vacuns ([0105bf6](https://github.com/luchoPenafiel/mis-mascotas/commit/0105bf632bd19f559972779aeefe1b299d482719))
+
 # [0.7.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v0.6.0...v0.7.0) (2020-07-19)
 
 
