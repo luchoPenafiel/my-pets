@@ -1,3 +1,12 @@
+# [0.9.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v0.8.1...v0.9.0) (2020-10-12)
+
+
+### Features
+
+* improve maps ([66a5065](https://github.com/luchoPenafiel/mis-mascotas/commit/66a50657504ef179c21f9333a71ee4f22105f833))
+* veterinaria ([6fd8822](https://github.com/luchoPenafiel/mis-mascotas/commit/6fd8822eb98f69b91b7d60069c1d7939265572da))
+* working con vets ([286f61c](https://github.com/luchoPenafiel/mis-mascotas/commit/286f61ce9ae10de09f8edb136188ef32761754c3))
+
 ## [0.8.1](https://github.com/luchoPenafiel/mis-mascotas/compare/v0.8.0...v0.8.1) (2020-10-11)
 
 
