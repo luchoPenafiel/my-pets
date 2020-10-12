@@ -1,11 +1,21 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
-import { Button, Container, Map, Navbar, PageWrapper, Separetor, StickyTitles, Splashscreen } from '../components';
+import {
+  Button,
+  CardDetail,
+  Container,
+  Map,
+  Navbar,
+  PageWrapper,
+  Separetor,
+  StickyTitles,
+  Splashscreen,
+} from '../components';
 import { Title1 } from '../components/Types/Titles/Titles';
 import theme from '../constants/theme';
 import { ParagraphMD } from '../components/Types/Paragraphs/Paragraphs';
-import { getVeterinaria, getLocalStorage } from '../services';
+import { getVeterinaria, getVeterinarias, getLocalStorage } from '../services';
 import IVet from '../interfaces/vet';
 
 const VetName = styled.p`
@@ -31,14 +41,20 @@ const ButtonsWrapper = styled.div`
 `;
 
 const MiVeterinaria = (): ReactElement => {
-  const [vetData, setVetData] = useState<IVet>();
+  const [vetData, setVetData] = useState<IVet[]>();
   const [loading, setLoading] = useState(true);
 
   const loadData = async () => {
     const user = await getLocalStorage('user');
-    const response = await getVeterinaria(user.veterinaria);
 
-    setVetData(response);
+    if (user.veterinaria) {
+      const response = await getVeterinaria(user.veterinaria);
+      setVetData([response]);
+    } else {
+      const veterinarias = await getVeterinarias();
+      setVetData(veterinarias);
+    }
+
     setLoading(false);
   };
   useEffect(() => {
@@ -61,25 +77,71 @@ const MiVeterinaria = (): ReactElement => {
               <Separetor />
               <StickyTitles>
                 <>
-                  <Title1>Mi</Title1>
-                  <Title1>Veterinaria</Title1>
+                  {vetData?.length === 1 ? (
+                    <>
+                      <Title1>Mi</Title1>
+                      <Title1>veterinaria</Title1>
+                    </>
+                  ) : (
+                    <Title1>Veterinarias</Title1>
+                  )}
                 </>
               </StickyTitles>
+
               <Separetor />
 
-              {vetData?.ubicacion && <Map lat={vetData.ubicacion.latitude} lng={vetData.ubicacion.longitude} />}
+              {vetData?.length === 1 ? (
+                <>
+                  {vetData[0].ubicacion && <Map markers={vetData} />}
 
-              <VetName>{vetData.nombre}</VetName>
+                  <VetName>{vetData[0].nombre}</VetName>
 
-              {vetData?.direccion && <ParagraphMD>{vetData.direccion}</ParagraphMD>}
+                  {vetData[0].direccion && <ParagraphMD>{vetData[0].direccion}</ParagraphMD>}
 
-              <ButtonsWrapper>
-                {vetData?.telefono && (
-                  <Button href={`tel:${vetData.telefono}`}>
-                    <>Llamar</>
-                  </Button>
-                )}
-              </ButtonsWrapper>
+                  {vetData[0].telefono && (
+                    <ButtonsWrapper>
+                      <Button href={`tel:${vetData[0].telefono}`}>
+                        <>Llamar</>
+                      </Button>
+                    </ButtonsWrapper>
+                  )}
+                </>
+              ) : (
+                <>
+                  {vetData.map((vet) => {
+                    return (
+                      <CardDetail key={vet.nombre} title={vet.nombre}>
+                        <>
+                          {vet.direccion && (
+                            <ParagraphMD>
+                              <strong>Dirección:</strong> {vet.direccion}
+                            </ParagraphMD>
+                          )}
+
+                          {vet.telefono && (
+                            <ParagraphMD>
+                              <strong>Teléfono:</strong> <a href={`tel:${vet.telefono}`}>{vet.telefono}</a>
+                            </ParagraphMD>
+                          )}
+
+                          {vet.ubicacion && (
+                            <ParagraphMD>
+                              <strong>Ubicación:</strong>{' '}
+                              <a
+                                href={`https://www.google.com/maps/place/Vete/@${vet.ubicacion.latitude},${vet.ubicacion.longitude},16z/data=!3m1!4b1!4m6!3m5!1s0x0:0x0!7e2!8m2!3d${vet.ubicacion.latitude}!4d${vet.ubicacion.longitude}`}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                Ver en Google Maps
+                              </a>
+                            </ParagraphMD>
+                          )}
+                        </>
+                      </CardDetail>
+                    );
+                  })}
+                </>
+              )}
             </Container>
           </PageWrapper>
         </>

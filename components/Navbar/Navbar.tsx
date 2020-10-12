@@ -133,7 +133,7 @@ const Navbar = ({ bgColor = 'white', color, previusScreen, withDrawer = true }: 
                   <a>Mis mascotas</a>
                 </Link>
                 <Link href="/mi-veterinaria">
-                  <a>Mis veterinaria</a>
+                  <a>Mi veterinaria</a>
                 </Link>
                 <Link href="/ajustes">
                   <a>Ajustes</a>
