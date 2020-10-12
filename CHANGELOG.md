@@ -1,3 +1,5 @@
+# [1.0.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v0.10.0...v1.0.0) (2020-10-12)
+
 # [0.10.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v0.9.0...v0.10.0) (2020-10-12)
 
 
