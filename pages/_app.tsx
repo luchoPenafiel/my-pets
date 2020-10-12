@@ -1,5 +1,5 @@
 /* eslint-disable import/extensions */
-import React, { useEffect, ReactElement } from 'react';
+import React, { useEffect, ReactElement, useState } from 'react';
 import { AppProps } from 'next/app';
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'polished';
@@ -8,6 +8,8 @@ import theme from '../constants/theme';
 import { LoadingProvider } from '../contexts/LoadingContext';
 import { PetProvider } from '../contexts/PetContext';
 import { ConsultProvider } from '../contexts/ConsultContext';
+import { Container, EmptyState, PageWrapper, Separetor } from '../components';
+import { ParagraphMD } from '../components/Types/Paragraphs/Paragraphs';
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -50,11 +52,27 @@ const themeMaterial = createMuiTheme({
 });
 
 function MyApp({ Component, pageProps }: AppProps): ReactElement {
+  const [online, setOnline] = useState(true);
+
   useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
+    }
+
+    if (window) {
+      if (!window.navigator.onLine) {
+        setOnline(false);
+      }
+
+      window.addEventListener('offline', function (e) {
+        setOnline(false);
+      });
+
+      window.addEventListener('online', function (e) {
+        setOnline(true);
+      });
     }
   }, []);
 
@@ -64,7 +82,25 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
         <ConsultProvider>
           <ThemeProvider theme={themeMaterial}>
             <div id="main-container">
-              <Component {...pageProps} />
+              {online ? (
+                <Component {...pageProps} />
+              ) : (
+                <Container>
+                  <PageWrapper>
+                    <EmptyState title="oops">
+                      <>
+                        <Separetor />
+
+                        <ParagraphMD>
+                          Parece que no tienes internet y no podemos recuperar los datos de tus mascotas.
+                        </ParagraphMD>
+
+                        <ParagraphMD>Revisa tu conexión y vuelve a intentarlo.</ParagraphMD>
+                      </>
+                    </EmptyState>
+                  </PageWrapper>
+                </Container>
+              )}
             </div>
             <GlobalStyles />
           </ThemeProvider>
