@@ -10,6 +10,7 @@ const getVeterinarias = (): Promise<any> => {
     firebase
       .firestore()
       .collection('veterinarias')
+      .where('status', '==', 'active')
       .get()
       .then((querySnapshot) => {
         const veterinarias = querySnapshot.docs.map((d) => ({
