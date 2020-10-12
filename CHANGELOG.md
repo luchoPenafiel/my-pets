@@ -1,3 +1,12 @@
+# [0.10.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v0.9.0...v0.10.0) (2020-10-12)
+
+
+### Features
+
+* improve ui vets ([33c8580](https://github.com/luchoPenafiel/mis-mascotas/commit/33c85800e5ad7ef85fb4e3553001ae7cf5ccead5))
+* show message when user is offline ([cd63c81](https://github.com/luchoPenafiel/mis-mascotas/commit/cd63c81833e104ed1e4a20b35832fcc5e715a0f6))
+* ui final improvements ([3e14bcb](https://github.com/luchoPenafiel/mis-mascotas/commit/3e14bcbcd6944cdd08641276f2f9e8449fc5dd30))
+
 # [0.9.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v0.8.1...v0.9.0) (2020-10-12)
 
 
