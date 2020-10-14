@@ -117,7 +117,10 @@ const Ajustes = (): ReactElement => {
               <Separetor />
 
               <ButtonsWrapper>
-                <Button variant="outlined" color="secondary" onClick={logout}>
+                <Button variant="outlined" color="secondary" href="/reset-password">
+                  <>Cambiar contraseña</>
+                </Button>
+                <Button variant="outlined" onClick={logout}>
                   <>Cerrar sesión</>
                 </Button>
               </ButtonsWrapper>
