@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v1.0.1...v1.1.0) (2020-10-14)
+
+
+### Features
+
+* reset password ([935d162](https://github.com/luchoPenafiel/mis-mascotas/commit/935d1629f340af0091cd04e2aa454335f257f607))
+
 ## [1.0.1](https://github.com/luchoPenafiel/mis-mascotas/compare/v1.0.0...v1.0.1) (2020-10-12)
 
 
