@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/luchoPenafiel/mis-mascotas/compare/v1.1.0...v1.1.1) (2020-10-15)
+
+
+### Features
+
+* add isologotipo ([fb8b864](https://github.com/luchoPenafiel/mis-mascotas/commit/fb8b8643972c14452c38dbea54b49cbdb079cbf5))
+
 # [1.1.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v1.0.1...v1.1.0) (2020-10-14)
 
 
