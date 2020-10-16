@@ -52,7 +52,7 @@ const Signup = (): ReactElement => {
     <>
       <Head>
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <title>Crear Usuario | Vetapp</title>
+        <title>Crear Usuario | Mis Mascotas</title>
       </Head>
       <Navbar previusScreen="login" withDrawer={false} />
       <PageWrapper>

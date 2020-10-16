@@ -38,7 +38,7 @@ const Consulta = (): ReactElement => {
     <>
       <Head>
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <title>Consulta | Vetapp</title>
+        <title>Consulta | Mis Mascotas</title>
       </Head>
       <Navbar previusScreen="consultas" />
       <PageWrapper>

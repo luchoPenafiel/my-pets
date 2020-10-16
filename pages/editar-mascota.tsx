@@ -73,7 +73,7 @@ const EditarMascota = (): ReactElement => {
     <>
       <Head>
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <title>Editar Mascota | Vetapp</title>
+        <title>Editar Mascota | Mis Mascotas</title>
       </Head>
       {loadInitialData ? (
         <Splashscreen />

@@ -64,7 +64,7 @@ const Mascota = (): ReactElement => {
     <>
       <Head>
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <title>Vetapp - Mascota</title>
+        <title>Mis Mascotas</title>
       </Head>
       <Navbar bgColor="transparent" color="white" previusScreen="index" />
       {loading ? (

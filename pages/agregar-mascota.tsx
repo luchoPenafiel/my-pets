@@ -43,7 +43,7 @@ const AagregarMascota = (): ReactElement => {
     <>
       <Head>
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <title>Agregar Mascota | Vetapp</title>
+        <title>Agregar Mascota | Mis Mascotas</title>
       </Head>
       <Navbar previusScreen="index" />
       <PageWrapper>

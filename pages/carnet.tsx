@@ -71,7 +71,7 @@ const CarnetSanitario = (): ReactElement => {
     <>
       <Head>
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <title>Carnet Sanitario | Vetapp</title>
+        <title>Carnet Sanitario | Mis Mascotas</title>
       </Head>
       <Navbar previusScreen="mascota" />
       {loading ? (

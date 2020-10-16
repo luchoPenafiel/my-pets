@@ -69,7 +69,7 @@ const MiVeterinaria = (): ReactElement => {
     <>
       <Head>
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <title>Mi veterinaria | Vetapp</title>
+        <title>Mi veterinaria | Mis Mascotas</title>
       </Head>
       {loading ? (
         <Splashscreen />

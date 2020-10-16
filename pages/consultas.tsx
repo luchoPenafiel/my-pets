@@ -106,7 +106,7 @@ const Consultas = (): ReactElement => {
     <>
       <Head>
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <title>Consultas | Vetapp</title>
+        <title>Consultas | Mis Mascotas</title>
       </Head>
       {loading ? (
         <Splashscreen />

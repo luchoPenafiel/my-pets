@@ -48,7 +48,7 @@ const OlvideMiClave = (): ReactElement => {
     <>
       <Head>
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <title>Olvidé mi clave | Vetapp</title>
+        <title>Olvidé mi clave | Mis Mascotas</title>
       </Head>
       <Navbar previusScreen="login" withDrawer={false} />
       <PageWrapper>

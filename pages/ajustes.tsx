@@ -70,7 +70,7 @@ const Ajustes = (): ReactElement => {
     <>
       <Head>
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <title>Ajustes | Vetapp</title>
+        <title>Ajustes | Mis Mascotas</title>
       </Head>
       {loading ? (
         <Splashscreen />

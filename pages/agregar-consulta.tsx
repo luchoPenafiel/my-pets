@@ -76,7 +76,7 @@ const AgregarConsulta = (): ReactElement => {
     <>
       <Head>
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <title>Agregar Consulta | Vetapp</title>
+        <title>Agregar Consulta | Mis Mascotas</title>
       </Head>
       {showSplashScreen ? (
         <Splashscreen />

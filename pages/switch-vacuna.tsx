@@ -8,7 +8,7 @@ const SwitchVacuna = (): ReactElement => {
     <>
       <Head>
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <title>Vacuna | Vetapp</title>
+        <title>Vacuna | Mis Mascotas</title>
       </Head>
       <Navbar previusScreen="carnet" />
       <PageWrapper>

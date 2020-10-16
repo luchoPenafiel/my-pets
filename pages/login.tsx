@@ -26,7 +26,7 @@ const Login = (): ReactElement => {
     <>
       <Head>
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <title>Vetapp - Login</title>
+        <title>Mis Mascotas</title>
       </Head>
       <LoginComponent errorService={errorService} handleLogin={handleLogin} />
       {isLoading && <Loading />}

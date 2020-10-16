@@ -103,7 +103,7 @@ const EditarConsulta = (): ReactElement => {
     <>
       <Head>
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <title>Editar Consulta | Vetapp</title>
+        <title>Editar Consulta | Mis Mascotas</title>
       </Head>
       {showSplashScreen ? (
         <Splashscreen />

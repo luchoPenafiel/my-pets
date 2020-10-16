@@ -48,7 +48,7 @@ const ResetPassword = (): ReactElement => {
     <>
       <Head>
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <title>Cambiar contraseña | Vetapp</title>
+        <title>Cambiar contraseña | Mis Mascotas</title>
       </Head>
       <Navbar previusScreen="ajustes" withDrawer={false} />
       <PageWrapper>

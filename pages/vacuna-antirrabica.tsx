@@ -46,7 +46,7 @@ const VacunaAntirrabica = (): ReactElement => {
     <>
       <Head>
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <title>Vacuna Antirrábica | Vetapp</title>
+        <title>Vacuna Antirrábica | Mis Mascotas</title>
       </Head>
       <Navbar previusScreen="carnet" />
       {loading ? (
