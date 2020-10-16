@@ -98,7 +98,7 @@ const MiVeterinaria = (): ReactElement => {
                   )}
                 </>
               </StickyTitles>
-              <Separetor />
+              {/* <Separetor /> */}
 
               {userData?.veterinaria ? null : (
                 <ParagraphMD>Acá vas a encontrar un listado de todas las veterinarias asociadas a Vetapp.</ParagraphMD>

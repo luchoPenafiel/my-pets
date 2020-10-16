@@ -52,7 +52,7 @@ const Vacuna = (): ReactElement => {
 
   const onSubmit = async (formData) => {
     if (!formData.fecha && !formData.proximaDosis) {
-      setErrorService('Debe agregar al menos una fecha');
+      setErrorService('Ingresá al menos una fecha');
 
       return;
     }
@@ -127,10 +127,13 @@ const Vacuna = (): ReactElement => {
                   name="nombre"
                   label="Nombre de la vacuna"
                   fullWidth
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
                   InputProps={{
                     inputProps: {
                       name: 'nombre',
-                      ref: register({ required: 'Tienes que ingresar el nombre de la vacuna' }),
+                      ref: register({ required: 'Ingresá el nombre de la vacuna' }),
                     },
                   }}
                   defaultValue={vacunState.otrasVacunas[Number(id)].nombre}
@@ -184,7 +187,7 @@ const Vacuna = (): ReactElement => {
 
               <ButtonsWrapper>
                 <Button type="submit">
-                  <>Guardar cambios</>
+                  <>Guardar</>
                 </Button>
                 <Button href="/carnet" color="secondary" variant="outlined">
                   <>Cancelar</>

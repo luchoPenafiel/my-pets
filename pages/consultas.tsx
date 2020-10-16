@@ -143,7 +143,7 @@ const Consultas = (): ReactElement => {
                   {petData.veterinaria ? (
                     <>
                       <ParagraphMD>{petData.nombre} no tiene consultas cargadas todavía.</ParagraphMD>
-                      <ParagraphMD>¡Pide turno a la veterinaria!</ParagraphMD>
+                      <ParagraphMD>¡Pedí un turno en la veterinaria!</ParagraphMD>
                       <ButtonWrapper>
                         <Button onClick={handleClickEmptyStateButton}>
                           <>Mi Veterinaria</>

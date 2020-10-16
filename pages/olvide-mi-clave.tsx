@@ -71,8 +71,8 @@ const OlvideMiClave = (): ReactElement => {
                 </>
               </StickyTitles>
               <ParagraphMD>
-                Si olvidaste tu clave, no te preocupes, solo debes ingresar a continuación tu email y te enviaremos las
-                instrucciones para recuperarla.
+                Si olvidaste tu clave, no te preocupes, solo tenés que ingresar tu email a continuación y te enviaremos
+                las instrucciones para recuperarla.
               </ParagraphMD>
               <Separetor />
 
@@ -86,7 +86,7 @@ const OlvideMiClave = (): ReactElement => {
                     InputProps={{
                       inputProps: {
                         name: 'email',
-                        ref: register({ required: 'Tienes que ingresar tu email' }),
+                        ref: register({ required: 'Ingresá tu email' }),
                       },
                     }}
                     error={Boolean(errors.email)}
