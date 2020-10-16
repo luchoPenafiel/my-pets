@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/luchoPenafiel/mis-mascotas/compare/v1.4.1...v1.4.2) (2020-10-16)
+
+
+### Features
+
+* copy ([bddbf66](https://github.com/luchoPenafiel/mis-mascotas/commit/bddbf664c0af79e0866d82a01b82492201fb5493))
+
 ## [1.4.1](https://github.com/luchoPenafiel/mis-mascotas/compare/v1.4.0...v1.4.1) (2020-10-16)
 
 
