@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v1.2.1...v1.3.0) (2020-10-16)
+
+
+### Features
+
+* add text in success views ([4bf54d3](https://github.com/luchoPenafiel/mis-mascotas/commit/4bf54d3fa74ab6ca0202367149a4422e139610ee))
+
 ## [1.2.1](https://github.com/luchoPenafiel/mis-mascotas/compare/v1.2.0...v1.2.1) (2020-10-16)
 
 
