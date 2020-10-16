@@ -69,7 +69,7 @@ const Signup = (): ReactElement => {
             </>
           </StickyTitles>
           <ParagraphMD>
-            Completaá tus datos para crear una cuenta y empezar a llevar toda la información de tus mascotas de manera
+            Completá tus datos para crear una cuenta y empezar a llevar toda la información de tus mascotas de manera
             fácil.
           </ParagraphMD>
 
