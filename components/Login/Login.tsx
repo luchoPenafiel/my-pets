@@ -98,7 +98,7 @@ const Login = ({ errorService, handleLogin }: any): ReactElement => {
                 InputProps={{
                   inputProps: {
                     name: 'email',
-                    ref: register({ required: 'Tienes que ingresar tu email' }),
+                    ref: register({ required: 'Ingresá tu email' }),
                   },
                 }}
                 error={Boolean(errors.email)}
@@ -114,7 +114,7 @@ const Login = ({ errorService, handleLogin }: any): ReactElement => {
                 InputProps={{
                   inputProps: {
                     name: 'password',
-                    ref: register({ required: 'Tienes que ingresar tu contraseña' }),
+                    ref: register({ required: 'Ingresá tu contraseña' }),
                   },
                 }}
                 error={Boolean(errors.password)}
