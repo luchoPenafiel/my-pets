@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v1.1.1...v1.2.0) (2020-10-16)
+
+
+### Features
+
+* gtm ([8e59119](https://github.com/luchoPenafiel/mis-mascotas/commit/8e59119c19751c51392966eff91429fdf855f12e))
+* gtm ([871e951](https://github.com/luchoPenafiel/mis-mascotas/commit/871e9516c99c6cb102b7a21af89f6c641d3b7175))
+
 ## [1.1.1](https://github.com/luchoPenafiel/mis-mascotas/compare/v1.1.0...v1.1.1) (2020-10-15)
 
 
