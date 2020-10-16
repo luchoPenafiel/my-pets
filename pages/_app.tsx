@@ -8,7 +8,7 @@ import theme from '../constants/theme';
 import { LoadingProvider } from '../contexts/LoadingContext';
 import { PetProvider } from '../contexts/PetContext';
 import { ConsultProvider } from '../contexts/ConsultContext';
-import { Container, EmptyState, PageWrapper, Separetor } from '../components';
+import { Container, EmptyState, PageWrapper } from '../components';
 import { ParagraphMD } from '../components/Types/Paragraphs/Paragraphs';
 
 const GlobalStyles = createGlobalStyle`

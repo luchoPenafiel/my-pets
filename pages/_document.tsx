@@ -52,6 +52,11 @@ class MyDocument extends NextDocument {
             }}
           />
 
+          <meta
+            name="description"
+            content="Mis Mascotas es una aplicación que te permite hacer el seguimiento de controles médicos y el carnet sanitario de tus mascotas."
+          />
+
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap"
