@@ -16,6 +16,7 @@ const SuccessConsult = (): ReactElement => {
           <EmptyState title="¡Genial!">
             <>
               <ParagraphMD>Agregaste una consulta con éxito</ParagraphMD>
+              <ParagraphMD>Te notificaremos de ella para que no se olvide</ParagraphMD>
 
               <Separetor />
               <CenterButton>

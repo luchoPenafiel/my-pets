@@ -16,6 +16,7 @@ const SuccessVacuna = (): ReactElement => {
           <EmptyState title="¡Genial!">
             <>
               <ParagraphMD>Agregaste una vacuna con éxito</ParagraphMD>
+              <ParagraphMD>Te notificaremos de ella para que no se olvide</ParagraphMD>
 
               <Separetor />
               <CenterButton>
