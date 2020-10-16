@@ -17,6 +17,7 @@ import theme from '../constants/theme';
 import { ParagraphMD } from '../components/Types/Paragraphs/Paragraphs';
 import { getVeterinaria, getVeterinarias, getLocalStorage } from '../services';
 import IVet from '../interfaces/vet';
+import IUser from '../interfaces/user';
 
 const VetName = styled.p`
   margin: 0;
@@ -47,9 +48,11 @@ const Link = styled.a`
 const MiVeterinaria = (): ReactElement => {
   const [vetData, setVetData] = useState<IVet[]>();
   const [loading, setLoading] = useState(true);
+  const [userData, setUserData] = useState<IUser>();
 
   const loadData = async () => {
     const user = await getLocalStorage('user');
+    setUserData(user);
 
     if (user.veterinaria) {
       const response = await getVeterinaria(user.veterinaria);
@@ -95,6 +98,11 @@ const MiVeterinaria = (): ReactElement => {
                   )}
                 </>
               </StickyTitles>
+              <Separetor />
+
+              {userData?.veterinaria ? null : (
+                <ParagraphMD>Acá vas a encontrar un listado de todas las veterinarias asociadas a Vetapp.</ParagraphMD>
+              )}
 
               <Separetor />
 

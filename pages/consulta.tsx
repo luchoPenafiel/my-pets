@@ -20,13 +20,17 @@ import IUser from '../interfaces/user';
 
 const Consulta = (): ReactElement => {
   const [consultData, setConsultData] = useState<IConsult>();
-  const { consult } = useContext(ConsultContext);
   const [userData, setUserData] = useState<IUser>();
+  const { consult } = useContext(ConsultContext);
+
+  const getUSerDataFromLocalStorage = async () => {
+    const owner = await getLocalStorage('user');
+
+    setUserData(owner);
+  };
 
   const getDataFromLocalStorage = async () => {
     const response = await getLocalStorage('consulta');
-    const owner = await getLocalStorage('user');
-    setUserData(owner);
     setConsultData(response);
   };
 
@@ -36,6 +40,7 @@ const Consulta = (): ReactElement => {
     } else {
       getDataFromLocalStorage();
     }
+    getUSerDataFromLocalStorage();
   }, []);
 
   return (
@@ -90,7 +95,8 @@ const Consulta = (): ReactElement => {
               <ParagraphMD>{consultData.tratamiento.domicilio}</ParagraphMD>
             </CardDetail>
           )}
-          {!userData?.veterinaria && (
+
+          {userData?.veterinaria ? null : (
             <CenterButton>
               <Button variant="outlined" href="/editar-consulta" color="primary">
                 <>Editar</>
