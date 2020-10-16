@@ -38,6 +38,20 @@ class MyDocument extends NextDocument {
     return (
       <Html>
         <Head>
+          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180665375-1"></script>
+          <script
+            async
+            dangerouslySetInnerHTML={{
+              __html: `
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+
+                    gtag('config', 'UA-180665375-1');
+                    `,
+            }}
+          />
+
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap"
