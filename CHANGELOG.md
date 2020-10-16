@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v1.4.3...v1.5.0) (2020-10-16)
+
+
+### Features
+
+* validacion del boton de editar consulta ([1682364](https://github.com/luchoPenafiel/mis-mascotas/commit/16823645395e86cf03ad9905e0c610279bf27a58))
+
 ## [1.4.3](https://github.com/luchoPenafiel/mis-mascotas/compare/v1.4.2...v1.4.3) (2020-10-16)
 
 
