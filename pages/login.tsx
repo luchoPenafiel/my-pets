@@ -27,6 +27,10 @@ const Login = (): ReactElement => {
       <Head>
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <title>Mis Mascotas</title>
+        <meta
+          name="description"
+          content="Mis Mascotas es una aplicación que te permite hacer el seguimiento de controles médicos y el carnet sanitario de tus mascotas."
+        />
       </Head>
       <LoginComponent errorService={errorService} handleLogin={handleLogin} />
       {isLoading && <Loading />}

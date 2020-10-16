@@ -77,6 +77,10 @@ const AgregarConsulta = (): ReactElement => {
       <Head>
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <title>Agregar Consulta | Mis Mascotas</title>
+        <meta
+          name="description"
+          content="Mis Mascotas es una aplicación que te permite hacer el seguimiento de controles médicos y el carnet sanitario de tus mascotas."
+        />
       </Head>
       {showSplashScreen ? (
         <Splashscreen />
