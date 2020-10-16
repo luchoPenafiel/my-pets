@@ -1,3 +1,12 @@
+# [1.4.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v1.3.0...v1.4.0) (2020-10-16)
+
+
+### Features
+
+* add meta description ([f87fa6b](https://github.com/luchoPenafiel/mis-mascotas/commit/f87fa6b3b98c40c57b73d4d69df7213eefb2c69a))
+* add meta description ([92cd24d](https://github.com/luchoPenafiel/mis-mascotas/commit/92cd24d79622bd85fc4869843afe479a22e235f7))
+* change name ([fa98d34](https://github.com/luchoPenafiel/mis-mascotas/commit/fa98d34d5cff0524b9f9b49d589cf6233593d789))
+
 # [1.3.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v1.2.1...v1.3.0) (2020-10-16)
 
 
