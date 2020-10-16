@@ -101,7 +101,7 @@ const MiVeterinaria = (): ReactElement => {
               {/* <Separetor /> */}
 
               {userData?.veterinaria ? null : (
-                <ParagraphMD>Acá vas a encontrar un listado de todas las veterinarias asociadas a Vetapp.</ParagraphMD>
+                <ParagraphMD>Acá vas a encontrar un listado de todas las veterinarias que usan Vetapp.</ParagraphMD>
               )}
 
               <Separetor />
