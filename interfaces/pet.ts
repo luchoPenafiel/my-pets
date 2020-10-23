@@ -11,6 +11,7 @@ type IPet = {
     raza?: string;
     sexo?: string;
     situacionReproductiva?: string;
+    ultimoPeso?: string;
   };
   tutor: string;
   veterinaria: string;

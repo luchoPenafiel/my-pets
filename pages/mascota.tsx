@@ -102,6 +102,11 @@ const Mascota = (): ReactElement => {
                     <strong>Pelaje</strong> {petData.resena.pelaje}
                   </ParagraphMD>
                 )}
+                {petData?.resena?.ultimoPeso && (
+                  <ParagraphMD>
+                    <strong>Último peso</strong> {petData.resena.ultimoPeso} Kg
+                  </ParagraphMD>
+                )}
                 {petData?.resena?.fechaNacimiento && (
                   <ParagraphMD>
                     <strong>Fecha de nacimiento</strong> {petData.resena.fechaNacimiento}
