@@ -73,6 +73,11 @@ const Consulta = (): ReactElement => {
                   <strong>Motivo de consulta</strong> {consultData.motivo}
                 </ParagraphMD>
               )}
+              {consultData?.eog?.peso && (
+                <ParagraphMD>
+                  <strong>Peso</strong> {consultData?.eog?.peso} Kg
+                </ParagraphMD>
+              )}
               {consultData?.doctor && (
                 <ParagraphMD>
                   <strong>Profesional que atendió</strong> {consultData.doctor}

@@ -6,9 +6,10 @@ type addConsultType = {
   ownerData: { [key: string]: any };
   petName: string;
   consultData: { [key: string]: any };
+  petResena: { [key: string]: any };
 };
 
-const addConsult = ({ petID, ownerData, petName, consultData }: addConsultType): Promise<any> => {
+const addConsult = ({ petID, ownerData, petName, consultData, petResena }: addConsultType): Promise<any> => {
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
   }
@@ -45,7 +46,26 @@ const addConsult = ({ petID, ownerData, petName, consultData }: addConsultType):
             .collection(`mascotas/${petID}/consultas`)
             .add({ ...consultData, controlID: querySnapshot.id })
             .then(() => {
-              resolve(true);
+              if (!!consultData.eog.peso) {
+                firebase
+                  .firestore()
+                  .collection('mascotas')
+                  .doc(petID)
+                  .update({
+                    resena: {
+                      ...petResena,
+                      ultimoPeso: consultData.eog.peso,
+                    },
+                  })
+                  .then(() => {
+                    resolve(true);
+                  })
+                  .catch((error) => {
+                    reject(new Error(error));
+                  });
+              } else {
+                resolve(true);
+              }
             })
             .catch((error) => {
               reject(new Error(error));
@@ -61,7 +81,26 @@ const addConsult = ({ petID, ownerData, petName, consultData }: addConsultType):
         .collection(`mascotas/${petID}/consultas`)
         .add(consultData)
         .then(() => {
-          resolve(true);
+          if (!!consultData.eog?.peso) {
+            firebase
+              .firestore()
+              .collection('mascotas')
+              .doc(petID)
+              .update({
+                resena: {
+                  ...petResena,
+                  ultimoPeso: consultData.eog.peso,
+                },
+              })
+              .then(() => {
+                resolve(true);
+              })
+              .catch((error) => {
+                reject(new Error(error));
+              });
+          } else {
+            resolve(true);
+          }
         })
         .catch((error) => {
           reject(new Error(error));

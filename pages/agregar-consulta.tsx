@@ -42,6 +42,7 @@ const AgregarConsulta = (): ReactElement => {
         petName: petData.nombre,
         ownerData: userData,
         consultData: { ...formData },
+        petResena: petData.resena,
       };
 
       await addConsult({ ...data });
@@ -135,6 +136,25 @@ const AgregarConsulta = (): ReactElement => {
                     }}
                     error={Boolean(errors.motivo)}
                     helperText={errors.motivo?.message}
+                  />
+                </InputWrapper>
+
+                <InputWrapper>
+                  <TextField
+                    name="eog[peso]"
+                    label="Peso"
+                    fullWidth
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    InputProps={{
+                      inputProps: {
+                        name: 'eog[peso]',
+                        ref: register(),
+                      },
+                    }}
+                    error={Boolean(errors.eog?.peso)}
+                    helperText={errors.eog?.peso?.message}
                   />
                 </InputWrapper>
 

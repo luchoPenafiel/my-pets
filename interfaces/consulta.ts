@@ -9,6 +9,9 @@ type IConsulta = {
   tratamiento: {
     domicilio: string;
   };
+  eog?: {
+    peso?: string;
+  };
 };
 
 export default IConsulta;
