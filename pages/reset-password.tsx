@@ -38,7 +38,7 @@ const ResetPassword = (): ReactElement => {
       setConfirmationMessage({
         show: true,
         title: 'Oops',
-        message: 'No pudimos enviarte el email, porfavor, vuelve a intentar.',
+        message: 'No pudimos enviarte el email, porfavor, volvé a intentar.',
       });
       setLoading(false);
     }
@@ -71,8 +71,8 @@ const ResetPassword = (): ReactElement => {
                 </>
               </StickyTitles>
               <ParagraphMD>
-                Para cambiar tu contraseña solo debes ingresar a continuación tu email y te enviaremos las instrucciones
-                de como seguir.
+                Para cambiar tu contraseña solo tenés que ingresar tu email a continuación y te enviaremos las
+                instrucciones de cómo seguir.
               </ParagraphMD>
               <Separetor />
 
@@ -86,7 +86,7 @@ const ResetPassword = (): ReactElement => {
                     InputProps={{
                       inputProps: {
                         name: 'email',
-                        ref: register({ required: 'Tienes que ingresar tu email' }),
+                        ref: register({ required: 'Ingresá tu email' }),
                       },
                     }}
                     error={Boolean(errors.email)}

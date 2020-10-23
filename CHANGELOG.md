@@ -1,3 +1,33 @@
+# [1.7.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v1.6.0...v1.7.0) (2020-10-16)
+
+
+### Features
+
+* change copy ([7aa82a7](https://github.com/luchoPenafiel/mis-mascotas/commit/7aa82a71b2c4ebdf0cf8b377f1e3bc4c6538016e))
+* minor fixes and minor improvements ([3bb8361](https://github.com/luchoPenafiel/mis-mascotas/commit/3bb8361c2472a34f29744754712fedf41c01e1e9))
+
+# [1.6.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v1.5.0...v1.6.0) (2020-10-16)
+
+
+### Features
+
+* ajuste texto en veterinaria ([6daffbe](https://github.com/luchoPenafiel/mis-mascotas/commit/6daffbeeae900bd1be2e33fd090f26e6423b83b7))
+* vet copy ([0406d89](https://github.com/luchoPenafiel/mis-mascotas/commit/0406d8936e5c9120daaccae8e263dc9261ce6c50))
+
+# [1.5.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v1.4.3...v1.5.0) (2020-10-16)
+
+
+### Features
+
+* validacion del boton de editar consulta ([1682364](https://github.com/luchoPenafiel/mis-mascotas/commit/16823645395e86cf03ad9905e0c610279bf27a58))
+
+## [1.4.3](https://github.com/luchoPenafiel/mis-mascotas/compare/v1.4.2...v1.4.3) (2020-10-16)
+
+
+### Features
+
+* copy ([292279d](https://github.com/luchoPenafiel/mis-mascotas/commit/292279d298049d35d8aae46fae898b7d45a3db48))
+
 ## [1.4.2](https://github.com/luchoPenafiel/mis-mascotas/compare/v1.4.1...v1.4.2) (2020-10-16)
 
 

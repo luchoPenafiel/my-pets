@@ -111,7 +111,7 @@ const AgregarConsulta = (): ReactElement => {
                     InputProps={{
                       inputProps: {
                         name: 'fecha',
-                        ref: register({ required: 'Tienes que ingresar la fecha de la consulta' }),
+                        ref: register({ required: 'Ingresá la fecha de la consulta' }),
                       },
                     }}
                     error={Boolean(errors.fecha)}
@@ -130,7 +130,7 @@ const AgregarConsulta = (): ReactElement => {
                     InputProps={{
                       inputProps: {
                         name: 'motivo',
-                        ref: register({ required: 'Tienes que ingresar el motivo de la consulta' }),
+                        ref: register({ required: 'Ingresá el motivo de la consulta' }),
                       },
                     }}
                     error={Boolean(errors.motivo)}
@@ -149,7 +149,7 @@ const AgregarConsulta = (): ReactElement => {
                     InputProps={{
                       inputProps: {
                         name: 'diagnostico',
-                        ref: register({ required: 'Tienes que ingresar el diagnostico' }),
+                        ref: register({ required: 'Ingresá el diagnostico' }),
                       },
                     }}
                     error={Boolean(errors.diagnostico)}

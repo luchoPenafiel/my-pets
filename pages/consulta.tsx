@@ -16,10 +16,18 @@ import IConsult from '../interfaces/consulta';
 import { getLocalStorage } from '../services';
 import { ParagraphMD } from '../components/Types/Paragraphs/Paragraphs';
 import formatDate from '../utils/formatDate';
+import IUser from '../interfaces/user';
 
 const Consulta = (): ReactElement => {
   const [consultData, setConsultData] = useState<IConsult>();
+  const [userData, setUserData] = useState<IUser>();
   const { consult } = useContext(ConsultContext);
+
+  const getUSerDataFromLocalStorage = async () => {
+    const owner = await getLocalStorage('user');
+
+    setUserData(owner);
+  };
 
   const getDataFromLocalStorage = async () => {
     const response = await getLocalStorage('consulta');
@@ -32,6 +40,7 @@ const Consulta = (): ReactElement => {
     } else {
       getDataFromLocalStorage();
     }
+    getUSerDataFromLocalStorage();
   }, []);
 
   return (
@@ -51,9 +60,7 @@ const Consulta = (): ReactElement => {
           <StickyTitles>
             <Title1>Consulta</Title1>
           </StickyTitles>
-
           <Separetor />
-
           <CardDetail title="Detalle">
             <>
               {consultData?.fecha && (
@@ -78,24 +85,24 @@ const Consulta = (): ReactElement => {
               )}
             </>
           </CardDetail>
-
           {consultData?.diagnostico && (
             <CardDetail title="Diagóstico">
               <ParagraphMD>{consultData.diagnostico}</ParagraphMD>
             </CardDetail>
           )}
-
           {consultData?.tratamiento?.domicilio && (
             <CardDetail title="Tratamiento">
               <ParagraphMD>{consultData.tratamiento.domicilio}</ParagraphMD>
             </CardDetail>
           )}
 
-          <CenterButton>
-            <Button variant="outlined" href="/editar-consulta" color="primary">
-              <>Editar</>
-            </Button>
-          </CenterButton>
+          {userData?.veterinaria ? null : (
+            <CenterButton>
+              <Button variant="outlined" href="/editar-consulta" color="primary">
+                <>Editar</>
+              </Button>
+            </CenterButton>
+          )}
         </Container>
       </PageWrapper>
     </>

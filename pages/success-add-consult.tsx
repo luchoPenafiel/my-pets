@@ -20,7 +20,7 @@ const SuccessConsult = (): ReactElement => {
           <EmptyState title="¡Genial!">
             <>
               <ParagraphMD>Agregaste una consulta con éxito</ParagraphMD>
-              <ParagraphMD>Te notificaremos de ella para que no se olvide</ParagraphMD>
+              <ParagraphMD>Te vamos a notificar de ella para que no se te olvide</ParagraphMD>
 
               <Separetor />
               <CenterButton>

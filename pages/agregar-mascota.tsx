@@ -66,10 +66,13 @@ const AagregarMascota = (): ReactElement => {
                 name="nombre"
                 label="Nombre *"
                 fullWidth
+                InputLabelProps={{
+                  shrink: true,
+                }}
                 InputProps={{
                   inputProps: {
                     name: 'nombre',
-                    ref: register({ required: 'Tienes que ingresar el nombre de tu mascota' }),
+                    ref: register({ required: 'Ingresá el nombre de tu mascota' }),
                   },
                 }}
                 error={Boolean(errors.nombre)}
@@ -79,7 +82,7 @@ const AagregarMascota = (): ReactElement => {
 
             <InputWrapper>
               <FormControl fullWidth error={Boolean(errors?.resena?.especie)}>
-                <InputLabel>Especie *</InputLabel>
+                <InputLabel shrink>Especie *</InputLabel>
                 <Controller
                   as={
                     <Dropdown>
@@ -89,7 +92,7 @@ const AagregarMascota = (): ReactElement => {
                     </Dropdown>
                   }
                   name="resena[especie]"
-                  rules={{ required: 'Seleccione una opción' }}
+                  rules={{ required: 'Selecciona una opción' }}
                   control={control}
                   defaultValue=""
                 />
@@ -102,10 +105,13 @@ const AagregarMascota = (): ReactElement => {
                 name="resena[raza]"
                 label="Raza *"
                 fullWidth
+                InputLabelProps={{
+                  shrink: true,
+                }}
                 InputProps={{
                   inputProps: {
                     name: 'resena[raza]',
-                    ref: register({ required: 'Tienes que ingresar una raza' }),
+                    ref: register({ required: 'Ingresá una raza' }),
                   },
                 }}
                 error={Boolean(errors?.resena?.raza)}
@@ -118,6 +124,9 @@ const AagregarMascota = (): ReactElement => {
                 name="resena[pelaje]"
                 label="Pelaje"
                 fullWidth
+                InputLabelProps={{
+                  shrink: true,
+                }}
                 InputProps={{
                   inputProps: {
                     name: 'resena[pelaje]',
@@ -131,7 +140,7 @@ const AagregarMascota = (): ReactElement => {
 
             <InputWrapper>
               <FormControl fullWidth error={Boolean(errors?.resena?.sexo)}>
-                <InputLabel>Sexo</InputLabel>
+                <InputLabel shrink>Sexo</InputLabel>
                 <Controller
                   as={
                     <Dropdown>

@@ -138,7 +138,7 @@ const EditarConsulta = (): ReactElement => {
                     InputProps={{
                       inputProps: {
                         name: 'fecha',
-                        ref: register({ required: 'Tienes que ingresar la fecha de la consulta' }),
+                        ref: register({ required: 'Ingresá la fecha de la consulta' }),
                       },
                     }}
                     defaultValue={intialData.fecha}
@@ -158,7 +158,7 @@ const EditarConsulta = (): ReactElement => {
                     InputProps={{
                       inputProps: {
                         name: 'motivo',
-                        ref: register({ required: 'Tienes que ingresar el motivo de la consulta' }),
+                        ref: register({ required: 'Ingresá el motivo de la consulta' }),
                       },
                     }}
                     defaultValue={intialData.motivo}
@@ -178,7 +178,7 @@ const EditarConsulta = (): ReactElement => {
                     InputProps={{
                       inputProps: {
                         name: 'diagnostico',
-                        ref: register({ required: 'Tienes que ingresar el diagnostico' }),
+                        ref: register({ required: 'Ingresá el diagnostico' }),
                       },
                     }}
                     defaultValue={intialData.diagnostico}
@@ -236,8 +236,8 @@ const EditarConsulta = (): ReactElement => {
                     <>Guardar cambios</>
                   </Button>
 
-                  <Button type="button" variant="outlined" color="secondary">
-                    <>Cancelar cambios</>
+                  <Button href="/consulta" variant="outlined" color="secondary">
+                    <>Cancelar</>
                   </Button>
                 </ButtonsWrapper>
                 <Separetor />

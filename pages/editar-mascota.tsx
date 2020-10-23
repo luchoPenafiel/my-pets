@@ -50,10 +50,6 @@ const EditarMascota = (): ReactElement => {
     }
   };
 
-  const cancelChanges = () => {
-    Router.back();
-  };
-
   const loadDataFromLocalStorage = async () => {
     const data = await getLocalStorage('pet');
     setPetData(data);
@@ -100,10 +96,13 @@ const EditarMascota = (): ReactElement => {
                     name="nombre"
                     label="Nombre *"
                     fullWidth
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
                     InputProps={{
                       inputProps: {
                         name: 'nombre',
-                        ref: register({ required: 'Tienes que ingresar el nombre de tu mascota' }),
+                        ref: register({ required: 'Ingresá el nombre de tu mascota' }),
                       },
                     }}
                     defaultValue={petData.nombre}
@@ -114,7 +113,7 @@ const EditarMascota = (): ReactElement => {
 
                 <InputWrapper>
                   <FormControl fullWidth error={Boolean(errors?.resena?.especie)}>
-                    <InputLabel>Especie *</InputLabel>
+                    <InputLabel shrink>Especie *</InputLabel>
                     <Controller
                       as={
                         <Dropdown>
@@ -137,10 +136,13 @@ const EditarMascota = (): ReactElement => {
                     name="resena[raza]"
                     label="Raza *"
                     fullWidth
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
                     InputProps={{
                       inputProps: {
                         name: 'resena[raza]',
-                        ref: register({ required: 'Tienes que ingresar una raza' }),
+                        ref: register({ required: 'Ingresá una raza' }),
                       },
                     }}
                     error={Boolean(errors?.resena?.raza)}
@@ -154,6 +156,9 @@ const EditarMascota = (): ReactElement => {
                     name="resena[pelaje]"
                     label="Pelaje"
                     fullWidth
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
                     InputProps={{
                       inputProps: {
                         name: 'resena[pelaje]',
@@ -168,7 +173,7 @@ const EditarMascota = (): ReactElement => {
 
                 <InputWrapper>
                   <FormControl fullWidth error={Boolean(errors?.resena?.sexo)}>
-                    <InputLabel>Sexo</InputLabel>
+                    <InputLabel shrink>Sexo</InputLabel>
                     <Controller
                       as={
                         <Dropdown>
@@ -214,7 +219,7 @@ const EditarMascota = (): ReactElement => {
                       <>Guardar cambios</>
                     </Button>
 
-                    <Button onClick={cancelChanges} type="button" color="secondary" variant="outlined">
+                    <Button href="/mascota" type="button" color="secondary" variant="outlined">
                       <>Cancelar</>
                     </Button>
                   </>

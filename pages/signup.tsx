@@ -69,7 +69,7 @@ const Signup = (): ReactElement => {
             </>
           </StickyTitles>
           <ParagraphMD>
-            Completaá tus datos para crear una cuenta y empezar a llevar toda la información de tus mascotas de manera
+            Completá tus datos para crear una cuenta y empezar a llevar toda la información de tus mascotas de manera
             fácil.
           </ParagraphMD>
 
@@ -81,10 +81,13 @@ const Signup = (): ReactElement => {
                 name="nombre"
                 label="Nombre"
                 fullWidth
+                InputLabelProps={{
+                  shrink: true,
+                }}
                 InputProps={{
                   inputProps: {
                     name: 'nombre',
-                    ref: register({ required: 'Tienes que ingresar tu nombre' }),
+                    ref: register({ required: 'Ingresá tu nombre' }),
                   },
                 }}
                 error={Boolean(errors.nombre)}
@@ -97,11 +100,14 @@ const Signup = (): ReactElement => {
                 name="email"
                 label="Email"
                 fullWidth
+                InputLabelProps={{
+                  shrink: true,
+                }}
                 type="email"
                 InputProps={{
                   inputProps: {
                     name: 'email',
-                    ref: register({ required: 'Tienes que ingresar tu email' }),
+                    ref: register({ required: 'Ingresá tu email' }),
                   },
                 }}
                 error={Boolean(errors.email)}
@@ -114,12 +120,15 @@ const Signup = (): ReactElement => {
                 name="password"
                 label="Contraseña"
                 fullWidth
+                InputLabelProps={{
+                  shrink: true,
+                }}
                 type="password"
                 InputProps={{
                   inputProps: {
                     name: 'password',
                     ref: register({
-                      required: 'Tienes que ingresar una contraseña',
+                      required: 'Ingresá una contraseña',
                       minLength: {
                         value: 6,
                         message: 'La contraseña debe tener al menos 6 caracteres',

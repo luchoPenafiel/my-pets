@@ -47,7 +47,7 @@ const AgregarVacuna = (): ReactElement => {
 
   const onSubmit = async (data) => {
     if (!data.fecha && !data.proximaDosis) {
-      setErrorService('Debe agregar al menos una fecha');
+      setErrorService('Tenés que agregar al menos una fecha.');
 
       return;
     }
@@ -131,7 +131,7 @@ const AgregarVacuna = (): ReactElement => {
                     InputProps={{
                       inputProps: {
                         name: 'nombre',
-                        ref: register({ required: 'El nombre es obligatório.' }),
+                        ref: register({ required: 'Ingresá el nombre de la vacuna' }),
                       },
                     }}
                     error={Boolean(errors.nombre)}
