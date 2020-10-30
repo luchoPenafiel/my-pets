@@ -1,3 +1,12 @@
+# [1.8.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v1.7.0...v1.8.0) (2020-10-30)
+
+
+### Features
+
+* ultimo peso ([eb9bc1d](https://github.com/luchoPenafiel/mis-mascotas/commit/eb9bc1d2d790e829b2c99fbb3f60a258544b9b23))
+* ultimo peso ([8be4861](https://github.com/luchoPenafiel/mis-mascotas/commit/8be4861b257f529bbdcf6a1188c3629f155a1bdf))
+* ultimo peso ([10e934c](https://github.com/luchoPenafiel/mis-mascotas/commit/10e934c80af51b2d9f53ff70e83958497b7787b3))
+
 # [1.7.0](https://github.com/luchoPenafiel/mis-mascotas/compare/v1.6.0...v1.7.0) (2020-10-16)
 
 
