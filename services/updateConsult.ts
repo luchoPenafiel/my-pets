@@ -8,6 +8,7 @@ type updateConsultType = {
   tutorData: { [key: string]: any };
   petName: string;
   consultData: { [key: string]: any };
+  petResena?: { [key: string]: any };
 };
 
 const updateConsult = ({
@@ -17,6 +18,7 @@ const updateConsult = ({
   petName,
   consultData,
   tutorData,
+  petResena,
 }: updateConsultType): Promise<any> => {
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
@@ -57,7 +59,26 @@ const updateConsult = ({
             .doc(consultID)
             .update(consultData)
             .then(() => {
-              resolve(true);
+              if (!!consultData.eog.peso) {
+                firebase
+                  .firestore()
+                  .collection('mascotas')
+                  .doc(petID)
+                  .update({
+                    resena: {
+                      ...petResena,
+                      ultimoPeso: consultData.eog.peso,
+                    },
+                  })
+                  .then(() => {
+                    resolve(true);
+                  })
+                  .catch((error) => {
+                    reject(new Error(error));
+                  });
+              } else {
+                resolve(true);
+              }
             })
             .catch((error) => {
               reject(new Error(error));
@@ -82,7 +103,26 @@ const updateConsult = ({
             .doc(consultID)
             .update({ ...consultData, controlID: '' })
             .then(() => {
-              resolve(true);
+              if (!!consultData.eog.peso) {
+                firebase
+                  .firestore()
+                  .collection('mascotas')
+                  .doc(petID)
+                  .update({
+                    resena: {
+                      ...petResena,
+                      ultimoPeso: consultData.eog.peso,
+                    },
+                  })
+                  .then(() => {
+                    resolve(true);
+                  })
+                  .catch((error) => {
+                    reject(new Error(error));
+                  });
+              } else {
+                resolve(true);
+              }
             })
             .catch((error) => {
               reject(new Error(error));
@@ -115,7 +155,26 @@ const updateConsult = ({
             .doc(consultID)
             .update({ ...consultData, controlID: querySnapshot.id })
             .then(() => {
-              resolve(true);
+              if (!!consultData.eog.peso) {
+                firebase
+                  .firestore()
+                  .collection('mascotas')
+                  .doc(petID)
+                  .update({
+                    resena: {
+                      ...petResena,
+                      ultimoPeso: consultData.eog.peso,
+                    },
+                  })
+                  .then(() => {
+                    resolve(true);
+                  })
+                  .catch((error) => {
+                    reject(new Error(error));
+                  });
+              } else {
+                resolve(true);
+              }
             })
             .catch((error) => {
               reject(new Error(error));
@@ -134,7 +193,26 @@ const updateConsult = ({
         .doc(consultID)
         .update(consultData)
         .then(() => {
-          resolve(true);
+          if (!!consultData.eog.peso) {
+            firebase
+              .firestore()
+              .collection('mascotas')
+              .doc(petID)
+              .update({
+                resena: {
+                  ...petResena,
+                  ultimoPeso: consultData.eog.peso,
+                },
+              })
+              .then(() => {
+                resolve(true);
+              })
+              .catch((error) => {
+                reject(new Error(error));
+              });
+          } else {
+            resolve(true);
+          }
         })
         .catch((error) => {
           reject(new Error(error));

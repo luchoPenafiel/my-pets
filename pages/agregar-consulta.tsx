@@ -17,7 +17,7 @@ import {
 import { Title1 } from '../components/Types/Titles/Titles';
 import { useForm } from 'react-hook-form';
 import TextField from '@material-ui/core/TextField';
-import { addConsult, getLocalStorage } from '../services';
+import { addConsult, getLocalStorage, setLocalStorage } from '../services';
 import { PetContext } from '../contexts/PetContext';
 import IPet from '../interfaces/pet';
 import IUser from '../interfaces/user';
@@ -30,7 +30,7 @@ const AgregarConsulta = (): ReactElement => {
   const [petData, setPetData] = useState<IPet>();
   const [userData, setUserData] = useState<IUser>();
 
-  const { pet } = useContext(PetContext);
+  const { pet, changeStatePet } = useContext(PetContext);
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = async (formData) => {
@@ -46,6 +46,20 @@ const AgregarConsulta = (): ReactElement => {
       };
 
       await addConsult({ ...data });
+
+      if (!!formData.eog.peso) {
+        const dataToUpdate = {
+          ...petData,
+          resena: {
+            ...petData.resena,
+            ultimoPeso: formData.eog.peso,
+          },
+        };
+
+        changeStatePet(formData);
+        await setLocalStorage('pet', dataToUpdate);
+      }
+
       setIsLoading(false);
 
       Router.push('/success-add-consult');

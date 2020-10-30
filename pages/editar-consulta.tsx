@@ -20,7 +20,7 @@ import TextField from '@material-ui/core/TextField';
 import IConsult from '../interfaces/consulta';
 import { ConsultContext } from '../contexts/ConsultContext';
 import { PetContext } from '../contexts/PetContext';
-import { getLocalStorage, updateConsult } from '../services';
+import { getLocalStorage, setLocalStorage, updateConsult } from '../services';
 import IPet from '../interfaces/pet';
 import IUser from '../interfaces/user';
 
@@ -34,7 +34,7 @@ const EditarConsulta = (): ReactElement => {
   const [userData, setUserData] = useState<IUser>();
 
   const { consult } = useContext(ConsultContext);
-  const { pet } = useContext(PetContext);
+  const { pet, changeStatePet } = useContext(PetContext);
 
   const { register, handleSubmit, errors } = useForm();
 
@@ -48,6 +48,7 @@ const EditarConsulta = (): ReactElement => {
         ownerID: userData.id,
         tutorData: userData,
         petName: petData.nombre,
+        petResena: petData.resena,
         consultData: {
           ...formData,
         },
@@ -64,6 +65,20 @@ const EditarConsulta = (): ReactElement => {
       }
 
       await updateConsult(data);
+
+      if (!!formData.eog.peso) {
+        const dataToUpdate = {
+          ...petData,
+          resena: {
+            ...petData.resena,
+            ultimoPeso: formData.eog.peso,
+          },
+        };
+
+        changeStatePet(formData);
+        await setLocalStorage('pet', dataToUpdate);
+      }
+
       Router.push('/success-edit-consult');
       setIsLoading(false);
     } catch (err) {
@@ -164,6 +179,26 @@ const EditarConsulta = (): ReactElement => {
                     defaultValue={intialData.motivo}
                     error={Boolean(errors.motivo)}
                     helperText={errors.motivo?.message}
+                  />
+                </InputWrapper>
+
+                <InputWrapper>
+                  <TextField
+                    name="eog[peso]"
+                    label="Peso"
+                    fullWidth
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    InputProps={{
+                      inputProps: {
+                        name: 'eog[peso]',
+                        ref: register(),
+                      },
+                    }}
+                    defaultValue={intialData.eog?.peso}
+                    error={Boolean(errors.eog?.peso)}
+                    helperText={errors.eog?.peso}
                   />
                 </InputWrapper>
 
