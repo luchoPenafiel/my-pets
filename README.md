@@ -1,4 +1,4 @@
-# <img width="50" alt="Logo" src="https://mismascotas.lpenafiel.com/images/logo.svg">My Pets
+# My Pets
 
 <img width="200" alt="Mobile login" src="https://user-images.githubusercontent.com/25674406/114864575-8af07800-9dc7-11eb-930a-c190e3e47d88.png"><img width="200" alt="Mobile screen" src="https://user-images.githubusercontent.com/25674406/114864520-77dda800-9dc7-11eb-9ea1-e0738bb8c331.png"><img width="200" alt="Mobile screen" src="https://user-images.githubusercontent.com/25674406/114866099-89c04a80-9dc9-11eb-9633-d428a6326de7.png"><img width="200" alt="Mobile screen" src="https://user-images.githubusercontent.com/25674406/114866777-6053ee80-9dca-11eb-8ffc-7361fe074bad.png">
 
@@ -50,4 +50,4 @@ yarn dev
 Then, open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 
-
+<img width="50" alt="Logo" src="https://mismascotas.lpenafiel.com/images/logo.svg">
