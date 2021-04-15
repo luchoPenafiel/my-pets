@@ -1,14 +1,9 @@
 # My Pets
 
-![mobile0](https://user-images.githubusercontent.com/25674406/114864575-8af07800-9dc7-11eb-930a-c190e3e47d88.png)
-![mobile1](https://user-images.githubusercontent.com/25674406/114864373-4e248100-9dc7-11eb-99e2-6efbc7a77cea.png)
-![mobile3](https://user-images.githubusercontent.com/25674406/114864445-61cfe780-9dc7-11eb-9652-b6461093d27d.png)
-![mobile2](https://user-images.githubusercontent.com/25674406/114864520-77dda800-9dc7-11eb-9ea1-e0738bb8c331.png)
+<img width="225" alt="" src="https://user-images.githubusercontent.com/25674406/114864575-8af07800-9dc7-11eb-930a-c190e3e47d88.png"><img width="225" alt="" src="https://user-images.githubusercontent.com/25674406/114864373-4e248100-9dc7-11eb-99e2-6efbc7a77cea.png"><img width="225" alt="" src="https://user-images.githubusercontent.com/25674406/114864445-61cfe780-9dc7-11eb-9652-b6461093d27d.png"><img width="225" alt="" src="https://user-images.githubusercontent.com/25674406/114864520-77dda800-9dc7-11eb-9ea1-e0738bb8c331.png">
 
-<img width="1552" alt="desktop1" src="https://user-images.githubusercontent.com/25674406/114864690-ac516400-9dc7-11eb-9385-40d283bd7d06.png">
-<img width="1552" alt="desktop2" src="https://user-images.githubusercontent.com/25674406/114864783-c7bc6f00-9dc7-11eb-9cc4-a3d913556cab.png">
-<img width="1552" alt="desktop3" src="https://user-images.githubusercontent.com/25674406/114864860-e589d400-9dc7-11eb-934f-032de8536ba2.png">
-<img width="1552" alt="desktop4" src="https://user-images.githubusercontent.com/25674406/114865075-297cd900-9dc8-11eb-815e-2340ee3f0c63.png">
+<img width="450" alt="desktop1" src="https://user-images.githubusercontent.com/25674406/114864690-ac516400-9dc7-11eb-9385-40d283bd7d06.png"><img width="450" alt="desktop2" src="https://user-images.githubusercontent.com/25674406/114864783-c7bc6f00-9dc7-11eb-9cc4-a3d913556cab.png">
+<img width="450" alt="desktop3" src="https://user-images.githubusercontent.com/25674406/114864860-e589d400-9dc7-11eb-934f-032de8536ba2.png"><img width="450" alt="desktop4" src="https://user-images.githubusercontent.com/25674406/114865075-297cd900-9dc8-11eb-815e-2340ee3f0c63.png">
 
 My Pets is a PWA that allows owners to register or know the medical history of their pets, and for this, owners can:
 
