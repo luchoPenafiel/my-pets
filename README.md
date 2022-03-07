@@ -49,5 +49,3 @@ yarn dev
 
 Then, open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-
-<img width="50" alt="Logo" src="https://mismascotas.lpenafiel.com/images/logo.svg">
